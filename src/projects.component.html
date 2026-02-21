@@ -1,0 +1,79 @@
+
+<!-- Projects Hero Section -->
+<section class="relative py-32 bg-deep-green text-white flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 bg-cover bg-center opacity-40" style="background-image: url('https://images.unsplash.com/photo-1503387762-592dee58c460?auto=format&fit=crop&q=80&w=2000');"></div>
+    <div class="absolute inset-0 bg-deep-green/60"></div>
+    <div class="relative z-10 max-w-4xl px-6 text-center fade-in">
+        <span class="text-primary font-bold tracking-widest uppercase text-sm">Our Work</span>
+        <h1 class="text-white text-5xl md:text-6xl font-bold leading-[1.1] my-6 tracking-tight">
+            A Portfolio of Precision
+        </h1>
+        <p class="text-white/80 text-lg md:text-xl font-light max-w-3xl mx-auto leading-relaxed">
+            Browse a selection of our successfully completed projects. Each one stands as a testament to our commitment to accuracy, efficiency, and client satisfaction.
+        </p>
+    </div>
+</section>
+
+<!-- Projects Grid Section -->
+<section class="py-24 px-6 bg-background-light dark:bg-background-dark">
+    <div class="max-w-7xl mx-auto">
+        <!-- Filter Buttons -->
+        <div class="flex items-center justify-center flex-wrap gap-4 mb-16" role="group" aria-label="Filter projects by category">
+            <button
+                (click)="setFilter('All')"
+                [attr.aria-current]="activeCategory() === 'All' ? 'true' : 'false'"
+                [class]="activeCategory() === 'All' ? 'bg-primary text-deep-green' : 'bg-white dark:bg-deep-green/50 hover:bg-primary/20 dark:hover:bg-primary/20'"
+                class="px-6 py-2.5 rounded-lg font-bold text-sm tracking-wide transition-colors focus-visible:outline-primary">
+                All Projects
+            </button>
+            @for(service of services(); track service.title) {
+                <button
+                    (click)="setFilter(service.title)"
+                    [attr.aria-current]="activeCategory() === service.title ? 'true' : 'false'"
+                    [class]="activeCategory() === service.title ? 'bg-primary text-deep-green' : 'bg-white dark:bg-deep-green/50 hover:bg-primary/20 dark:hover:bg-primary/20'"
+                    class="px-6 py-2.5 rounded-lg font-bold text-sm tracking-wide transition-colors focus-visible:outline-primary">
+                    {{ service.title }}
+                </button>
+            }
+        </div>
+        
+        <!-- Interactive Map Section -->
+        <div class="mb-20 fade-in">
+            <div class="mb-8">
+                <h3 class="text-2xl font-bold text-deep-green dark:text-white mb-2">Project Locations</h3>
+                <p class="text-deep-green/60 dark:text-white/60">Explore our nationwide presence and key project sites across Nigeria.</p>
+            </div>
+            <app-map [projects]="filteredProjects()"></app-map>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            @for (project of filteredProjects(); track project.title) {
+                <a [routerLink]="['/project', project.slug]" [attr.aria-label]="'View details for project: ' + project.title" class="group bg-white dark:bg-deep-green/50 rounded-lg overflow-hidden border border-deep-green/5 dark:border-white/10 flex flex-col fade-in transition-all duration-300 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2 focus-visible:outline-primary">
+                  <div class="relative w-full h-56 overflow-hidden">
+                      @if (project.imageUrls.length > 0) {
+                        <img [ngSrc]="project.imageUrls[0]" [alt]="project.title" width="600" height="400" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy" />
+                      }
+                      <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                      <div class="absolute bottom-4 right-4 bg-primary text-deep-green p-2 rounded-full opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                        <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+                      </div>
+                  </div>
+                  <div class="p-6 flex-grow flex flex-col">
+                    <h4 class="font-bold text-deep-green dark:text-white flex-grow">{{ project.title }}</h4>
+                    <p class="text-sm text-deep-green/60 dark:text-white/60 mt-2 line-clamp-2">{{ project.description }}</p>
+                  </div>
+                  <div class="p-6 pt-0 mt-4">
+                    <span class="text-xs font-bold text-deep-green/40 dark:text-white/30 uppercase tracking-widest">{{ project.serviceCategory }}</span>
+                  </div>
+                </a>
+            }
+ @empty {
+                <div class="md:col-span-2 lg:col-span-3 text-center py-12 bg-deep-green/5 dark:bg-white/5 rounded-lg">
+                    <span class="material-symbols-outlined text-4xl text-deep-green/40 dark:text-white/40 mb-4">folder_off</span>
+                    <p class="text-deep-green/60 dark:text-white/60">No projects to display for this category.</p>
+                </div>
+            }
+        </div>
+    </div>
+</section>

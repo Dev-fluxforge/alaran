@@ -1,0 +1,85 @@
+
+<!-- About Hero Section -->
+<section class="relative py-32 bg-deep-green text-white flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 bg-cover bg-center opacity-40" style="background-image: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=2000');"></div>
+    <div class="absolute inset-0 bg-deep-green/60"></div>
+    <div class="relative z-10 max-w-4xl px-6 text-center fade-in">
+        <span class="text-primary font-bold tracking-widest uppercase text-sm">Who We Are</span>
+        <h1 class="text-white text-5xl md:text-6xl font-bold leading-[1.1] my-6 tracking-tight">
+            Charting the Future with Precision and Integrity
+        </h1>
+        <p class="text-white/80 text-lg md:text-xl font-light max-w-3xl mx-auto leading-relaxed">
+            Since 2008, Alaran Geo-Service has been a cornerstone of infrastructural development, providing world-class surveying and geospatial services that blend cutting-edge technology with decades of expertise.
+        </p>
+    </div>
+</section>
+
+<!-- Our Story Section -->
+<section class="py-24 px-6 bg-white dark:bg-background-dark/50">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div class="relative group">
+            <div class="absolute -inset-4 bg-primary/10 dark:bg-primary/20 rounded-xl blur-2xl group-hover:bg-primary/20 dark:group-hover:bg-primary/30 transition-all duration-500"></div>
+            <img ngSrc="https://picsum.photos/seed/office/800/600" alt="Alaran Geo-Service team discussion" width="800" height="600" class="relative rounded-xl w-full object-cover shadow-2xl" />
+        </div>
+        <div>
+            <span class="text-primary font-bold tracking-widest uppercase text-sm">Our Journey</span>
+            <h2 class="text-4xl font-bold mt-4 mb-8 text-deep-green dark:text-white">From Humble Beginnings to Industry Leaders</h2>
+            <p class="text-deep-green/70 dark:text-white/70 mb-6 leading-relaxed">
+                Founded by Dr. Adebayo Alaran with a single theodolite and a vision for excellence, our firm has grown into a multi-disciplinary team of licensed experts. We've embraced technological advancements, from the first commercial GPS units to today's sophisticated drone LiDAR systems, always with the goal of delivering more accurate data, faster.
+            </p>
+            <p class="text-deep-green/70 dark:text-white/70 leading-relaxed">
+                Our portfolio spans hundreds of successful projects across Nigeria and West Africa, from landmark high-rise buildings to critical energy infrastructure. We are proud to be the trusted geospatial partner for both public and private sector giants.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Core Values Section -->
+<section class="py-24 px-6 bg-background-light dark:bg-background-dark">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+            <span class="text-primary font-bold tracking-widest uppercase text-sm">Our Principles</span>
+            <h2 class="text-4xl font-bold mt-2 text-deep-green dark:text-white">The Foundation of Our Work</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            @for (value of values(); track value.title) {
+                <div class="text-center p-8 bg-white dark:bg-white/5 rounded-xl border border-transparent hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300">
+                    <div class="w-16 h-16 bg-primary/20 rounded-lg flex items-center justify-center text-primary text-3xl mx-auto mb-6">
+                        <span class="material-symbols-outlined">{{ value.icon }}</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">{{ value.title }}</h3>
+                    <p class="text-deep-green/60 dark:text-white/60 text-sm leading-relaxed">{{ value.description }}</p>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<!-- Meet the Team Section -->
+<section class="py-24 px-6 bg-white dark:bg-background-dark/50">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+            <span class="text-primary font-bold tracking-widest uppercase text-sm">Our Experts</span>
+            <h2 class="text-4xl font-bold mt-2 text-deep-green dark:text-white">The Minds Behind the Measurements</h2>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            @for (member of team(); track member.name) {
+                <div class="text-center group">
+                    <div class="relative w-full aspect-square rounded-xl overflow-hidden mb-6 group/member">
+                        <img [ngSrc]="member.imageUrl" [alt]="member.name" width="400" height="400" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                        <div class="absolute inset-0 bg-deep-green/60 opacity-0 group-hover/member:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
+                            <a [href]="member.socials.linkedin" [attr.aria-label]="'Visit ' + member.name + '\'s LinkedIn profile'" class="w-10 h-10 rounded-full bg-primary text-deep-green flex items-center justify-center hover:scale-110 transition-transform focus-visible:outline-white">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                            </a>
+                            <a [href]="member.socials.twitter" [attr.aria-label]="'Visit ' + member.name + '\'s Twitter profile'" class="w-10 h-10 rounded-full bg-primary text-deep-green flex items-center justify-center hover:scale-110 transition-transform focus-visible:outline-white">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.84 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-deep-green dark:text-white">{{ member.name }}</h3>
+                    <p class="text-primary font-medium">{{ member.title }}</p>
+                </div>
+            }
+        </div>
+    </div>
+</section>
