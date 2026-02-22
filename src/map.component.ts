@@ -70,6 +70,23 @@ import { Project } from './data.service';
       transform: scale(1.4);
       box-shadow: 0 0 15px rgba(var(--primary-rgb), 0.5);
     }
+    ::ng-deep .custom-tooltip {
+      background: white !important;
+      border: 1px solid rgba(0, 0, 0, 0.05) !important;
+      border-radius: 8px !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+      padding: 0 !important;
+    }
+    .dark ::ng-deep .custom-tooltip {
+      background: #0a2d23 !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
+    }
+    ::ng-deep .leaflet-tooltip-top:before {
+      border-top-color: white !important;
+    }
+    .dark ::ng-deep .leaflet-tooltip-top:before {
+      border-top-color: #0a2d23 !important;
+    }
   `]
 })
 export class MapComponent implements AfterViewInit, OnDestroy {
@@ -169,6 +186,17 @@ export class MapComponent implements AfterViewInit, OnDestroy {
 
         const marker = L.marker([project.coordinates.lat, project.coordinates.lng], { icon: markerIcon })
           .addTo(this.map!)
+          .bindTooltip(`
+            <div class="px-3 py-2">
+              <div class="text-[9px] font-bold uppercase tracking-wider ${textColorClass} mb-0.5">${project.serviceCategory}</div>
+              <div class="text-xs font-bold text-deep-green dark:text-white leading-tight">${project.title}</div>
+            </div>
+          `, {
+            direction: 'top',
+            offset: [0, -12],
+            className: 'custom-tooltip',
+            opacity: 1
+          })
           .bindPopup(`
             <div class="p-3 min-w-[200px]">
               <div class="flex items-center gap-2 mb-2">
