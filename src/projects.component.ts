@@ -4,6 +4,7 @@ import { NgOptimizedImage } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { DataService } from './data.service';
 import { MapComponent } from './map.component';
+import { UiStateService } from './ui-state.service';
 
 @Component({
   selector: 'app-projects',
@@ -14,11 +15,13 @@ import { MapComponent } from './map.component';
 })
 export class ProjectsComponent {
   private dataService = inject(DataService);
+  private uiStateService = inject(UiStateService);
 
   private allProjects = this.dataService.projects;
   services = this.dataService.services;
   
   activeCategory = signal<string>('All');
+  hoveredProjectId = this.uiStateService.hoveredProjectId;
   
   categoriesWithCounts = computed(() => {
     const projects = this.allProjects();
@@ -48,5 +51,9 @@ export class ProjectsComponent {
   
   setFilter(category: string): void {
     this.activeCategory.set(category);
+  }
+
+  setHoveredProject(id: string | null): void {
+    this.uiStateService.setHoveredProject(id);
   }
 }

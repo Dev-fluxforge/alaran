@@ -70,7 +70,17 @@
         <!-- Projects Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             @for (project of filteredProjects(); track project.title) {
-                <a [routerLink]="['/project', project.slug]" [attr.aria-label]="'View details for project: ' + project.title" class="group bg-white dark:bg-deep-green/50 rounded-lg overflow-hidden border border-deep-green/5 dark:border-white/10 flex flex-col fade-in transition-all duration-300 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2 focus-visible:outline-primary">
+                <a 
+                  [routerLink]="['/project', project.slug]" 
+                  [attr.aria-label]="'View details for project: ' + project.title" 
+                  (mouseenter)="setHoveredProject(project.slug)"
+                  (mouseleave)="setHoveredProject(null)"
+                  [class.ring-4]="hoveredProjectId() === project.slug"
+                  [class.ring-primary]="hoveredProjectId() === project.slug"
+                  [class.scale-105]="hoveredProjectId() === project.slug"
+                  [class.shadow-2xl]="hoveredProjectId() === project.slug"
+                  [class.shadow-primary/20]="hoveredProjectId() === project.slug"
+                  class="group bg-white dark:bg-deep-green/50 rounded-lg overflow-hidden border border-deep-green/5 dark:border-white/10 flex flex-col fade-in transition-all duration-300 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2 focus-visible:outline-primary">
                   <div class="relative w-full h-56 overflow-hidden">
                       @if (project.imageUrls.length > 0) {
                         <img [ngSrc]="project.imageUrls[0]" [alt]="project.title" width="600" height="400" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy" />

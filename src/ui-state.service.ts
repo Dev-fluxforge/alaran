@@ -8,9 +8,14 @@ import { Service } from './data.service';
 export class UiStateService {
   readonly selectedService = signal<Service | null>(null);
   readonly isSearchModalOpen = signal(false);
+  readonly hoveredProjectId = signal<string | null>(null);
 
   selectService(service: Service): void {
     this.selectedService.set(service);
+  }
+
+  setHoveredProject(id: string | null): void {
+    this.hoveredProjectId.set(id);
   }
 
   closeModal(): void {

@@ -3,6 +3,7 @@ import { Component, OnInit, OnDestroy, ElementRef, ViewChild, inject, input, eff
 import { CommonModule } from '@angular/common';
 import * as L from 'leaflet';
 import { Project } from './data.service';
+import { UiStateService } from './ui-state.service';
 
 @Component({
   selector: 'app-map',
@@ -66,9 +67,9 @@ import { Project } from './data.service';
     .marker-core {
       transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
-    .custom-div-icon:hover .marker-core {
+    .custom-div-icon:hover .marker-core, .marker-highlighted .marker-core {
       transform: scale(1.4);
-      box-shadow: 0 0 15px rgba(var(--primary-rgb), 0.5);
+      box-shadow: 0 0 15px rgba(25, 230, 77, 0.5);
     }
     ::ng-deep .custom-tooltip {
       background: white !important;
@@ -87,6 +88,10 @@ import { Project } from './data.service';
     .dark ::ng-deep .leaflet-tooltip-top:before {
       border-top-color: #0a2d23 !important;
     }
+    ::ng-deep .leaflet-tooltip-highlighted {
+      opacity: 1 !important;
+      z-index: 1000 !important;
+    }
   `]
 })
 export class MapComponent implements AfterViewInit, OnDestroy {
@@ -94,8 +99,9 @@ export class MapComponent implements AfterViewInit, OnDestroy {
   
   projects = input<Project[]>([]);
   
+  private uiStateService = inject(UiStateService);
   private map?: L.Map;
-  private markers: L.Marker[] = [];
+  private markers: Map<string, L.Marker> = new Map();
 
   readonly legendItems = [
     { label: 'Engineering Surveying', colorClass: 'bg-primary' },
@@ -121,6 +127,11 @@ export class MapComponent implements AfterViewInit, OnDestroy {
   constructor() {
     effect(() => {
       this.addMarkers();
+    });
+
+    effect(() => {
+      const hoveredId = this.uiStateService.hoveredProjectId();
+      this.highlightMarker(hoveredId);
     });
   }
 
@@ -159,7 +170,7 @@ export class MapComponent implements AfterViewInit, OnDestroy {
 
     // Clear existing markers
     this.markers.forEach(m => m.remove());
-    this.markers = [];
+    this.markers.clear();
 
     const projectList = this.projects();
     const bounds = L.latLngBounds([]);
@@ -172,7 +183,7 @@ export class MapComponent implements AfterViewInit, OnDestroy {
         const markerIcon = L.divIcon({
           className: 'custom-div-icon',
           html: `
-            <div class="w-8 h-8 flex items-center justify-center marker-container">
+            <div class="w-8 h-8 flex items-center justify-center marker-container" id="marker-${project.slug}">
               <div class="absolute inset-0 ${colorClass} marker-ripple"></div>
               <div class="absolute inset-0 ${colorClass} marker-ripple ripple-2"></div>
               <div class="relative w-4 h-4 ${colorClass} rounded-full border-2 border-white shadow-lg flex items-center justify-center z-10 marker-core">
@@ -218,14 +229,40 @@ export class MapComponent implements AfterViewInit, OnDestroy {
             maxWidth: 300
           });
 
-        this.markers.push(marker);
+        marker.on('mouseover', () => {
+          this.uiStateService.setHoveredProject(project.slug);
+        });
+
+        marker.on('mouseout', () => {
+          this.uiStateService.setHoveredProject(null);
+        });
+
+        this.markers.set(project.slug, marker);
         bounds.extend([project.coordinates.lat, project.coordinates.lng]);
       }
     });
 
     // Fit bounds if we have markers
-    if (this.markers.length > 0) {
+    if (this.markers.size > 0) {
       this.map.fitBounds(bounds, { padding: [50, 50] });
     }
+  }
+
+  private highlightMarker(slug: string | null): void {
+    this.markers.forEach((marker, markerSlug) => {
+      const element = marker.getElement();
+      if (element) {
+        if (markerSlug === slug) {
+          element.classList.add('marker-highlighted');
+          marker.openTooltip();
+          // Bring to front
+          marker.setZIndexOffset(1000);
+        } else {
+          element.classList.remove('marker-highlighted');
+          marker.closeTooltip();
+          marker.setZIndexOffset(0);
+        }
+      }
+    });
   }
 }
