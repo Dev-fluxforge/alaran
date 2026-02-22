@@ -1,5 +1,6 @@
 
 import { Component, ChangeDetectionStrategy, inject, signal, HostListener, computed } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { DataService, Service } from './data.service';
 import { UiStateService } from './ui-state.service';
 import { MapComponent } from './map.component';
@@ -9,7 +10,7 @@ import { StatsPieChartComponent } from './stats-pie-chart.component';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [MapComponent, StatsChartComponent, StatsPieChartComponent],
+  imports: [RouterLink, MapComponent, StatsChartComponent, StatsPieChartComponent],
   templateUrl: './home.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
