@@ -1,6 +1,6 @@
 
 import { Component, ChangeDetectionStrategy, inject, signal, computed } from '@angular/core';
-import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { map } from 'rxjs/operators';
@@ -12,7 +12,7 @@ import { ImageGalleryComponent } from './image-gallery.component';
 @Component({
   selector: 'app-project-detail',
   standalone: true,
-  imports: [CommonModule, RouterLink, NgOptimizedImage, MapComponent, ImageGalleryComponent],
+  imports: [CommonModule, RouterLink, MapComponent, ImageGalleryComponent],
   templateUrl: './project-detail.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

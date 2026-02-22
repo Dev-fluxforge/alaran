@@ -3,11 +3,13 @@ import { Component, ChangeDetectionStrategy, inject, signal, HostListener, compu
 import { DataService, Service } from './data.service';
 import { UiStateService } from './ui-state.service';
 import { MapComponent } from './map.component';
+import { StatsChartComponent } from './stats-chart.component';
+import { StatsPieChartComponent } from './stats-pie-chart.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [MapComponent],
+  imports: [MapComponent, StatsChartComponent, StatsPieChartComponent],
   templateUrl: './home.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
