@@ -33,6 +33,22 @@ export class AboutComponent {
     { name: 'Fatima Garba', title: 'Principal Cadastral Expert', imageUrl: 'https://picsum.photos/seed/head3/400/400', socials: { linkedin: '#', twitter: '#' } },
   ]);
 
+  currentMemberIndex = signal(0);
+
+  nextMember(): void {
+    const total = this.team().length;
+    this.currentMemberIndex.update(i => (i + 1) % total);
+  }
+
+  prevMember(): void {
+    const total = this.team().length;
+    this.currentMemberIndex.update(i => (i - 1 + total) % total);
+  }
+
+  setMemberIndex(index: number): void {
+    this.currentMemberIndex.set(index);
+  }
+
   values = signal<Value[]>([
     { icon: 'target', title: 'Precision', description: 'Every measurement, every coordinate, and every deliverable is held to the highest standard of accuracy.' },
     { icon: 'verified', title: 'Integrity', description: 'We conduct our business with unwavering honesty and a commitment to ethical practices.' },
