@@ -41,13 +41,19 @@ import { Project } from './data.service';
       background: none !important;
       border: none !important;
     }
-    @keyframes marker-pulse {
-      0% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.2); opacity: 0.8; }
-      100% { transform: scale(1); opacity: 1; }
+    @keyframes marker-ripple {
+      0% { transform: scale(0.8); opacity: 0.8; }
+      100% { transform: scale(2.5); opacity: 0; }
     }
-    .marker-pulse {
-      animation: marker-pulse 2s infinite ease-in-out;
+    .marker-ripple {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      animation: marker-ripple 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+    .ripple-2 {
+      animation-delay: 1s;
     }
   `]
 })
@@ -135,9 +141,10 @@ export class MapComponent implements AfterViewInit, OnDestroy {
           className: 'custom-div-icon',
           html: `
             <div class="w-8 h-8 flex items-center justify-center">
-              <div class="absolute w-6 h-6 ${colorClass} rounded-full opacity-30 marker-pulse"></div>
-              <div class="relative w-4 h-4 ${colorClass} rounded-full border-2 border-white shadow-lg flex items-center justify-center">
-                <div class="w-1 h-1 bg-white rounded-full"></div>
+              <div class="absolute inset-0 ${colorClass} marker-ripple"></div>
+              <div class="absolute inset-0 ${colorClass} marker-ripple ripple-2"></div>
+              <div class="relative w-4 h-4 ${colorClass} rounded-full border-2 border-white shadow-lg flex items-center justify-center z-10">
+                <div class="w-1.5 h-1.5 bg-white rounded-full"></div>
               </div>
             </div>
           `,
