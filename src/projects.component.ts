@@ -20,13 +20,30 @@ export class ProjectsComponent {
   
   activeCategory = signal<string>('All');
   
+  categoriesWithCounts = computed(() => {
+    const projects = this.allProjects();
+    const services = this.services();
+    
+    const counts = services.map(service => ({
+      title: service.title,
+      count: projects.filter(p => p.serviceCategory === service.title).length
+    }));
+    
+    return [
+      { title: 'All', count: projects.length },
+      ...counts
+    ];
+  });
+  
   filteredProjects = computed(() => {
     const category = this.activeCategory();
+    const projects = this.allProjects();
+    
     if (category === 'All') {
-      return this.allProjects();
+      return projects;
     }
-    const service = this.services().find(s => s.title === category);
-    return this.allProjects().filter(p => p.serviceCategory === service?.title);
+    
+    return projects.filter(p => p.serviceCategory === category);
   });
   
   setFilter(category: string): void {

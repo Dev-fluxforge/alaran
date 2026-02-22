@@ -17,24 +17,45 @@
 <!-- Projects Grid Section -->
 <section class="py-24 px-6 bg-background-light dark:bg-background-dark">
     <div class="max-w-7xl mx-auto">
-        <!-- Filter Buttons -->
-        <div class="flex items-center justify-center flex-wrap gap-4 mb-16" role="group" aria-label="Filter projects by category">
-            <button
-                (click)="setFilter('All')"
-                [attr.aria-current]="activeCategory() === 'All' ? 'true' : 'false'"
-                [class]="activeCategory() === 'All' ? 'bg-primary text-deep-green' : 'bg-white dark:bg-deep-green/50 hover:bg-primary/20 dark:hover:bg-primary/20'"
-                class="px-6 py-2.5 rounded-lg font-bold text-sm tracking-wide transition-colors focus-visible:outline-primary">
-                All Projects
-            </button>
-            @for(service of services(); track service.title) {
-                <button
-                    (click)="setFilter(service.title)"
-                    [attr.aria-current]="activeCategory() === service.title ? 'true' : 'false'"
-                    [class]="activeCategory() === service.title ? 'bg-primary text-deep-green' : 'bg-white dark:bg-deep-green/50 hover:bg-primary/20 dark:hover:bg-primary/20'"
-                    class="px-6 py-2.5 rounded-lg font-bold text-sm tracking-wide transition-colors focus-visible:outline-primary">
-                    {{ service.title }}
-                </button>
-            }
+        <!-- Filter Section -->
+        <div class="mb-16">
+            <!-- Desktop Filter Buttons -->
+            <div class="hidden md:flex items-center justify-center flex-wrap gap-3" role="group" aria-label="Filter projects by category">
+                @for(cat of categoriesWithCounts(); track cat.title) {
+                    <button
+                        (click)="setFilter(cat.title)"
+                        [attr.aria-current]="activeCategory() === cat.title ? 'true' : 'false'"
+                        [class]="activeCategory() === cat.title 
+                            ? 'bg-primary text-deep-green shadow-lg shadow-primary/20 scale-105' 
+                            : 'bg-white dark:bg-deep-green/50 text-deep-green/70 dark:text-white/70 hover:bg-primary/10 hover:text-primary border border-deep-green/5 dark:border-white/5'"
+                        class="px-6 py-3 rounded-xl font-bold text-sm tracking-wide transition-all duration-300 flex items-center gap-2 focus-visible:outline-primary">
+                        {{ cat.title === 'All' ? 'All Projects' : cat.title }}
+                        <span class="px-2 py-0.5 rounded-full text-[10px] bg-black/5 dark:bg-white/10 opacity-60">
+                            {{ cat.count }}
+                        </span>
+                    </button>
+                }
+            </div>
+
+            <!-- Mobile Filter Dropdown -->
+            <div class="md:hidden relative max-w-xs mx-auto">
+                <label for="category-filter" class="block text-[10px] font-bold uppercase tracking-widest text-deep-green/40 dark:text-white/40 mb-2 ml-1">Filter by Category</label>
+                <div class="relative">
+                    <select 
+                        id="category-filter"
+                        (change)="setFilter($any($event.target).value)"
+                        class="w-full appearance-none bg-white dark:bg-deep-green/50 border border-deep-green/10 dark:border-white/10 rounded-xl px-5 py-4 text-sm font-bold text-deep-green dark:text-white focus:outline-none focus:border-primary transition-colors">
+                        @for(cat of categoriesWithCounts(); track cat.title) {
+                            <option [value]="cat.title" [selected]="activeCategory() === cat.title">
+                                {{ cat.title === 'All' ? 'All Projects' : cat.title }} ({{ cat.count }})
+                            </option>
+                        }
+                    </select>
+                    <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-primary">
+                        <span class="material-symbols-outlined">expand_more</span>
+                    </div>
+                </div>
+            </div>
         </div>
         
         <!-- Interactive Map Section -->
