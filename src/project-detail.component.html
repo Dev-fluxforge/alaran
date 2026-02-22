@@ -16,47 +16,7 @@
         
         <!-- Image Gallery -->
         <div class="mb-16">
-          @if (p.imageUrls.length > 0) {
-            <div class="relative w-full aspect-video rounded-xl overflow-hidden shadow-2xl bg-deep-green/10"
-                 (touchstart)="onTouchStart($event)"
-                 (touchend)="onTouchEnd($event)">
-              @for (imageUrl of p.imageUrls; track $index) {
-                <img [ngSrc]="imageUrl" 
-                     [alt]="p.title + ' image ' + ($index + 1)" 
-                     fill 
-                     class="w-full h-full object-cover absolute top-0 left-0 transition-opacity duration-500 ease-in-out"
-                     [class.opacity-0]="currentImageIndex() !== $index"
-                     [priority]="$index === 0" />
-              }
-              
-              @if (p.imageUrls.length > 1) {
-                <div class="absolute inset-0 bg-transparent flex items-center justify-between p-4 z-10">
-                  <button (click)="prevImage()" class="w-12 h-12 rounded-full bg-white/80 text-deep-green hover:bg-white flex items-center justify-center shadow-lg transition-transform hover:scale-105">
-                    <span class="material-symbols-outlined">chevron_left</span>
-                  </button>
-                  <button (click)="nextImage()" class="w-12 h-12 rounded-full bg-white/80 text-deep-green hover:bg-white flex items-center justify-center shadow-lg transition-transform hover:scale-105">
-                    <span class="material-symbols-outlined">chevron_right</span>
-                  </button>
-                </div>
-              }
-            </div>
-          }
-
-          <!-- Thumbnail Gallery -->
-          @if (p.imageUrls.length > 1) {
-            <div class="mt-4 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4">
-              @for (imageUrl of p.imageUrls; track $index) {
-                <button 
-                  (click)="setCurrentImageIndex($index)"
-                  class="aspect-video rounded-md overflow-hidden border-2 transition-all duration-200"
-                  [class]="currentImageIndex() === $index ? 'border-primary scale-105' : 'border-transparent hover:border-primary/50 opacity-70 hover:opacity-100'">
-                  <img [ngSrc]="imageUrl" [alt]="p.title + ' thumbnail ' + ($index + 1)" 
-                       width="200" height="112"
-                       class="w-full h-full object-cover">
-                </button>
-              }
-            </div>
-          }
+          <app-image-gallery [imageUrls]="p.imageUrls"></app-image-gallery>
         </div>
 
         <!-- Project Details -->
