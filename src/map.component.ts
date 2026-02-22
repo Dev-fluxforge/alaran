@@ -55,6 +55,21 @@ import { Project } from './data.service';
     .ripple-2 {
       animation-delay: 1s;
     }
+    @keyframes marker-drop {
+      0% { transform: translateY(-30px) scale(0); opacity: 0; }
+      60% { transform: translateY(10px) scale(1.1); opacity: 1; }
+      100% { transform: translateY(0) scale(1); opacity: 1; }
+    }
+    .marker-container {
+      animation: marker-drop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+    .marker-core {
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .custom-div-icon:hover .marker-core {
+      transform: scale(1.4);
+      box-shadow: 0 0 15px rgba(var(--primary-rgb), 0.5);
+    }
   `]
 })
 export class MapComponent implements AfterViewInit, OnDestroy {
@@ -140,10 +155,10 @@ export class MapComponent implements AfterViewInit, OnDestroy {
         const markerIcon = L.divIcon({
           className: 'custom-div-icon',
           html: `
-            <div class="w-8 h-8 flex items-center justify-center">
+            <div class="w-8 h-8 flex items-center justify-center marker-container">
               <div class="absolute inset-0 ${colorClass} marker-ripple"></div>
               <div class="absolute inset-0 ${colorClass} marker-ripple ripple-2"></div>
-              <div class="relative w-4 h-4 ${colorClass} rounded-full border-2 border-white shadow-lg flex items-center justify-center z-10">
+              <div class="relative w-4 h-4 ${colorClass} rounded-full border-2 border-white shadow-lg flex items-center justify-center z-10 marker-core">
                 <div class="w-1.5 h-1.5 bg-white rounded-full"></div>
               </div>
             </div>
