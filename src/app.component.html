@@ -21,7 +21,7 @@
             <a routerLink="/contact" class="hidden lg:flex bg-primary hover:bg-primary/90 text-deep-green px-6 py-2.5 rounded-lg font-bold text-sm tracking-wide transition-all shadow-lg shadow-primary/20 hover:scale-105 focus-visible:outline-primary">
                 Request Quote
             </a>
-            <button (click)="toggleDarkMode()" [attr.aria-label]="isDarkMode() ? 'Switch to light mode' : 'Switch to dark mode'" class="p-2 rounded-full bg-deep-green/5 dark:bg-white/5 hover:bg-deep-green/10 dark:hover:bg-white/10 transition-all duration-300 focus-visible:outline-primary">
+            <button (click)="toggleDarkMode()" [attr.aria-label]="isDarkMode() ? 'Switch to light mode' : 'Switch to dark mode'" class="hidden md:flex p-2 rounded-full bg-deep-green/5 dark:bg-white/5 hover:bg-deep-green/10 dark:hover:bg-white/10 transition-all duration-300 focus-visible:outline-primary">
                 @if (isDarkMode()) {
                     <span class="material-symbols-outlined" aria-hidden="true">light_mode</span>
                 } @else {

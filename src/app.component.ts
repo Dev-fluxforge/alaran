@@ -72,7 +72,10 @@ export class AppComponent {
 
   constructor() {
     // Initialize based on user's OS/browser preference
-    if (typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+    const prefersDark = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    if (isMobile || prefersDark) {
         this.isDarkMode.set(true);
     }
 
