@@ -1,0 +1,55 @@
+
+<!-- Services Hero Section -->
+<section class="relative py-32 bg-deep-green text-white flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 bg-cover bg-center opacity-40" style="background-image: url('https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?auto=format&fit=crop&q=80&w=2000');"></div>
+    <div class="absolute inset-0 bg-deep-green/60"></div>
+    <div class="relative z-10 max-w-4xl px-6 text-center fade-in">
+        <span class="text-primary font-bold tracking-widest uppercase text-sm">Our Expertise</span>
+        <h1 class="text-white text-5xl md:text-6xl font-bold leading-[1.1] my-6 tracking-tight">
+            Comprehensive Geospatial Solutions
+        </h1>
+        <p class="text-white/80 text-lg md:text-xl font-light max-w-3xl mx-auto leading-relaxed">
+            We offer a full spectrum of surveying and mapping services, tailored to meet the rigorous demands of modern engineering, construction, and land management projects.
+        </p>
+    </div>
+</section>
+
+<!-- Services List Section -->
+<section class="py-24 px-6 bg-background-light dark:bg-background-dark">
+    <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            @for (service of services(); track service.title) {
+            <button 
+                (click)="selectService(service)" 
+                [attr.aria-label]="'View details for ' + service.title"
+                class="service-card p-8 rounded-xl bg-white dark:bg-deep-green/50 border border-deep-green/5 dark:border-white/10 flex flex-col h-full cursor-pointer text-left focus-visible:outline-primary">
+                <div class="w-14 h-14 bg-primary/20 rounded-lg flex items-center justify-center text-primary mb-6" aria-hidden="true">
+                    <span class="material-symbols-outlined text-3xl">{{ service.icon }}</span>
+                </div>
+                <h3 class="text-xl font-bold mb-3">{{ service.title }}</h3>
+                <p class="text-deep-green/60 dark:text-white/60 text-sm leading-relaxed mb-6 flex-grow">{{ service.description }}</p>
+                <div class="mt-auto">
+                    <span class="text-xs font-bold text-deep-green/40 dark:text-white/30 uppercase tracking-widest">{{ service.category }}</span>
+                </div>
+            </button>
+            }
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-20 px-6 bg-white dark:bg-background-dark/50">
+    <div class="max-w-7xl mx-auto">
+        <div class="bg-primary rounded-3xl p-12 md:p-20 flex flex-col items-center text-center relative overflow-hidden">
+            <div class="absolute top-0 right-0 p-10 opacity-10">
+                <span class="material-symbols-outlined text-[200px]">explore</span>
+            </div>
+            <h2 class="text-deep-green text-4xl md:text-5xl font-bold mb-6 max-w-2xl leading-tight">Have a Specific Challenge?</h2>
+            <p class="text-deep-green/80 text-lg mb-10 max-w-xl">Our experts are ready to design a custom geospatial solution for your unique project requirements. Let's discuss how we can bring precision to your plans.</p>
+            <div class="flex flex-col sm:flex-row gap-4 w-full justify-center">
+                <button aria-label="Request a quote for your project" class="bg-deep-green text-white px-12 py-5 rounded-xl font-bold text-lg hover:scale-105 transition-transform shadow-xl focus-visible:outline-white">Request a Quote</button>
+                <button aria-label="Speak to a professional surveyor" class="bg-white/20 backdrop-blur-sm border border-deep-green/20 text-deep-green px-12 py-5 rounded-xl font-bold text-lg hover:bg-white/40 transition-all focus-visible:outline-deep-green">Speak to a Surveyor</button>
+            </div>
+        </div>
+    </div>
+</section>

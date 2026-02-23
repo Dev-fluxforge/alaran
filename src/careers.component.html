@@ -1,0 +1,51 @@
+
+<!-- Careers Hero Section -->
+<section class="relative py-32 bg-deep-green text-white flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 bg-cover bg-center opacity-40" style="background-image: url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&q=80&w=2000');"></div>
+    <div class="absolute inset-0 bg-deep-green/60"></div>
+    <div class="relative z-10 max-w-4xl px-6 text-center fade-in">
+        <span class="text-primary font-bold tracking-widest uppercase text-sm">Join Our Team</span>
+        <h1 class="text-white text-5xl md:text-6xl font-bold leading-[1.1] my-6 tracking-tight">
+            Build the Future with Us
+        </h1>
+        <p class="text-white/80 text-lg md:text-xl font-light max-w-3xl mx-auto leading-relaxed">
+            We are always looking for passionate, talented individuals to join our mission. Explore our open positions and find where you fit in the future of geospatial solutions.
+        </p>
+    </div>
+</section>
+
+<!-- Job Listings Section -->
+<section class="py-24 px-6 bg-background-light dark:bg-background-dark">
+    <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-deep-green dark:text-white">Current Openings</h2>
+            <p class="text-deep-green/60 dark:text-white/60 mt-4">Help us shape the world. One coordinate at a time.</p>
+        </div>
+        
+        <div class="space-y-6">
+            @for(job of jobs(); track job.title) {
+                <div class="bg-white dark:bg-deep-green/50 p-6 rounded-lg border border-deep-green/10 dark:border-white/10 grid grid-cols-1 md:grid-cols-3 items-center gap-6 transition-all hover:border-primary/50 hover:shadow-lg">
+                    <div class="md:col-span-2">
+                        <h3 class="text-xl font-bold text-deep-green dark:text-white">{{ job.title }}</h3>
+                        <div class="flex items-center gap-4 text-sm text-deep-green/60 dark:text-white/60 mt-2">
+                            <span class="flex items-center gap-2"><span class="material-symbols-outlined text-base" aria-hidden="true">work</span> {{ job.department }}</span>
+                            <span class="flex items-center gap-2"><span class="material-symbols-outlined text-base" aria-hidden="true">location_on</span> {{ job.location }}</span>
+                            <span class="flex items-center gap-2"><span class="material-symbols-outlined text-base" aria-hidden="true">schedule</span> {{ job.type }}</span>
+                        </div>
+                    </div>
+                    <div class="md:text-right">
+                        <a href="#" [attr.aria-label]="'Apply now for ' + job.title + ' position'" class="inline-block bg-primary text-deep-green px-6 py-2.5 rounded-lg font-bold text-sm tracking-wide transition-all hover:scale-105 focus-visible:outline-primary">
+                            Apply Now
+                        </a>
+                    </div>
+                </div>
+            }
+ @empty {
+                <div class="text-center py-12 bg-deep-green/5 dark:bg-white/5 rounded-lg">
+                    <span class="material-symbols-outlined text-4xl text-deep-green/40 dark:text-white/40 mb-4">work_off</span>
+                    <p class="text-deep-green/60 dark:text-white/60">There are no open positions at this time. Please check back later.</p>
+                </div>
+            }
+        </div>
+    </div>
+</section>
