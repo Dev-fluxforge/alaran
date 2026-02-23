@@ -28,6 +28,7 @@ export class AppComponent {
   isMenuHovered = signal<boolean>(false);
   
   selectedService = this.uiStateService.selectedService;
+  selectedStat = this.uiStateService.selectedStat;
   isSearchModalOpen = this.uiStateService.isSearchModalOpen;
   
   private allProjects = this.dataService.projects;

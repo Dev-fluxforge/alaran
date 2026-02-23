@@ -77,10 +77,13 @@
                 </p>
                 <div class="grid grid-cols-2 gap-8">
                     @for (stat of stats(); track stat.label) {
-                    <div class="py-2 pl-6" [class]="stat.borderColor + ' border-l-4'">
-                        <div class="text-4xl font-bold text-white mb-1">{{ stat.value }}</div>
-                        <div class="text-sm text-white/50 font-medium uppercase tracking-wider">{{ stat.label }}</div>
-                    </div>
+                    <button 
+                        (click)="selectStat(stat)"
+                        class="py-2 pl-6 text-left group transition-all hover:bg-white/5 rounded-r-lg focus-visible:outline-primary" 
+                        [class]="stat.borderColor + ' border-l-4'">
+                        <div class="text-4xl font-bold text-white mb-1 group-hover:text-primary transition-colors">{{ stat.value }}</div>
+                        <div class="text-sm text-white/50 font-medium uppercase tracking-wider group-hover:text-white/80 transition-colors">{{ stat.label }}</div>
+                    </button>
                     }
                 </div>
             </div>

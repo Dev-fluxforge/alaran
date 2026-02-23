@@ -1,7 +1,7 @@
 
 import { Component, ChangeDetectionStrategy, inject, signal, HostListener, computed } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { DataService, Service } from './data.service';
+import { DataService, Service, Stat } from './data.service';
 import { UiStateService } from './ui-state.service';
 import { MapComponent } from './map.component';
 import { StatsChartComponent } from './stats-chart.component';
@@ -61,6 +61,10 @@ export class HomeComponent {
   
   selectService(service: Service): void {
     this.uiStateService.selectService(service);
+  }
+
+  selectStat(stat: Stat): void {
+    this.uiStateService.selectStat(stat);
   }
 
   nextTestimonial(): void {

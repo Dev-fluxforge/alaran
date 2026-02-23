@@ -12,6 +12,7 @@ export interface Stat {
   value: string;
   label: string;
   borderColor: string;
+  details: string;
 }
 
 export interface Project {
@@ -91,10 +92,30 @@ export class DataService {
   ]);
 
   stats = signal<Stat[]>([
-    { value: '99.9%', label: 'Accuracy Rate', borderColor: 'border-primary' },
-    { value: '15+', label: 'Licensed Experts', borderColor: 'border-primary' },
-    { value: '500+', label: 'Projects Delivered', borderColor: 'border-accent-yellow' },
-    { value: '24h', label: 'Rapid Deployment', borderColor: 'border-accent-yellow' },
+    { 
+      value: '99.9%', 
+      label: 'Accuracy Rate', 
+      borderColor: 'border-primary', 
+      details: 'Our commitment to precision is backed by rigorous quality control and the latest GNSS technology, ensuring sub-centimeter accuracy in every project.' 
+    },
+    { 
+      value: '15+', 
+      label: 'Licensed Experts', 
+      borderColor: 'border-primary', 
+      details: 'Our team consists of highly qualified, licensed surveyors and geospatial engineers with decades of combined experience in complex infrastructure projects.' 
+    },
+    { 
+      value: '500+', 
+      label: 'Projects Delivered', 
+      borderColor: 'border-accent-yellow', 
+      details: 'From small-scale boundary surveys to massive national infrastructure projects, we have a proven track record of delivering excellence across Nigeria.' 
+    },
+    { 
+      value: '24h', 
+      label: 'Rapid Deployment', 
+      borderColor: 'border-accent-yellow', 
+      details: 'We understand that time is critical. Our mobile teams are ready to deploy anywhere in the country within 24 hours of project confirmation.' 
+    },
   ]);
 
   partners = signal<string[]>([
