@@ -134,6 +134,16 @@ export class DataService {
       description: 'Utilizing Trimble and Leica systems for centimeter-level accuracy in real-time positioning.'
     },
     {
+      icon: 'straighten',
+      title: 'Total Station',
+      description: 'High-precision optical instruments for measuring angles and distances in construction and land surveying.'
+    },
+    {
+      icon: 'water',
+      title: 'Kongsberg Echo Sounder',
+      description: 'Advanced multibeam echosounders for high-resolution seafloor mapping and underwater object detection.'
+    },
+    {
       icon: 'scanner',
       title: '3D Laser Scanners',
       description: 'Employing Faro and Riegl scanners to capture high-density point clouds for detailed as-built models.'
