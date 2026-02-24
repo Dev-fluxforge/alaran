@@ -105,23 +105,23 @@ export class MapComponent implements AfterViewInit, OnDestroy {
 
   readonly legendItems = [
     { label: 'Engineering Surveying', colorClass: 'bg-primary' },
-    { label: 'Cadastral Surveying', colorClass: 'bg-blue-500' },
-    { label: 'Hydrographic Surveying', colorClass: 'bg-cyan-500' },
-    { label: 'Aerial Mapping', colorClass: 'bg-purple-500' }
+    { label: 'Cadastral Surveying', colorClass: 'bg-sand' },
+    { label: 'Hydrographic Surveying', colorClass: 'bg-water' },
+    { label: 'Aerial Mapping', colorClass: 'bg-space' }
   ];
 
   private categoryColors: Record<string, string> = {
     'Engineering Surveying': 'bg-primary',
-    'Cadastral Surveying': 'bg-blue-500',
-    'Hydrographic Surveying': 'bg-cyan-500',
-    'Aerial Mapping': 'bg-purple-500'
+    'Cadastral Surveying': 'bg-sand',
+    'Hydrographic Surveying': 'bg-water',
+    'Aerial Mapping': 'bg-space'
   };
 
   private categoryTextColors: Record<string, string> = {
     'Engineering Surveying': 'text-primary',
-    'Cadastral Surveying': 'text-blue-500',
-    'Hydrographic Surveying': 'text-cyan-500',
-    'Aerial Mapping': 'text-purple-500'
+    'Cadastral Surveying': 'text-sand',
+    'Hydrographic Surveying': 'text-water',
+    'Aerial Mapping': 'text-space'
   };
 
   constructor() {
