@@ -1,5 +1,5 @@
 
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, signal } from '@angular/core';
 
 @Component({
   selector: 'app-terms',
@@ -7,4 +7,6 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   templateUrl: './terms.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TermsComponent {}
+export class TermsComponent {
+  currentDate = signal(new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric', year: 'numeric' }).format(new Date()));
+}
