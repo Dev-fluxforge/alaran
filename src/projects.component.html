@@ -44,7 +44,7 @@
                     <select 
                         id="category-filter"
                         (change)="setFilter($any($event.target).value)"
-                        class="w-full appearance-none bg-white dark:bg-deep-green/50 border border-deep-green/10 dark:border-white/10 rounded-xl px-5 py-4 text-sm font-bold text-deep-green dark:text-white focus:outline-none focus:border-primary transition-colors">
+                        class="w-full appearance-none bg-white dark:bg-deep-green border border-deep-green/10 dark:border-white/10 rounded-xl px-5 py-4 text-sm font-bold text-deep-green dark:text-white focus:outline-none focus:border-primary transition-colors shadow-lg shadow-deep-green/5 dark:shadow-none">
                         @for(cat of categoriesWithCounts(); track cat.title) {
                             <option [value]="cat.title" [selected]="activeCategory() === cat.title">
                                 {{ cat.title === 'All' ? 'All Projects' : cat.title }} ({{ cat.count }})
