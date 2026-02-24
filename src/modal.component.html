@@ -12,7 +12,7 @@
     <!-- Modal Header -->
     <header class="flex items-center justify-between p-6 border-b border-deep-green/10 dark:border-white/10 flex-shrink-0">
         <div class="flex items-center gap-4">
-            <div class="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center text-primary" aria-hidden="true">
+            <div [class]="'w-12 h-12 rounded-lg flex items-center justify-center bg-' + service().color + '/20 text-' + service().color" aria-hidden="true">
                 <span class="material-symbols-outlined text-2xl">{{ service().icon }}</span>
             </div>
             <div>

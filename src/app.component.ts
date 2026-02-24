@@ -26,6 +26,7 @@ export class AppComponent {
   isDarkMode = signal<boolean>(false);
   isMenuOpen = signal<boolean>(false);
   isMenuHovered = signal<boolean>(false);
+  currentYear = signal(new Date().getFullYear());
   
   selectedService = this.uiStateService.selectedService;
   selectedStat = this.uiStateService.selectedStat;

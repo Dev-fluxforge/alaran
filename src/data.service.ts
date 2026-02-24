@@ -6,6 +6,7 @@ export interface Service {
   title: string;
   description: string;
   category: string;
+  color: string;
 }
 
 export interface Stat {
@@ -69,25 +70,29 @@ export class DataService {
       icon: 'architecture',
       title: 'Engineering Surveying',
       description: 'Topographic and setting out services for complex construction projects and civil engineering.',
-      category: 'Construction Support'
+      category: 'Construction Support',
+      color: 'primary'
     },
     {
       icon: 'map',
       title: 'Cadastral Surveying',
       description: 'Title surveys and boundary mapping for property registration and land administration.',
-      category: 'Land Administration'
+      category: 'Land Administration',
+      color: 'sand'
     },
     {
       icon: 'waves',
       title: 'Hydrographic Surveying',
       description: 'Bathymetric mapping and underwater surveying for ports, harbors, and offshore energy.',
-      category: 'Marine Solutions'
+      category: 'Marine Solutions',
+      color: 'water'
     },
     {
       icon: 'flight',
       title: 'Aerial Mapping',
       description: 'High-resolution drone LiDAR and photogrammetry for rapid wide-area mapping.',
-      category: 'UAV Technology'
+      category: 'UAV Technology',
+      color: 'light-blue'
     }
   ]);
 
@@ -132,6 +137,16 @@ export class DataService {
       icon: 'hub',
       title: 'GNSS',
       description: 'Utilizing Trimble and Leica systems for centimeter-level accuracy in real-time positioning.'
+    },
+    {
+      icon: 'straighten',
+      title: 'Total Station',
+      description: 'High-precision optical instruments for measuring angles and distances in construction and land surveying.'
+    },
+    {
+      icon: 'water',
+      title: 'Kongsberg Echo Sounder',
+      description: 'Advanced multibeam echosounders for high-resolution seafloor mapping and underwater object detection.'
     },
     {
       icon: 'scanner',
