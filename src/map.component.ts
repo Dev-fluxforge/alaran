@@ -107,21 +107,21 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     { label: 'Engineering Surveying', colorClass: 'bg-primary' },
     { label: 'Cadastral Surveying', colorClass: 'bg-sand' },
     { label: 'Hydrographic Surveying', colorClass: 'bg-water' },
-    { label: 'Aerial Mapping', colorClass: 'bg-space' }
+    { label: 'Aerial Mapping', colorClass: 'bg-light-blue' }
   ];
 
   private categoryColors: Record<string, string> = {
     'Engineering Surveying': 'bg-primary',
     'Cadastral Surveying': 'bg-sand',
     'Hydrographic Surveying': 'bg-water',
-    'Aerial Mapping': 'bg-space'
+    'Aerial Mapping': 'bg-light-blue'
   };
 
   private categoryTextColors: Record<string, string> = {
     'Engineering Surveying': 'text-primary',
     'Cadastral Surveying': 'text-sand',
     'Hydrographic Surveying': 'text-water',
-    'Aerial Mapping': 'text-space'
+    'Aerial Mapping': 'text-light-blue'
   };
 
   constructor() {

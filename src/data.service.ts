@@ -92,7 +92,7 @@ export class DataService {
       title: 'Aerial Mapping',
       description: 'High-resolution drone LiDAR and photogrammetry for rapid wide-area mapping.',
       category: 'UAV Technology',
-      color: 'space'
+      color: 'light-blue'
     }
   ]);
 
