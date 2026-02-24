@@ -32,15 +32,15 @@
                 <span class="material-symbols-outlined" aria-hidden="true">search</span>
             </button>
             <!-- Mobile Menu Toggle & Overlay Group -->
-            <div class="relative" (mouseenter)="isMenuHovered.set(true)" (mouseleave)="isMenuHovered.set(false)">
+            <div class="relative">
                 <button (click)="toggleMenu()" [attr.aria-label]="isMenuOpen() ? 'Close menu' : 'Open menu'" class="md:hidden p-2 rounded-full bg-deep-green/5 dark:bg-white/5 hover:bg-deep-green/10 dark:hover:bg-white/10 transition-all duration-300 focus-visible:outline-primary">
                     <span class="material-symbols-outlined" aria-hidden="true">{{ isMenuOpen() ? 'close' : 'menu' }}</span>
                 </button>
 
-                <!-- Mobile Menu Overlay (Hover & Click) -->
+                <!-- Mobile Menu Overlay (Click Only) -->
                 <div class="md:hidden fixed inset-0 top-20 bg-background-light dark:bg-background-dark z-40 flex flex-col p-6 transition-all duration-300 pointer-events-none opacity-0"
-                     [class.opacity-100]="isMenuOpen() || isMenuHovered()"
-                     [class.pointer-events-auto]="isMenuOpen() || isMenuHovered()">
+                     [class.opacity-100]="isMenuOpen()"
+                     [class.pointer-events-auto]="isMenuOpen()">
                     <nav class="flex flex-col gap-6" aria-label="Mobile Navigation">
                         <a routerLink="/home" (click)="closeMenu()" routerLinkActive="text-primary" [routerLinkActiveOptions]="{exact: true}" class="text-xl font-bold hover:text-primary transition-colors">Home</a>
                         <a routerLink="/about" (click)="closeMenu()" routerLinkActive="text-primary" class="text-xl font-bold hover:text-primary transition-colors">About</a>
