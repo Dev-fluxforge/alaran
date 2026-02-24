@@ -31,6 +31,12 @@
               ? 'bg-primary text-deep-green rounded-br-none' 
               : 'bg-deep-green/10 dark:bg-white/10 text-deep-green dark:text-white/90 rounded-bl-none'">
             <p class="text-sm"><span class="sr-only">{{ message.sender === 'user' ? 'You' : 'Agent' }}: </span>{{ message.text }}</p>
+            @if (message.link) {
+              <a [routerLink]="message.link.url" class="inline-flex items-center gap-1 text-xs font-bold text-primary hover:underline mt-2">
+                {{ message.link.text }}
+                <span class="material-symbols-outlined text-xs">arrow_forward</span>
+              </a>
+            }
             <p class="text-xs mt-1" [class]="message.sender === 'user' ? 'text-deep-green/70' : 'text-deep-green/50 dark:text-white/50'">{{ message.timestamp | date:'shortTime' }}</p>
           </div>
         </div>
