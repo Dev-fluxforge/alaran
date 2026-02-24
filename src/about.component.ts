@@ -29,7 +29,7 @@ export class AboutComponent {
   team = signal<TeamMember[]>([
     { name: 'Dr. Adebayo Alaran', title: 'Founder & Chief Surveyor', imageUrl: 'https://picsum.photos/seed/ceo/400/400', socials: { linkedin: '#', twitter: '#' } },
     { name: 'Chidinma Okoro', title: 'Head of Aerial Mapping', imageUrl: 'https://picsum.photos/seed/head1/400/400', socials: { linkedin: '#', twitter: '#' } },
-    { name: 'Musa Bello', title: 'Lead Hydrographic Specialist', imageUrl: 'https://github.com/Dev-fluxforge/alaran/blob/bb266a5c99f8939bd43a77d45b5550748cc92909/src/assets/images/fluxforge.png', socials: { linkedin: '#', twitter: '#' } },
+    { name: 'Musa Bello', title: 'Lead Hydrographic Specialist', imageUrl: 'assets/images/fluxforge.png', socials: { linkedin: '#', twitter: '#' } },
     { name: 'Fatima Garba', title: 'Principal Cadastral Expert', imageUrl: 'https://picsum.photos/seed/head3/400/400', socials: { linkedin: '#', twitter: '#' } },
   ]);
 
