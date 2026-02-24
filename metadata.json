@@ -1,5 +1,6 @@
 {
   "name": "Alaran Geo-Service Showcase",
-  "description": "A visually-rich web application showcasing the services of Alaran Geo-Service, a professional surveying and geospatial solutions company. This app highlights their expertise with an impressive hero section, detailed service cards, and key company statistics.",
+  "description": "Professional surveying and geospatial solutions company specializing in engineering, mapping, and cadastral services. Delivering precision and accuracy since 2008.",
+  "keywords": "surveying, geospatial, mapping, cadastral, engineering, Nigeria, West Africa, GIS, LiDAR, hydrography",
   "requestFramePermissions": []
 }
