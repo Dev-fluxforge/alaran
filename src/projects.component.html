@@ -108,3 +108,14 @@
         </div>
     </div>
 </section>
+
+<!-- Scroll to Top Button -->
+<button 
+    (click)="scrollToTop()"
+    [class.opacity-0]="!showScrollTop()"
+    [class.pointer-events-none]="!showScrollTop()"
+    [class.translate-y-10]="!showScrollTop()"
+    class="fixed bottom-28 right-8 w-14 h-14 bg-white dark:bg-deep-green text-primary rounded-full shadow-2xl flex items-center justify-center transition-all duration-500 z-[60] border border-primary/20 hover:scale-110 active:scale-95 focus-visible:outline-primary"
+    aria-label="Scroll to top">
+    <span class="material-symbols-outlined text-3xl font-bold">arrow_upward</span>
+</button>

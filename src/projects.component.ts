@@ -11,7 +11,10 @@ import { UiStateService } from './ui-state.service';
   standalone: true,
   imports: [NgOptimizedImage, RouterLink, MapComponent],
   templateUrl: './projects.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    '(window:scroll)': 'onWindowScroll()'
+  }
 })
 export class ProjectsComponent {
   private dataService = inject(DataService);
@@ -22,6 +25,7 @@ export class ProjectsComponent {
   
   activeCategory = signal<string>('All');
   hoveredProjectId = this.uiStateService.hoveredProjectId;
+  showScrollTop = signal<boolean>(false);
   
   categoriesWithCounts = computed(() => {
     const projects = this.allProjects();
@@ -55,5 +59,17 @@ export class ProjectsComponent {
 
   setHoveredProject(id: string | null): void {
     this.uiStateService.setHoveredProject(id);
+  }
+
+  onWindowScroll(): void {
+    const scrollOffset = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    this.showScrollTop.set(scrollOffset > 400);
+  }
+
+  scrollToTop(): void {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   }
 }
