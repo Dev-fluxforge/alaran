@@ -206,7 +206,7 @@ export class DataService {
     { 
       title: 'Alaran Geo-Service Acquires New Fleet of WingtraOne Gen II Drones', 
       slug: 'acquires-new-drones',
-      imageUrl: 'https://picsum.photos/seed/drone-news/600/400',
+      imageUrl: 'https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&q=80&w=600&h=400',
       excerpt: 'To further enhance our aerial mapping capabilities, we have invested in state-of-the-art VTOL drones, enabling faster and more efficient data capture for large-scale projects.',
       publishedDate: '2024-07-15',
       author: 'Chidinma Okoro'
@@ -214,7 +214,7 @@ export class DataService {
     { 
       title: 'Case Study: 3D Laser Scanning for Heritage Site Preservation', 
       slug: 'case-study-heritage',
-      imageUrl: 'https://picsum.photos/seed/heritage-news/600/400',
+      imageUrl: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&q=80&w=600&h=400',
       excerpt: 'Discover how our team used high-density laser scanning to create a detailed digital twin of a national monument, aiding in its preservation and restoration efforts.',
       publishedDate: '2024-06-28',
       author: 'Admin'
@@ -222,7 +222,7 @@ export class DataService {
     { 
       title: 'Our Commitment to Sustainable Surveying Practices', 
       slug: 'sustainable-surveying',
-      imageUrl: 'https://picsum.photos/seed/sustain-news/600/400',
+      imageUrl: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&q=80&w=600&h=400',
       excerpt: 'Learn about our initiatives to reduce our carbon footprint in the field, from solar-powered equipment to optimized travel routes, ensuring we protect the environments we map.',
       publishedDate: '2024-05-20',
       author: 'Dr. Adebayo Alaran'
@@ -232,7 +232,7 @@ export class DataService {
   private allProjects: Project[] = [
     {
       title: 'City Center Tower Construction',
-      imageUrls: ['https://picsum.photos/seed/tower/800/600', 'https://picsum.photos/seed/tower2/800/600', 'https://picsum.photos/seed/tower3/800/600'],
+      imageUrls: ['https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800&h=600', 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80&w=800&h=600', 'https://images.unsplash.com/photo-1503387762-592dee58c460?auto=format&fit=crop&q=80&w=800&h=600'],
       description: 'High-precision setting out and as-built surveys for a 50-story skyscraper.',
       longDescription: 'Our team provided continuous on-site support for the construction of the landmark City Center Tower. We were responsible for establishing the primary site control, setting out gridlines and foundations, and conducting verticality checks as the structure rose. Our as-built surveys at each stage ensured that the construction perfectly matched the design specifications, minimizing rework and delays.',
       serviceCategory: 'Engineering Surveying',
@@ -242,7 +242,7 @@ export class DataService {
     },
     {
       title: 'Highway Interchange Realignment',
-      imageUrls: ['https://picsum.photos/seed/highway/800/600', 'https://picsum.photos/seed/highway2/800/600'],
+      imageUrls: ['https://images.unsplash.com/photo-1590487988256-9ed24133863e?auto=format&fit=crop&q=80&w=800&h=600', 'https://images.unsplash.com/photo-1515162816999-a0c47dc192f7?auto=format&fit=crop&q=80&w=800&h=600'],
       description: 'Volumetric calculations and machine control data for a major transportation infrastructure upgrade.',
       longDescription: 'For the N1 highway interchange upgrade, we performed detailed topographic surveys of the existing infrastructure and terrain. This data was used to calculate earthwork volumes (cut and fill) and to generate 3D models for GPS-guided construction machinery, significantly accelerating the construction timeline and improving accuracy.',
       serviceCategory: 'Engineering Surveying',
@@ -252,7 +252,7 @@ export class DataService {
     },
     {
       title: 'Industrial Plant Layout & As-Built',
-      imageUrls: ['https://picsum.photos/seed/plant/800/600'],
+      imageUrls: ['https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800&h=600'],
       description: 'Precision alignment for heavy machinery in a new manufacturing plant.',
       longDescription: 'We ensured micrometer-level accuracy for the installation of sensitive manufacturing equipment. Our 3D laser scanning services provided a complete as-built model of the facility, which was crucial for clash detection and future maintenance planning.',
       serviceCategory: 'Engineering Surveying',
@@ -262,7 +262,7 @@ export class DataService {
     },
     {
       title: 'Bridge Deformation Monitoring',
-      imageUrls: ['https://picsum.photos/seed/bridge/800/600', 'https://picsum.photos/seed/bridge2/800/600'],
+      imageUrls: ['https://images.unsplash.com/photo-1449156730764-d4a921596f11?auto=format&fit=crop&q=80&w=800&h=600', 'https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&q=80&w=800&h=600'],
       description: 'Periodic monitoring of a suspension bridge to ensure public safety.',
       longDescription: 'We have an ongoing contract to monitor the structural health of the Third Mainland Bridge. Using high-precision total stations and GNSS receivers, we measure for any displacement or deformation, providing engineers with the critical data needed to maintain the bridge\'s integrity.',
       serviceCategory: 'Engineering Surveying',
@@ -272,7 +272,7 @@ export class DataService {
     },
     {
       title: 'Dam Construction Control Survey',
-      imageUrls: ['https://picsum.photos/seed/dam/800/600'],
+      imageUrls: ['https://images.unsplash.com/photo-1511068129126-53061a5aa811?auto=format&fit=crop&q=80&w=800&h=600'],
       description: 'Establishing high-accuracy control for a large hydroelectric dam.',
       longDescription: 'Our surveyors established the primary and secondary control networks that governed all construction activities for the Zungeru Hydroelectric Dam. Precision was paramount to ensure the correct alignment and elevation of this massive concrete structure.',
       serviceCategory: 'Engineering Surveying',
@@ -282,7 +282,7 @@ export class DataService {
     },
     {
       title: 'Greenfield Residential Estate',
-      imageUrls: ['https://picsum.photos/seed/estate/800/600', 'https://picsum.photos/seed/estate2/800/600', 'https://picsum.photos/seed/estate3/800/600'],
+      imageUrls: ['https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=800&h=600', 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=800&h=600', 'https://images.unsplash.com/photo-1448630360428-65456885c650?auto=format&fit=crop&q=80&w=800&h=600'],
       description: 'Boundary definition and land parcel subdivision for a 200-hectare development.',
       longDescription: 'We were contracted by City-Dev Properties to perform the complete cadastral survey for their new Oceanview Estate. This involved the precise demarcation of the outer boundary and the subdivision of the land into over 500 residential plots, roads, and recreational areas, all in accordance with local planning regulations.',
       serviceCategory: 'Cadastral Surveying',
@@ -292,7 +292,7 @@ export class DataService {
     },
     {
       title: 'Urban Property Dispute Resolution',
-      imageUrls: ['https://picsum.photos/seed/dispute/800/600'],
+      imageUrls: ['https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=80&w=800&h=600'],
       description: 'Expert witness and precise boundary re-establishment.',
       longDescription: 'Our senior cadastral surveyors acted as expert witnesses in a high-profile land dispute case. By meticulously researching historical survey records and performing a detailed field survey, we successfully re-established the true boundary, leading to a fair resolution.',
       serviceCategory: 'Cadastral Surveying',
@@ -302,7 +302,7 @@ export class DataService {
     },
     {
       title: 'Rural Land Titling Program',
-      imageUrls: ['https://picsum.photos/seed/rural/800/600', 'https://picsum.photos/seed/rural2/800/600'],
+      imageUrls: ['https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=800&h=600', 'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&q=80&w=800&h=600'],
       description: 'Systematic land adjudication and demarcation for a government initiative.',
       longDescription: 'In partnership with the state government, we helped implement a large-scale land titling program. Our teams worked with local communities to adjudicate and survey thousands of farm plots, providing landowners with official titles and enhancing land tenure security.',
       serviceCategory: 'Cadastral Surveying',
@@ -312,7 +312,7 @@ export class DataService {
     },
     {
       title: 'Government Infrastructure Corridor',
-      imageUrls: ['https://picsum.photos/seed/corridor/800/600'],
+      imageUrls: ['https://images.unsplash.com/photo-1474487022159-7600a603c1d1?auto=format&fit=crop&q=80&w=800&h=600'],
       description: 'Cadastral surveys for land acquisition along a new railway line.',
       longDescription: 'We conducted the cadastral surveys necessary for the government to acquire land for the new Lagos-Kano Standard Gauge Railway. Our work ensured that all affected properties were accurately identified and surveyed, facilitating a fair compensation process.',
       serviceCategory: 'Cadastral Surveying',
@@ -321,7 +321,7 @@ export class DataService {
     },
     {
       title: 'Historical Boundary Retracement',
-      imageUrls: ['https://picsum.photos/seed/history/800/600'],
+      imageUrls: ['https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&q=80&w=800&h=600'],
       description: 'Re-establishing colonial-era property boundaries.',
       longDescription: 'A client required the retracement of boundaries defined in a 1920s deed. Our team of experts combined archival research with modern GNSS technology to accurately locate the original monuments and re-establish the property lines for legal purposes.',
       serviceCategory: 'Cadastral Surveying',
@@ -330,7 +330,7 @@ export class DataService {
     },
     {
       title: 'Port Dredging & Expansion',
-      imageUrls: ['https://picsum.photos/seed/port/800/600', 'https://picsum.photos/seed/port2/800/600'],
+      imageUrls: ['https://images.unsplash.com/photo-1524522173746-f628baad3644?auto=format&fit=crop&q=80&w=800&h=600', 'https://images.unsplash.com/photo-1494412574743-0194852482ab?auto=format&fit=crop&q=80&w=800&h=600'],
       description: 'Pre- and post-dredge surveys for safe navigational depths.',
       longDescription: 'For the Apapa Port expansion, we performed comprehensive multibeam echosounder surveys before and after dredging operations. This allowed us to precisely calculate the volume of material removed and to certify the new navigational depths for safe passage of larger container ships.',
       serviceCategory: 'Hydrographic Surveying',
@@ -340,7 +340,7 @@ export class DataService {
     },
     {
       title: 'Offshore Wind Farm Seabed Mapping',
-      imageUrls: ['https://picsum.photos/seed/windfarm/800/600', 'https://picsum.photos/seed/windfarm2/800/600', 'https://picsum.photos/seed/windfarm3/800/600'],
+      imageUrls: ['https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&q=80&w=800&h=600', 'https://images.unsplash.com/photo-1466611653911-95282fc3656b?auto=format&fit=crop&q=80&w=800&h=600', 'https://images.unsplash.com/photo-1413882353057-a15144677510?auto=format&fit=crop&q=80&w=800&h=600'],
       description: 'Detailed seabed characterization for turbine foundation planning.',
       longDescription: 'In the preliminary stages of a major offshore wind farm project, we mapped a 100-square-kilometer area of the seabed. Our hydrographic data revealed the underwater topography and sediment types, which was essential information for the engineers designing the turbine foundations.',
       serviceCategory: 'Hydrographic Surveying',
@@ -349,7 +349,7 @@ export class DataService {
     },
     {
       title: 'Subsea Cable Route Survey',
-      imageUrls: ['https://picsum.photos/seed/cable/800/600'],
+      imageUrls: ['https://images.unsplash.com/photo-1558494949-ef010cbdcc51?auto=format&fit=crop&q=80&w=800&h=600'],
       description: 'Mapping the seabed for a new subsea fiber optic cable.',
       longDescription: 'We provided the bathymetric and geophysical data needed to plan the route of a new international fiber optic cable landing in Nigeria. Our survey identified potential hazards on the seafloor, ensuring a safe and secure route for this critical piece of telecommunications infrastructure.',
       serviceCategory: 'Hydrographic Surveying',
@@ -358,7 +358,7 @@ export class DataService {
     },
     {
       title: 'Coastal Erosion Monitoring',
-      imageUrls: ['https://picsum.photos/seed/erosion/800/600', 'https://picsum.photos/seed/erosion2/800/600'],
+      imageUrls: ['https://images.unsplash.com/photo-1505118380757-91f5f45d8de4?auto=format&fit=crop&q=80&w=800&h=600', 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=800&h=600'],
       description: 'Monitoring shoreline changes to inform coastal management.',
       longDescription: 'Along the Victoria Island coastline, we conduct regular surveys to monitor the rate of coastal erosion. By combining topographic LiDAR scans with near-shore bathymetry, we create a complete 3D model of the coastal zone that helps authorities plan effective mitigation strategies.',
       serviceCategory: 'Hydrographic Surveying',
@@ -368,7 +368,7 @@ export class DataService {
     },
     {
       title: 'Reservoir Sedimentation Study',
-      imageUrls: ['https://picsum.photos/seed/reservoir/800/600'],
+      imageUrls: ['https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&q=80&w=800&h=600'],
       description: 'Calculating sediment volume and remaining water capacity.',
       longDescription: 'We performed a full bathymetric survey of the Kainji Dam reservoir. By comparing our results to historical data, we were able to calculate the volume of sediment that has accumulated over the years, providing vital information for the long-term management of the dam and its power generation capacity.',
       serviceCategory: 'Hydrographic Surveying',
@@ -377,7 +377,7 @@ export class DataService {
     },
     {
       title: 'Agricultural Land Assessment',
-      imageUrls: ['https://picsum.photos/seed/farm/800/600'],
+      imageUrls: ['https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&q=80&w=800&h=600'],
       description: 'UAV-based multispectral imaging to assess crop health.',
       longDescription: 'Using drones equipped with multispectral sensors, we mapped a large commercial farm to assess crop health. The resulting NDVI (Normalized Difference Vegetation Index) maps helped the client identify areas of stress, optimize fertilizer application, and increase overall yield.',
       serviceCategory: 'Aerial Mapping',
@@ -387,7 +387,7 @@ export class DataService {
     },
     {
       title: 'Corridor Mapping for Pipeline',
-      imageUrls: ['https://picsum.photos/seed/pipeline/800/600', 'https://picsum.photos/seed/pipeline2/800/600'],
+      imageUrls: ['https://images.unsplash.com/photo-1516937941344-00b4e0337589?auto=format&fit=crop&q=80&w=800&h=600', 'https://images.unsplash.com/photo-1565008447742-97f6f38c985c?auto=format&fit=crop&q=80&w=800&h=600'],
       description: 'Generating a high-resolution DTM for a 150km pipeline route.',
       longDescription: 'We utilized drone-based LiDAR to rapidly survey a 150km corridor for a new gas pipeline. The high-resolution Digital Terrain Model (DTM) we produced was essential for detailed route planning, minimizing environmental impact and construction costs.',
       serviceCategory: 'Aerial Mapping',
@@ -396,7 +396,7 @@ export class DataService {
     },
     {
       title: 'Urban Planning 3D Model',
-      imageUrls: ['https://picsum.photos/seed/urban3d/800/600', 'https://picsum.photos/seed/urban3d2/800/600'],
+      imageUrls: ['https://images.unsplash.com/photo-1449824913935-59a10b8d2000?auto=format&fit=crop&q=80&w=800&h=600', 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&q=80&w=800&h=600'],
       description: 'Creating a detailed 3D reality mesh for urban development.',
       longDescription: 'From thousands of high-resolution aerial photographs, we generated a photorealistic 3D model of Eko Atlantic City. This "digital twin" is used by planners and architects to visualize new developments and conduct solar and shadow analysis.',
       serviceCategory: 'Aerial Mapping',
@@ -405,7 +405,7 @@ export class DataService {
     },
     {
       title: 'Forestry Inventory Management',
-      imageUrls: ['https://picsum.photos/seed/forest/800/600'],
+      imageUrls: ['https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&q=80&w=800&h=600'],
       description: 'Using drone LiDAR to count trees and estimate timber volume.',
       longDescription: 'For a sustainable forestry company, we used LiDAR data to penetrate the forest canopy and create a detailed model of the ground beneath. This data also allowed us to automatically count individual trees, measure their height, and estimate the total timber volume, revolutionizing their inventory management.',
       serviceCategory: 'Aerial Mapping',
@@ -414,7 +414,7 @@ export class DataService {
     },
     {
       title: 'Solar Farm Site Assessment',
-      imageUrls: ['https://picsum.photos/seed/solar/800/600'],
+      imageUrls: ['https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&q=80&w=800&h=600'],
       description: 'High-resolution aerial survey for optimal panel placement.',
       longDescription: 'Before the construction of a new 50-megawatt solar farm, we conducted a high-resolution aerial survey of the proposed site. The resulting DTM and orthophoto allowed engineers to precisely plan the layout of the solar panels, optimizing their orientation to the sun and maximizing energy production.',
       serviceCategory: 'Aerial Mapping',

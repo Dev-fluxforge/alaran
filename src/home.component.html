@@ -168,6 +168,11 @@
                     @for(testimonial of testimonials(); track testimonial.author) {
                         <div class="flex-shrink-0 w-full p-4">
                             <div class="bg-background-light dark:bg-deep-green/80 p-10 md:p-16 rounded-3xl border border-deep-green/10 dark:border-white/10 relative">
+                                <div class="flex gap-1 mb-6 text-accent-yellow">
+                                    @for(star of [1,2,3,4,5]; track star) {
+                                        <span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1">star</span>
+                                    }
+                                </div>
                                 <span class="material-symbols-outlined text-primary text-6xl mb-8 block">format_quote</span>
                                 <p class="text-deep-green/80 dark:text-white/80 text-xl md:text-2xl mb-10 italic leading-relaxed">"{{ testimonial.quote }}"</p>
                                 <div class="flex items-center gap-4">
