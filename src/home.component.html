@@ -1,11 +1,11 @@
 
 <!-- Hero Section -->
 <section class="relative min-h-[90vh] py-20 flex items-center justify-center overflow-hidden text-center">
-    <div class="hero-video-container" [style.transform]="parallaxTransform()">
-        <img src="https://images.unsplash.com/photo-1503387762-592dee58c460?auto=format&fit=crop&q=80&w=2000" alt="Surveyors at work" class="w-full h-full object-cover">
+    <div class="absolute inset-0 z-0" [style.transform]="parallaxTransform()">
+        <img src="https://images.unsplash.com/photo-1503387762-592dee58c460?auto=format&fit=crop&q=80&w=2000" alt="Surveyors at work" class="w-full h-full object-cover" referrerPolicy="no-referrer">
     </div>
-    <div class="absolute inset-0 bg-deep-green/70"></div>
-    <div class="relative z-10 max-w-4xl px-6">
+    <div class="absolute inset-0 bg-deep-green/70 z-10"></div>
+    <div class="relative z-20 max-w-4xl px-6">
         <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-1.5 mb-8 fade-in">
             <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
             <span class="text-white text-xs font-bold tracking-widest uppercase">Next-Gen Geospatial Solutions</span>
