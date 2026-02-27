@@ -30,15 +30,20 @@
                     fontFamily: {
                         "display": ["Space Grotesk", "sans-serif"]
                     },
-                    animation: {
-                        'scrolling-text': 'scrolling-text 40s linear infinite',
-                    },
                     keyframes: {
                         'scrolling-text': {
                             '0%': { transform: 'translateX(0%)' },
                             '100%': { transform: 'translateX(-100%)' },
+                        },
+                        'scroll-linear': {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-50%)' }
                         }
-                    }
+                    },
+                    animation: {
+                        'scrolling-text': 'scrolling-text 40s linear infinite',
+                        'scroll-linear': 'scroll-linear 20s linear infinite',
+                    },
                 },
             },
         }

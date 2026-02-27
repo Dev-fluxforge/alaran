@@ -1,11 +1,8 @@
 
 <!-- Hero Section -->
 <section class="relative min-h-[90vh] py-20 flex items-center justify-center overflow-hidden text-center">
-    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1503387762-592dee58c460?auto=format&fit=crop&q=80&w=2000');"></div>
     <div class="hero-video-container" [style.transform]="parallaxTransform()">
-        <video autoplay loop muted playsinline id="hero-video" poster="https://images.unsplash.com/photo-1503387762-592dee58c460?auto=format&fit=crop&q=80&w=2000">
-            <source src="https://assets.mixkit.co/videos/preview/mixkit-programmers-working-on-a-data-project-34440-large.mp4" type="video/mp4">
-        </video>
+        <img src="https://images.unsplash.com/photo-1581092921461-39b9d08a9b21?auto=format&fit=crop&q=80&w=2000" alt="Surveyors at work" class="w-full h-full object-cover">
     </div>
     <div class="absolute inset-0 bg-deep-green/70"></div>
     <div class="relative z-10 max-w-4xl px-6">
@@ -145,10 +142,17 @@
     <div class="max-w-7xl mx-auto px-6 mb-10 text-center">
         <p class="text-xs font-bold uppercase tracking-[0.3em] text-deep-green/40 dark:text-white/40">Trusted by Infrastructure Giants</p>
     </div>
-    <div class="flex items-center justify-center gap-16 md:gap-32 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-700 overflow-x-auto whitespace-nowrap pb-4">
-        @for (partner of partners(); track partner) {
-        <div class="flex-none h-12 flex items-center justify-center text-2xl font-black text-deep-green dark:text-white">{{ partner }}</div>
-        }
+    <div class="relative flex overflow-hidden">
+        <div class="flex animate-scroll-linear gap-16 md:gap-32 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-700 whitespace-nowrap py-4">
+            <!-- First set of partners -->
+            @for (partner of partners(); track partner) {
+                <div class="flex-none h-12 flex items-center justify-center text-2xl font-black text-deep-green dark:text-white">{{ partner }}</div>
+            }
+            <!-- Duplicate set for seamless loop -->
+            @for (partner of partners(); track partner + '-dup') {
+                <div class="flex-none h-12 flex items-center justify-center text-2xl font-black text-deep-green dark:text-white">{{ partner }}</div>
+            }
+        </div>
     </div>
 </section>
 
@@ -235,7 +239,12 @@
                     @for(item of surveyingQuotes(); track item.author) {
                         <div class="flex-shrink-0 w-full px-4 text-center">
                             <div class="py-12">
-                                <p class="text-3xl md:text-4xl font-serif italic text-deep-green dark:text-white mb-10 leading-snug">
+                                <div class="relative inline-block mb-10">
+                                    <div class="w-40 h-40 rounded-full overflow-hidden border-4 border-primary/30 shadow-2xl mx-auto">
+                                        <img [src]="item.imageUrl" [alt]="item.author" class="w-full h-full object-cover">
+                                    </div>
+                                </div>
+                                <p class="text-2xl md:text-3xl font-serif italic text-deep-green dark:text-white mb-10 leading-snug">
                                     "{{ item.quote }}"
                                 </p>
                                 <div class="flex flex-col items-center">
