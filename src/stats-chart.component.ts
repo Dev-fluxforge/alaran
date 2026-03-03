@@ -10,6 +10,22 @@ import { DataService } from './data.service';
   imports: [CommonModule],
   template: `
     <div class="w-full bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 shadow-2xl overflow-hidden">
+      <!-- Summary Statistics Header -->
+      <div class="grid grid-cols-3 gap-4 mb-10 pb-8 border-b border-white/10">
+        <div class="flex flex-col">
+          <span class="text-[10px] font-bold text-primary uppercase tracking-widest mb-1">Total Projects</span>
+          <span class="text-2xl md:text-3xl font-black text-white">{{ summary().total }}</span>
+        </div>
+        <div class="flex flex-col">
+          <span class="text-[10px] font-bold text-primary uppercase tracking-widest mb-1">Clients</span>
+          <span class="text-2xl md:text-3xl font-black text-white">{{ summary().clients }}</span>
+        </div>
+        <div class="flex flex-col">
+          <span class="text-[10px] font-bold text-primary uppercase tracking-widest mb-1">Locations</span>
+          <span class="text-2xl md:text-3xl font-black text-white">{{ summary().locations }}</span>
+        </div>
+      </div>
+
       <div class="flex items-center justify-between mb-8">
         <div>
           <h3 class="text-xl font-bold text-white">Project Distribution</h3>
@@ -23,14 +39,14 @@ import { DataService } from './data.service';
         </div>
       </div>
       
-      <div #chartContainer class="w-full h-[300px] relative">
+      <div #chartContainer class="w-full h-[250px] relative">
         <svg #svg class="w-full h-full overflow-visible"></svg>
       </div>
       
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-8 pt-8 border-t border-white/10">
         @for (item of chartData(); track item.category) {
           <div class="flex flex-col">
-            <span class="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-1">{{ item.category.split(' ')[0] }}</span>
+            <span class="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-1 truncate" [title]="item.category">{{ item.category.split(' ')[0] }}</span>
             <span class="text-lg font-black text-white">{{ item.count }}</span>
           </div>
         }
@@ -70,6 +86,14 @@ export class StatsChartComponent implements AfterViewInit, OnDestroy {
   private resizeObserver?: ResizeObserver;
 
   chartData = computed(() => this.processedData());
+  summary = computed(() => {
+    const projects = this.dataService.projects();
+    return {
+      total: projects.length,
+      clients: new Set(projects.map(p => p.client)).size,
+      locations: new Set(projects.map(p => p.location)).size
+    };
+  });
 
   constructor() {
     effect(() => {

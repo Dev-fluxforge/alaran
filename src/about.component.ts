@@ -1,6 +1,7 @@
 
-import { Component, ChangeDetectionStrategy, signal } from '@angular/core';
+import { Component, ChangeDetectionStrategy, signal, AfterViewInit, ElementRef, viewChild } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
+import { animate, stagger } from 'motion';
 
 interface TeamMember {
   name: string;
@@ -25,7 +26,29 @@ interface Value {
   templateUrl: './about.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AboutComponent {
+export class AboutComponent implements AfterViewInit {
+  heroContainer = viewChild<ElementRef>('heroContent');
+
+  ngAfterViewInit() {
+    const container = this.heroContainer()?.nativeElement;
+    if (container) {
+      const children = container.querySelectorAll('.animate-item');
+      animate(
+        children,
+        { 
+          opacity: [0, 1], 
+          y: [15, 0],
+          scale: [0.98, 1]
+        },
+        {
+          delay: stagger(0.12),
+          duration: 0.9,
+          ease: [0.22, 1, 0.36, 1]
+        }
+      );
+    }
+  }
+
   team = signal<TeamMember[]>([
     { name: 'Dr. Adebayo Alaran', title: 'Founder & Chief Surveyor', imageUrl: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=400&h=400', socials: { linkedin: '#', twitter: '#' } },
     { name: 'Chidinma Okoro', title: 'Head of Aerial Mapping', imageUrl: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400&h=400', socials: { linkedin: '#', twitter: '#' } },

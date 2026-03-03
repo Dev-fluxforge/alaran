@@ -51,3 +51,103 @@
         </div>
     </div>
 </section>
+
+<!-- Application Form Section -->
+<section id="apply" class="py-24 px-6 bg-white dark:bg-deep-green">
+    <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold text-deep-green dark:text-white">General Application</h2>
+            <p class="text-deep-green/60 dark:text-white/60 mt-4">Don't see a role that fits? Send us your details anyway.</p>
+        </div>
+
+        @if (formStatus() === 'success') {
+            <div class="bg-primary/10 border border-primary/20 p-8 rounded-2xl text-center animate-pop">
+                <span class="material-symbols-outlined text-5xl text-primary mb-4">check_circle</span>
+                <h3 class="text-2xl font-bold text-deep-green dark:text-white mb-2">Application Received!</h3>
+                <p class="text-deep-green/70 dark:text-white/70">Thank you for your interest in Alaran Geo-Service. Our HR team will review your application and get back to you soon.</p>
+                <button (click)="formStatus.set('idle')" class="mt-6 text-primary font-bold hover:underline">Submit another application</button>
+            </div>
+        } @else {
+            <form [formGroup]="applicationForm" (ngSubmit)="onSubmit()" class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Name -->
+                    <div class="space-y-2">
+                        <label for="name" class="block text-sm font-medium text-deep-green/80 dark:text-white/80">Full Name *</label>
+                        <input type="text" id="name" formControlName="name" placeholder="John Doe"
+                            class="w-full px-4 py-3 rounded-xl border border-deep-green/10 dark:border-white/10 bg-background-light dark:bg-deep-green/50 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
+                            [class.border-red-500]="applicationForm.get('name')?.touched && applicationForm.get('name')?.invalid">
+                        @if (applicationForm.get('name')?.touched && applicationForm.get('name')?.errors?.['required']) {
+                            <p class="text-red-500 text-xs mt-1">Name is required</p>
+                        }
+                    </div>
+
+                    <!-- Email -->
+                    <div class="space-y-2">
+                        <label for="email" class="block text-sm font-medium text-deep-green/80 dark:text-white/80">Email Address *</label>
+                        <input type="email" id="email" formControlName="email" placeholder="john@example.com"
+                            class="w-full px-4 py-3 rounded-xl border border-deep-green/10 dark:border-white/10 bg-background-light dark:bg-deep-green/50 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
+                            [class.border-red-500]="applicationForm.get('email')?.touched && applicationForm.get('email')?.invalid">
+                        @if (applicationForm.get('email')?.touched && applicationForm.get('email')?.errors?.['required']) {
+                            <p class="text-red-500 text-xs mt-1">Email is required</p>
+                        }
+                        @if (applicationForm.get('email')?.touched && applicationForm.get('email')?.errors?.['email']) {
+                            <p class="text-red-500 text-xs mt-1">Please enter a valid email</p>
+                        }
+                    </div>
+                </div>
+
+                <!-- Phone -->
+                <div class="space-y-2">
+                    <label for="phone" class="block text-sm font-medium text-deep-green/80 dark:text-white/80">Phone Number *</label>
+                    <input type="tel" id="phone" formControlName="phone" placeholder="+234 ..."
+                        class="w-full px-4 py-3 rounded-xl border border-deep-green/10 dark:border-white/10 bg-background-light dark:bg-deep-green/50 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
+                        [class.border-red-500]="applicationForm.get('phone')?.touched && applicationForm.get('phone')?.invalid">
+                    @if (applicationForm.get('phone')?.touched && applicationForm.get('phone')?.errors?.['required']) {
+                        <p class="text-red-500 text-xs mt-1">Phone number is required</p>
+                    }
+                </div>
+
+                <!-- Resume Upload -->
+                <div class="space-y-2">
+                    <label for="resume" class="block text-sm font-medium text-deep-green/80 dark:text-white/80">Resume / CV (PDF or Word) *</label>
+                    <div class="relative group">
+                        <input type="file" id="resume" (change)="onFileChange($event)" accept=".pdf,.doc,.docx"
+                            class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10">
+                        <div class="w-full px-4 py-6 border-2 border-dashed border-deep-green/10 dark:border-white/10 rounded-xl bg-background-light dark:bg-deep-green/50 flex flex-col items-center justify-center group-hover:border-primary/50 transition-all"
+                            [class.border-red-500]="applicationForm.get('resume')?.touched && applicationForm.get('resume')?.invalid">
+                            <span class="material-symbols-outlined text-3xl text-deep-green/40 dark:text-white/40 mb-2">upload_file</span>
+                            <span class="text-sm text-deep-green/60 dark:text-white/60">
+                                {{ applicationForm.get('resume')?.value ? applicationForm.get('resume')?.value?.name : 'Click or drag to upload your resume' }}
+                            </span>
+                        </div>
+                    </div>
+                    @if (applicationForm.get('resume')?.touched && applicationForm.get('resume')?.invalid) {
+                        <p class="text-red-500 text-xs mt-1">Resume is required</p>
+                    }
+                </div>
+
+                <!-- Cover Letter -->
+                <div class="space-y-2">
+                    <label for="coverLetter" class="block text-sm font-medium text-deep-green/80 dark:text-white/80">Cover Letter *</label>
+                    <textarea id="coverLetter" formControlName="coverLetter" rows="5" placeholder="Tell us why you're a great fit..."
+                        class="w-full px-4 py-3 rounded-xl border border-deep-green/10 dark:border-white/10 bg-background-light dark:bg-deep-green/50 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all resize-none"
+                        [class.border-red-500]="applicationForm.get('coverLetter')?.touched && applicationForm.get('coverLetter')?.invalid"></textarea>
+                    @if (applicationForm.get('coverLetter')?.touched && applicationForm.get('coverLetter')?.errors?.['required']) {
+                        <p class="text-red-500 text-xs mt-1">Cover letter is required</p>
+                    }
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" [disabled]="formStatus() === 'submitting'"
+                    class="w-full bg-primary text-deep-green py-4 rounded-xl font-bold text-lg tracking-wide transition-all hover:scale-[1.02] active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2">
+                    @if (formStatus() === 'submitting') {
+                        <span class="animate-spin border-2 border-deep-green/20 border-t-deep-green rounded-full w-5 h-5"></span>
+                        Processing...
+                    } @else {
+                        Submit Application
+                    }
+                </button>
+            </form>
+        }
+    </div>
+</section>
