@@ -1,5 +1,5 @@
 
-import { Component, ChangeDetectionStrategy, inject, signal, HostListener, computed } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject, signal, HostListener, computed, OnInit, OnDestroy } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { DataService, Service, Stat } from './data.service';
 import { UiStateService } from './ui-state.service';
@@ -14,7 +14,7 @@ import { StatsPieChartComponent } from './stats-pie-chart.component';
   templateUrl: './home.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit, OnDestroy {
   private dataService = inject(DataService);
   private uiStateService = inject(UiStateService);
 
@@ -27,7 +27,9 @@ export class HomeComponent {
 
   currentTestimonialIndex = signal(0);
   currentQuoteIndex = signal(0);
-  scrollOffset = signal(0);
+  
+  private testimonialInterval: any;
+  private quoteInterval: any;
 
   surveyingQuotes = signal([
     { quote: "I was once a surveyor.", author: "George Washington", title: "1st U.S. President", imageUrl: "https://images.unsplash.com/photo-1580129924098-9533375803fa?auto=format&fit=crop&q=80&w=400&h=400" },
@@ -48,17 +50,29 @@ export class HomeComponent {
     { quote: "Maps are a way of organizing wonder.", author: "Peter Steinhart", title: "Nature Writer", imageUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400&h=400" }
   ]);
 
-  parallaxTransform = computed(() => {
-    const offset = this.scrollOffset();
-    // Move background at 40% of scroll speed to create parallax effect
-    return `translateY(${offset * 0.4}px)`;
-  });
-
-  @HostListener('window:scroll', [])
-  onWindowScroll(): void {
-    this.scrollOffset.set(window.pageYOffset);
+  ngOnInit(): void {
+    this.startAutoPlay();
   }
-  
+
+  ngOnDestroy(): void {
+    this.stopAutoPlay();
+  }
+
+  private startAutoPlay(): void {
+    this.testimonialInterval = setInterval(() => {
+      this.nextTestimonial();
+    }, 5000);
+
+    this.quoteInterval = setInterval(() => {
+      this.nextQuote();
+    }, 8000);
+  }
+
+  private stopAutoPlay(): void {
+    if (this.testimonialInterval) clearInterval(this.testimonialInterval);
+    if (this.quoteInterval) clearInterval(this.quoteInterval);
+  }
+
   selectService(service: Service): void {
     this.uiStateService.selectService(service);
   }

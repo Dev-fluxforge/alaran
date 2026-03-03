@@ -2,16 +2,16 @@
 @if (project(); as p) {
   <div class="fade-in">
     <!-- Project Header -->
-    <section class="relative py-20 bg-deep-green text-white text-center overflow-hidden">
-      <div class="absolute inset-0 z-0">
+    <section class="relative py-20 text-white text-center overflow-hidden">
+      <div class="absolute inset-0 pointer-events-none">
         @if (p.imageUrls.length > 0) {
-          <img [src]="p.imageUrls[0]" [alt]="p.title" class="w-full h-full object-cover opacity-50" referrerPolicy="no-referrer">
+          <img [src]="p.imageUrls[0]" [alt]="p.title" class="w-full h-full object-cover" referrerPolicy="no-referrer">
         } @else {
-          <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2000" alt="Project background" class="w-full h-full object-cover opacity-50" referrerPolicy="no-referrer">
+          <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2000" alt="Project background" class="w-full h-full object-cover" referrerPolicy="no-referrer">
         }
       </div>
-      <div class="absolute inset-0 bg-deep-green/60 z-10"></div>
-      <div class="relative z-20 max-w-4xl mx-auto px-6">
+      <div class="absolute inset-0 bg-deep-green/40 pointer-events-none"></div>
+      <div class="relative z-10 max-w-4xl mx-auto px-6">
         <p class="text-primary font-bold tracking-widest uppercase text-sm mb-4">{{ p.serviceCategory }}</p>
         <h1 class="text-4xl md:text-5xl font-bold leading-tight">{{ p.title }}</h1>
       </div>

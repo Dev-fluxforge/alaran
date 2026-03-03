@@ -1,12 +1,13 @@
 
 import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { DataService, Service } from './data.service';
 import { UiStateService } from './ui-state.service';
 
 @Component({
   selector: 'app-services',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './services.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })

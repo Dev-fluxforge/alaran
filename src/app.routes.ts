@@ -18,6 +18,11 @@ export const APP_ROUTES: Routes = [
     loadComponent: () => import('./services.component').then(c => c.ServicesComponent)
   },
   {
+    path: 'services/:slug',
+    title: 'Service Details | Alaran Geo-Service',
+    loadComponent: () => import('./service-detail.component').then(c => c.ServiceDetailComponent)
+  },
+  {
     path: 'projects',
     title: 'Projects | Alaran Geo-Service',
     loadComponent: () => import('./projects.component').then(c => c.ProjectsComponent)

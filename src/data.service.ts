@@ -4,6 +4,7 @@ import { Injectable, signal } from '@angular/core';
 export interface Service {
   icon: string;
   title: string;
+  slug: string;
   description: string;
   category: string;
   color: string;
@@ -94,7 +95,7 @@ export class DataService {
       category: 'UAV Technology',
       color: 'light-blue'
     }
-  ]);
+  ].map(s => ({ ...s, slug: slugify(s.title) })));
 
   stats = signal<Stat[]>([
     { 

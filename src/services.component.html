@@ -1,11 +1,11 @@
 
 <!-- Services Hero Section -->
-<section class="relative py-32 bg-deep-green text-white flex items-center justify-center overflow-hidden">
-    <div class="absolute inset-0 z-0">
-        <img src="https://images.unsplash.com/photo-1581092921461-39b9d08a9b21?auto=format&fit=crop&q=80&w=2000" alt="Geospatial services" class="w-full h-full object-cover opacity-50" referrerPolicy="no-referrer">
+<section class="relative py-32 text-white flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none">
+        <img src="https://images.unsplash.com/photo-1581092921461-39b9d08a9b21?auto=format&fit=crop&q=80&w=2000" alt="Geospatial services" class="w-full h-full object-cover" referrerPolicy="no-referrer">
     </div>
-    <div class="absolute inset-0 bg-deep-green/60 z-10"></div>
-    <div class="relative z-20 max-w-4xl px-6 text-center fade-in">
+    <div class="absolute inset-0 bg-deep-green/40 pointer-events-none"></div>
+    <div class="relative z-10 max-w-4xl px-6 text-center fade-in">
         <span class="text-primary font-bold tracking-widest uppercase text-sm">Our Expertise</span>
         <h1 class="text-white text-5xl md:text-6xl font-bold leading-[1.1] my-6 tracking-tight">
             Comprehensive Geospatial Solutions
@@ -21,7 +21,8 @@
     <div class="max-w-7xl mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             @for (service of services(); track service.title) {
-            <button 
+            <a 
+                [routerLink]="['/services', service.slug]"
                 (click)="selectService(service)" 
                 [attr.aria-label]="'View details for ' + service.title"
                 class="service-card p-8 rounded-xl bg-white dark:bg-deep-green/50 border border-deep-green/5 dark:border-white/10 flex flex-col h-full cursor-pointer text-left focus-visible:outline-primary">
@@ -33,7 +34,7 @@
                 <div class="mt-auto">
                     <span class="text-xs font-bold text-deep-green/40 dark:text-white/30 uppercase tracking-widest">{{ service.category }}</span>
                 </div>
-            </button>
+            </a>
             }
         </div>
     </div>
