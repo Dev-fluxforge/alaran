@@ -35,11 +35,15 @@ export class AboutComponent implements AfterViewInit {
       const children = container.querySelectorAll('.animate-item');
       animate(
         children,
-        { opacity: [0, 1], y: [20, 0] },
+        { 
+          opacity: [0, 1], 
+          y: [15, 0],
+          scale: [0.98, 1]
+        },
         {
-          delay: stagger(0.15),
-          duration: 0.8,
-          ease: "easeOut"
+          delay: stagger(0.12),
+          duration: 0.9,
+          ease: [0.22, 1, 0.36, 1]
         }
       );
     }
