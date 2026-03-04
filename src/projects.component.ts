@@ -1,5 +1,6 @@
 
 import { Component, ChangeDetectionStrategy, inject, signal, computed } from '@angular/core';
+import { NgOptimizedImage } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { DataService } from './data.service';
 import { MapComponent } from './map.component';
@@ -8,7 +9,7 @@ import { UiStateService } from './ui-state.service';
 @Component({
   selector: 'app-projects',
   standalone: true,
-  imports: [RouterLink, MapComponent],
+  imports: [NgOptimizedImage, RouterLink, MapComponent],
   templateUrl: './projects.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
