@@ -1,61 +1,67 @@
 {
-  "hash": "77f1951b",
-  "configHash": "eabd933f",
-  "lockfileHash": "53e71219",
-  "browserHash": "af963437",
+  "hash": "4b9641a9",
+  "configHash": "8612a2d2",
+  "lockfileHash": "c3082618",
+  "browserHash": "21beb494",
   "optimized": {
     "@angular/common": {
       "src": "../../../../../../node_modules/@angular/common/fesm2022/common.mjs",
       "file": "@angular_common.js",
-      "fileHash": "8b0112e4",
+      "fileHash": "fe44dab7",
       "needsInterop": false
     },
     "@angular/core": {
       "src": "../../../../../../node_modules/@angular/core/fesm2022/core.mjs",
       "file": "@angular_core.js",
-      "fileHash": "6be4e2d8",
+      "fileHash": "5095842c",
       "needsInterop": false
     },
     "@angular/core/rxjs-interop": {
       "src": "../../../../../../node_modules/@angular/core/fesm2022/rxjs-interop.mjs",
       "file": "@angular_core_rxjs-interop.js",
-      "fileHash": "247d1678",
+      "fileHash": "221db7ed",
       "needsInterop": false
     },
     "@angular/forms": {
       "src": "../../../../../../node_modules/@angular/forms/fesm2022/forms.mjs",
       "file": "@angular_forms.js",
-      "fileHash": "2f46f865",
+      "fileHash": "a917cae1",
       "needsInterop": false
     },
     "@angular/platform-browser": {
       "src": "../../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
       "file": "@angular_platform-browser.js",
-      "fileHash": "21636d10",
+      "fileHash": "ea1a8374",
       "needsInterop": false
     },
     "@angular/router": {
       "src": "../../../../../../node_modules/@angular/router/fesm2022/router.mjs",
       "file": "@angular_router.js",
-      "fileHash": "029cbec6",
+      "fileHash": "27c24117",
       "needsInterop": false
     },
     "d3": {
       "src": "../../../../../../node_modules/d3/src/index.js",
       "file": "d3.js",
-      "fileHash": "a82e9fd9",
+      "fileHash": "64de94fa",
       "needsInterop": false
     },
     "leaflet": {
       "src": "../../../../../../node_modules/leaflet/dist/leaflet-src.js",
       "file": "leaflet.js",
-      "fileHash": "795445aa",
+      "fileHash": "5e54addf",
       "needsInterop": true
+    },
+    "motion": {
+      "src": "../../../../../../node_modules/motion/dist/es/index.mjs",
+      "file": "motion.js",
+      "fileHash": "9d65b139",
+      "needsInterop": false
     },
     "rxjs/operators": {
       "src": "../../../../../../node_modules/rxjs/dist/esm5/operators/index.js",
       "file": "rxjs_operators.js",
-      "fileHash": "5e4e7a3a",
+      "fileHash": "5b94e4ff",
       "needsInterop": false
     }
   },
