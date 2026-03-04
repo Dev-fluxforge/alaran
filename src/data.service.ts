@@ -263,11 +263,7 @@ export class DataService {
     },
     {
       title: 'Bridge Deformation Monitoring',
-<<<<<<< HEAD
-      imageUrls: [ 'https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&q=80&w=800&h=600'],
-=======
       imageUrls: ['https://images.unsplash.com/photo-1449156730764-d4a921596f11?auto=format&fit=crop&q=80&w=1200', 'https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&q=80&w=1200'],
->>>>>>> 4314b9f2592e4863bde5239c6c8ccc7b7c77205d
       description: 'Periodic monitoring of a suspension bridge to ensure public safety.',
       longDescription: 'We have an ongoing contract to monitor the structural health of the Third Mainland Bridge. Using high-precision total stations and GNSS receivers, we measure for any displacement or deformation, providing engineers with the critical data needed to maintain the bridge\'s integrity.',
       serviceCategory: 'Engineering Surveying',
@@ -363,11 +359,7 @@ export class DataService {
     },
     {
       title: 'Coastal Erosion Monitoring',
-<<<<<<< HEAD
-      imageUrls: ['https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=800&h=600'],
-=======
       imageUrls: ['https://images.unsplash.com/photo-1505118380757-91f5f45d8de4?auto=format&fit=crop&q=80&w=1200', 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=1200'],
->>>>>>> 4314b9f2592e4863bde5239c6c8ccc7b7c77205d
       description: 'Monitoring shoreline changes to inform coastal management.',
       longDescription: 'Along the Victoria Island coastline, we conduct regular surveys to monitor the rate of coastal erosion. By combining topographic LiDAR scans with near-shore bathymetry, we create a complete 3D model of the coastal zone that helps authorities plan effective mitigation strategies.',
       serviceCategory: 'Hydrographic Surveying',
