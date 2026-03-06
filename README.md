@@ -1,20 +1,123 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+Surv Alaran 🌐
 
-# Run and deploy your AI Studio app
+**Surv Alaran** is a modern web platform designed to provide a clean, responsive, and fast user experience for users accessing the application online.
 
-This contains everything you need to run your app locally.
+🔗 **Live Site:** [https://surv-alaran.vercel.app/](https://surv-alaran.vercel.app/)
 
-View your app in AI Studio: https://ai.studio/apps/84071cad-30f6-4100-844c-79796583f7da
+The project focuses on delivering a smooth user interface, scalable deployment, and efficient performance through modern web development practices.
 
-## Run Locally
+# 🚀 Features
 
-**Prerequisites:**  Node.js
+* ⚡ Fast and responsive user interface
+* 📱 Fully responsive design (mobile, tablet, desktop)
+* 🌍 Globally accessible deployment
+* 🔒 Secure web connection with HTTPS
+* 🎨 Clean UI/UX structure
+* ☁️ Cloud deployment for reliability and scalability
+
+# 🛠 Tech Stack
+
+This project is built using modern web technologies:
+
+### Frontend
+
+* HTML5
+* CSS3 / Tailwind (if used)
+* JavaScript / TypeScript
+* Modern UI design practices
+
+### Deployment & Hosting
+
+* **Vercel** – fast cloud platform for frontend applications
 
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+# 📂 Project Structure
+
+Example structure of the project:
+
+```
+surv-alaran/
+│
+├── public/            # Static assets
+│   ├── images
+│   └── icons
+│
+├── src/
+│   ├── components     # Reusable UI components
+│   ├── pages          # Application pages
+│   ├── styles         # Styling files
+│   └── utils          # Helper functions
+│
+├── package.json
+├── README.md
+└── vercel.json
+```
+
+---
+
+# ⚙️ Installation & Setup
+
+Clone the repository:
+
+```bash
+git clone https://github.com/yourusername/surv-alaran.git
+```
+
+Navigate into the project folder:
+
+```bash
+cd surv-alaran
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run the development server:
+
+```bash
+npm run dev
+```
+
+Open your browser:
+
+```
+http://localhost:3000
+```
+
+
+# 🌍 Deployment
+
+This project is deployed using **Vercel**.
+
+To deploy:
+
+```bash
+npm run build
+```
+
+Then push your code to GitHub and connect the repository to Vercel for automatic deployments.
+
+---
+
+# 📸 Preview
+
+Live Demo:
+👉 [https://surv-alaran.vercel.app/](https://surv-alaran.vercel.app/)
+
+
+# 🤝 Contributing
+
+Contributions are not welcome!
+
+# 📄 License
+
+This project is licensed under the **MIT License**.
+
+
+# 👨💻 Author
+
+**Badmus Muhammad Adeniyi**
+Developer | Designer | Tech Enthusiast
