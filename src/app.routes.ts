@@ -69,6 +69,7 @@ export const APP_ROUTES: Routes = [
   },
   {
     path: '**',
-    redirectTo: '/home'
+    title: 'Page Not Found | Alaran Geo-Service',
+    loadComponent: () => import('./not-found.component').then(c => c.NotFoundComponent)
   }
 ];
