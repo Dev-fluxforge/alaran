@@ -38,11 +38,16 @@
                         'scroll-linear': {
                             '0%': { transform: 'translateX(0)' },
                             '100%': { transform: 'translateX(-50%)' }
+                        },
+                        'float': {
+                            '0%, 100%': { transform: 'translateY(-50%) rotate(6deg)' },
+                            '50%': { transform: 'translateY(-55%) rotate(8deg)' }
                         }
                     },
                     animation: {
                         'scrolling-text': 'scrolling-text 40s linear infinite',
                         'scroll-linear': 'scroll-linear 20s linear infinite',
+                        'float': 'float 6s ease-in-out infinite',
                     },
                 },
             },

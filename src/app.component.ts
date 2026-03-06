@@ -15,6 +15,7 @@ interface SearchResult {
 
 @Component({
   selector: 'app-root',
+  standalone: true,
   templateUrl: './app.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [RouterOutlet, RouterLink, RouterLinkActive, ModalComponent, SearchModalComponent],
