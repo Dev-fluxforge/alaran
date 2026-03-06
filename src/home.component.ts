@@ -25,10 +25,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   testimonials = this.dataService.testimonials;
   projects = this.dataService.projects;
 
-  currentTestimonialIndex = signal(0);
   currentQuoteIndex = signal(0);
   
-  private testimonialInterval: any;
   private quoteInterval: any;
 
   surveyingQuotes = signal([
@@ -59,17 +57,12 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   private startAutoPlay(): void {
-    this.testimonialInterval = setInterval(() => {
-      this.nextTestimonial();
-    }, 5000);
-
     this.quoteInterval = setInterval(() => {
       this.nextQuote();
     }, 8000);
   }
 
   private stopAutoPlay(): void {
-    if (this.testimonialInterval) clearInterval(this.testimonialInterval);
     if (this.quoteInterval) clearInterval(this.quoteInterval);
   }
 
@@ -79,20 +72,6 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   selectStat(stat: Stat): void {
     this.uiStateService.selectStat(stat);
-  }
-
-  nextTestimonial(): void {
-    const total = this.testimonials().length;
-    this.currentTestimonialIndex.update(i => (i + 1) % total);
-  }
-
-  prevTestimonial(): void {
-    const total = this.testimonials().length;
-    this.currentTestimonialIndex.update(i => (i - 1 + total) % total);
-  }
-
-  setTestimonialIndex(index: number): void {
-    this.currentTestimonialIndex.set(index);
   }
 
   nextQuote(): void {

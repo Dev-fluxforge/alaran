@@ -2,7 +2,7 @@
 <!-- Projects Hero Section -->
 <section class="relative py-32 text-white flex items-center justify-center overflow-hidden">
     <div class="absolute inset-0 pointer-events-none">
-        <img src="https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&q=80&w=2000" alt="Surveying projects" class="w-full h-full object-cover" referrerPolicy="no-referrer">
+        <img src="https://images.unsplash.com/photo-1590487988256-9ed24133863e?auto=format&fit=crop&q=80&w=2000" alt="Surveying Projects" class="w-full h-full object-cover" referrerPolicy="no-referrer">
     </div>
     <div class="absolute inset-0 bg-deep-green/40 pointer-events-none"></div>
     <div class="relative z-10 max-w-4xl px-6 text-center fade-in">
@@ -85,7 +85,7 @@
                   class="group bg-white dark:bg-deep-green/50 rounded-lg overflow-hidden border border-deep-green/5 dark:border-white/10 flex flex-col fade-in transition-all duration-300 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2 focus-visible:outline-primary">
                   <div class="relative w-full h-56 overflow-hidden">
                       @if (project.imageUrls.length > 0) {
-                        <img [ngSrc]="project.imageUrls[0]" [alt]="project.title" width="600" height="400" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy" />
+                        <img [ngSrc]="project.imageUrls[0]" [alt]="project.title" fill class="object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy" referrerPolicy="no-referrer" />
                       }
                       <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                       <div class="absolute bottom-4 right-4 bg-primary text-deep-green p-2 rounded-full opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
