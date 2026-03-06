@@ -163,27 +163,62 @@
             <span class="text-primary font-bold tracking-widest uppercase text-sm">Client Feedback</span>
             <h2 class="text-4xl font-bold mt-2 text-deep-green dark:text-white">What Our Partners Say</h2>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            @for(testimonial of testimonials(); track testimonial.author) {
-                <div class="bg-background-light dark:bg-deep-green/80 p-8 rounded-3xl border border-deep-green/10 dark:border-white/10 flex flex-col h-full">
-                    <div class="flex gap-1 mb-4 text-accent-yellow">
-                        @for(star of [1,2,3,4,5]; track star) {
-                            <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1">star</span>
-                        }
-                    </div>
-                    <span class="material-symbols-outlined text-primary text-4xl mb-6 block">format_quote</span>
-                    <p class="text-deep-green/80 dark:text-white/80 text-base mb-8 italic leading-relaxed flex-grow">"{{ testimonial.quote }}"</p>
-                    <div class="flex items-center gap-4 mt-auto">
-                        <div class="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center text-primary font-bold text-sm">
-                            {{ testimonial.author[0] }}
+        <div class="relative max-w-7xl mx-auto px-4 md:px-12">
+            <!-- Carousel Container -->
+            <div class="overflow-hidden py-4">
+                <div class="flex transition-transform duration-500 ease-out" 
+                     [style.transform]="'translateX(calc(' + currentTestimonialIndex() + ' * -100% / var(--items-per-view, 1)))'"
+                     style="--items-per-view: 1;"
+                     class="md:[--items-per-view:3]">
+                    @for(testimonial of testimonials(); track testimonial.author) {
+                        <div class="w-full md:w-1/3 flex-shrink-0 px-3">
+                            <div class="bg-background-light dark:bg-deep-green/80 p-8 rounded-3xl border border-deep-green/10 dark:border-white/10 h-full flex flex-col">
+                                <div class="flex gap-1 mb-4 text-accent-yellow">
+                                    @for(star of [1,2,3,4,5]; track star) {
+                                        <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1">star</span>
+                                    }
+                                </div>
+                                <span class="material-symbols-outlined text-primary text-4xl mb-4 block">format_quote</span>
+                                <p class="text-deep-green/80 dark:text-white/80 text-base mb-6 italic leading-relaxed flex-grow">"{{ testimonial.quote }}"</p>
+                                <div class="flex items-center gap-3 mt-auto">
+                                    <div class="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center text-primary font-bold text-sm">
+                                        {{ testimonial.author[0] }}
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-base">{{ testimonial.author }}</h4>
+                                        <p class="text-xs text-deep-green/50 dark:text-white/50">{{ testimonial.company }}</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div>
-                            <h4 class="font-bold text-base">{{ testimonial.author }}</h4>
-                            <p class="text-xs text-deep-green/50 dark:text-white/50">{{ testimonial.company }}</p>
-                        </div>
-                    </div>
+                    }
                 </div>
-            }
+            </div>
+
+            <!-- Navigation Buttons -->
+            <button 
+                (click)="prevTestimonial()"
+                class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 md:-translate-x-6 w-12 h-12 bg-white dark:bg-deep-green shadow-xl rounded-full flex items-center justify-center text-deep-green dark:text-white hover:bg-primary hover:text-deep-green transition-all z-10 focus-visible:outline-primary"
+                aria-label="Previous testimonial">
+                <span class="material-symbols-outlined">chevron_left</span>
+            </button>
+            <button 
+                (click)="nextTestimonial()"
+                class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 md:translate-x-6 w-12 h-12 bg-white dark:bg-deep-green shadow-xl rounded-full flex items-center justify-center text-deep-green dark:text-white hover:bg-primary hover:text-deep-green transition-all z-10 focus-visible:outline-primary"
+                aria-label="Next testimonial">
+                <span class="material-symbols-outlined">chevron_right</span>
+            </button>
+
+            <!-- Pagination Indicators -->
+            <div class="flex justify-center gap-2 mt-8">
+                @for(testimonial of testimonials(); track testimonial.author; let i = $index) {
+                    <button 
+                        (click)="setTestimonialIndex(i)"
+                        [class]="'h-1.5 rounded-full transition-all ' + (currentTestimonialIndex() === i ? 'bg-primary w-8' : 'bg-deep-green/20 dark:bg-white/20 w-3')"
+                        [attr.aria-label]="'Go to testimonial ' + (i + 1)">
+                    </button>
+                }
+            </div>
         </div>
     </div>
 </section>
