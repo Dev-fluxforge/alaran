@@ -1,5 +1,5 @@
 
-import { Component, ChangeDetectionStrategy, signal, computed, effect, inject } from '@angular/core';
+import { Component, ChangeDetectionStrategy, signal, computed, effect, inject, viewChild, ElementRef } from '@angular/core';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 import { ModalComponent } from './modal.component';
 import { SearchModalComponent } from './search-modal.component';
@@ -17,11 +17,18 @@ interface SearchResult {
   selector: 'app-root',
   templateUrl: './app.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterOutlet, RouterLink, RouterLinkActive, ModalComponent, SearchModalComponent]
+  imports: [RouterOutlet, RouterLink, RouterLinkActive, ModalComponent, SearchModalComponent],
+  host: {
+    '(document:keydown.escape)': 'onEscape()',
+    '(document:keydown.tab)': 'onTab($event)',
+  }
 })
 export class AppComponent {
   public dataService = inject(DataService);
   private uiStateService = inject(UiStateService);
+
+  statModalContainer = viewChild<ElementRef<HTMLElement>>('statModalContainer');
+  statModalCloseButton = viewChild<ElementRef<HTMLButtonElement>>('statModalCloseButton');
 
   isDarkMode = signal<boolean>(false);
   isMenuOpen = signal<boolean>(false);
@@ -89,6 +96,42 @@ export class AppComponent {
         }
       }
     });
+
+    effect(() => {
+      if (this.selectedStat()) {
+        setTimeout(() => {
+          this.statModalCloseButton()?.nativeElement.focus();
+        }, 100);
+      }
+    });
+  }
+
+  onEscape(): void {
+    if (this.selectedStat()) {
+      this.closeModal();
+    }
+  }
+
+  onTab(event: KeyboardEvent): void {
+    if (!this.selectedStat() || !this.statModalContainer()) return;
+    
+    const focusableElements = this.statModalContainer()!.nativeElement.querySelectorAll(
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    );
+    const firstElement = focusableElements[0] as HTMLElement;
+    const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement;
+
+    if (event.shiftKey) {
+      if (document.activeElement === firstElement) {
+        lastElement.focus();
+        event.preventDefault();
+      }
+    } else {
+      if (document.activeElement === lastElement) {
+        firstElement.focus();
+        event.preventDefault();
+      }
+    }
   }
 
   closeModal(): void {

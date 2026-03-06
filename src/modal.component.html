@@ -5,6 +5,7 @@
   class="fixed inset-0 bg-black/70 backdrop-blur-sm z-[100] flex items-center justify-center p-4 modal-backdrop-fade-in">
   
   <div 
+    #modalContainer
     role="dialog"
     aria-modal="true"
     aria-labelledby="modal-title"
@@ -20,7 +21,7 @@
                 <p class="text-sm text-deep-green/60 dark:text-white/50">{{ service().category }}</p>
             </div>
         </div>
-        <button (click)="onClose()" aria-label="Close modal" class="w-10 h-10 rounded-full bg-deep-green/5 dark:bg-white/10 hover:bg-deep-green/10 dark:hover:bg-white/20 flex items-center justify-center transition-colors focus-visible:outline-primary">
+        <button #closeButton (click)="onClose()" aria-label="Close modal" class="w-10 h-10 rounded-full bg-deep-green/5 dark:bg-white/10 hover:bg-deep-green/10 dark:hover:bg-white/20 flex items-center justify-center transition-colors focus-visible:outline-primary">
             <span class="material-symbols-outlined" aria-hidden="true">close</span>
         </button>
     </header>

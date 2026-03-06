@@ -1,5 +1,5 @@
 
-import { Component, ChangeDetectionStrategy, input, output, signal, effect } from '@angular/core';
+import { Component, ChangeDetectionStrategy, input, output, signal, effect, viewChild, ElementRef } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
 import { Service, Project } from './data.service';
 import { MapComponent } from './map.component';
@@ -12,12 +12,16 @@ import { MapComponent } from './map.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     '(document:keydown.escape)': 'onClose()',
+    '(document:keydown.tab)': 'onTab($event)',
   }
 })
 export class ModalComponent {
   service = input.required<Service>();
   projects = input<Project[]>([]);
   close = output<void>();
+
+  closeButton = viewChild<ElementRef<HTMLButtonElement>>('closeButton');
+  modalContainer = viewChild<ElementRef<HTMLElement>>('modalContainer');
 
   currentImageIndices = signal<Map<string, number>>(new Map());
   private touchStartX = 0;
@@ -30,6 +34,33 @@ export class ModalComponent {
       });
       this.currentImageIndices.set(newMap);
     });
+
+    effect(() => {
+      // Focus the close button when the modal opens
+      this.closeButton()?.nativeElement.focus();
+    });
+  }
+
+  onTab(event: KeyboardEvent): void {
+    if (!this.modalContainer()) return;
+    
+    const focusableElements = this.modalContainer()!.nativeElement.querySelectorAll(
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    );
+    const firstElement = focusableElements[0] as HTMLElement;
+    const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement;
+
+    if (event.shiftKey) {
+      if (document.activeElement === firstElement) {
+        lastElement.focus();
+        event.preventDefault();
+      }
+    } else {
+      if (document.activeElement === lastElement) {
+        firstElement.focus();
+        event.preventDefault();
+      }
+    }
   }
 
   onClose(): void {

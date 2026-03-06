@@ -17,6 +17,7 @@ interface SearchResult {
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     '(document:keydown.escape)': 'onClose()',
+    '(document:keydown.tab)': 'onTab($event)',
   }
 })
 export class SearchModalComponent {
@@ -26,12 +27,35 @@ export class SearchModalComponent {
   queryChange = output<string>();
 
   searchInput = viewChild<ElementRef<HTMLInputElement>>('searchInput');
+  modalContainer = viewChild<ElementRef<HTMLElement>>('modalContainer');
 
   constructor() {
     // Autofocus the input when the modal is created
     effect(() => {
         this.searchInput()?.nativeElement.focus();
     });
+  }
+
+  onTab(event: KeyboardEvent): void {
+    if (!this.modalContainer()) return;
+    
+    const focusableElements = this.modalContainer()!.nativeElement.querySelectorAll(
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    );
+    const firstElement = focusableElements[0] as HTMLElement;
+    const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement;
+
+    if (event.shiftKey) {
+      if (document.activeElement === firstElement) {
+        lastElement.focus();
+        event.preventDefault();
+      }
+    } else {
+      if (document.activeElement === lastElement) {
+        firstElement.focus();
+        event.preventDefault();
+      }
+    }
   }
 
   onInput(event: Event): void {

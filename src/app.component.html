@@ -93,17 +93,22 @@
 @if (selectedStat(); as stat) {
     <div class="fixed inset-0 z-[100] flex items-center justify-center p-6">
         <div id="modal-backdrop" (click)="closeModal()" class="absolute inset-0 bg-deep-green/90 backdrop-blur-sm modal-backdrop-fade-in"></div>
-        <div class="relative bg-white dark:bg-deep-green border border-white/10 w-full max-w-lg rounded-3xl overflow-hidden shadow-2xl modal-content-slide-in-up">
+        <div 
+            #statModalContainer
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="stat-modal-title"
+            class="relative bg-white dark:bg-deep-green border border-white/10 w-full max-w-lg rounded-3xl overflow-hidden shadow-2xl modal-content-slide-in-up">
             <div class="p-8 md:p-12 text-center">
-                <div class="w-24 h-24 bg-primary/20 rounded-full flex items-center justify-center text-primary text-5xl mx-auto mb-8 animate-bounce">
+                <div class="w-24 h-24 bg-primary/20 rounded-full flex items-center justify-center text-primary text-5xl mx-auto mb-8 animate-bounce" aria-hidden="true">
                     <span class="material-symbols-outlined text-5xl">verified</span>
                 </div>
-                <div class="text-6xl font-black text-primary mb-4 tracking-tighter animate-pop">{{ stat.value }}</div>
-                <h3 class="text-2xl font-bold text-deep-green dark:text-white mb-6 uppercase tracking-widest">{{ stat.label }}</h3>
+                <div class="text-6xl font-black text-primary mb-4 tracking-tighter animate-pop" aria-hidden="true">{{ stat.value }}</div>
+                <h3 id="stat-modal-title" class="text-2xl font-bold text-deep-green dark:text-white mb-6 uppercase tracking-widest">{{ stat.label }}</h3>
                 <p class="text-deep-green/60 dark:text-white/70 text-lg leading-relaxed mb-10">
                     {{ stat.details }}
                 </p>
-                <button (click)="closeModal()" class="w-full bg-primary text-deep-green py-4 rounded-xl font-bold text-lg hover:scale-105 transition-transform">
+                <button #statModalCloseButton (click)="closeModal()" class="w-full bg-primary text-deep-green py-4 rounded-xl font-bold text-lg hover:scale-105 transition-transform focus-visible:outline-primary">
                     Great, thanks!
                 </button>
             </div>
