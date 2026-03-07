@@ -1,8 +1,8 @@
-
 <!-- News Hero Section -->
 <section class="relative py-32 text-white flex items-center justify-center overflow-hidden">
     <div class="absolute inset-0 pointer-events-none">
-        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=2000" alt="Geospatial news" class="w-full h-full object-cover" referrerPolicy="no-referrer">
+        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=2000"
+            alt="Geospatial news" class="w-full h-full object-cover" referrerPolicy="no-referrer" />
     </div>
     <div class="absolute inset-0 bg-deep-green/40 pointer-events-none"></div>
     <div class="relative z-10 max-w-4xl px-6 text-center fade-in">
@@ -11,7 +11,8 @@
             From the Field to Your Feed
         </h1>
         <p class="text-white/80 text-lg md:text-xl font-light max-w-3xl mx-auto leading-relaxed">
-            Stay updated with the latest news from Alaran Geo-Service, project milestones, and insights into the evolving world of geospatial technology.
+            Stay updated with the latest news from Alaran Geo-Service, project
+            milestones, and insights into the evolving world of geospatial technology.
         </p>
     </div>
 </section>
@@ -21,25 +22,38 @@
     <div class="max-w-7xl mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             @for (article of articles(); track article.slug) {
-                <a href="#" [attr.aria-label]="'Read full article: ' + article.title" class="group bg-white dark:bg-deep-green/50 rounded-lg overflow-hidden border border-deep-green/5 dark:border-white/10 flex flex-col fade-in transition-all duration-300 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2 focus-visible:outline-primary">
-                  <div class="relative w-full h-56 overflow-hidden">
-                      <img [ngSrc]="article.imageUrl" [alt]="article.title" width="600" height="400" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy" />
-                  </div>
-                  <div class="p-6 flex-grow flex flex-col">
-                    <p class="text-sm text-deep-green/60 dark:text-white/60 mb-2">{{ article.publishedDate }} by {{ article.author }}</p>
-                    <h4 class="font-bold text-lg text-deep-green dark:text-white flex-grow">{{ article.title }}</h4>
-                    <p class="text-sm text-deep-green/60 dark:text-white/60 mt-2 line-clamp-3">{{ article.excerpt }}</p>
-                  </div>
-                  <div class="p-6 pt-0 mt-4">
-                    <span class="text-primary font-bold text-sm flex items-center gap-2">Read More <span class="material-symbols-outlined transition-transform group-hover:translate-x-1" aria-hidden="true">arrow_forward</span></span>
-                  </div>
-                </a>
-            }
- @empty {
-                <div class="md:col-span-2 lg:col-span-3 text-center py-12 bg-deep-green/5 dark:bg-white/5 rounded-lg">
-                    <span class="material-symbols-outlined text-4xl text-deep-green/40 dark:text-white/40 mb-4">article</span>
-                    <p class="text-deep-green/60 dark:text-white/60">No news articles have been published yet.</p>
+            <a href="#" [attr.aria-label]="'Read full article: ' + article.title"
+                class="group bg-white dark:bg-deep-green/50 rounded-lg overflow-hidden border border-deep-green/5 dark:border-white/10 flex flex-col fade-in transition-all duration-300 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2 focus-visible:outline-primary">
+                <div class="relative w-full h-56 overflow-hidden">
+                    <img [ngSrc]="article.imageUrl" [alt]="article.title" width="600" height="400"
+                        class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                        loading="lazy" />
                 </div>
+                <div class="p-6 flex-grow flex flex-col">
+                    <p class="text-sm text-deep-green/60 dark:text-white/60 mb-2">
+                        {{ article.publishedDate }} by {{ article.author }}
+                    </p>
+                    <h4 class="font-bold text-lg text-deep-green dark:text-white flex-grow">
+                        {{ article.title }}
+                    </h4>
+                    <p class="text-sm text-deep-green/60 dark:text-white/60 mt-2 line-clamp-3">
+                        {{ article.excerpt }}
+                    </p>
+                </div>
+                <div class="p-6 pt-0 mt-4">
+                    <span class="text-primary font-bold text-sm flex items-center gap-2">Read More
+                        <span class="material-symbols-outlined transition-transform group-hover:translate-x-1"
+                            aria-hidden="true">arrow_forward</span></span>
+                </div>
+            </a>
+            } @empty {
+            <div class="md:col-span-2 lg:col-span-3 text-center py-12 bg-deep-green/5 dark:bg-white/5 rounded-lg">
+                <span
+                    class="material-symbols-outlined text-4xl text-deep-green/40 dark:text-white/40 mb-4">article</span>
+                <p class="text-deep-green/60 dark:text-white/60">
+                    No news articles have been published yet.
+                </p>
+            </div>
             }
         </div>
     </div>
