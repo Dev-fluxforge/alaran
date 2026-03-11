@@ -3,17 +3,33 @@ import nodemailer from 'nodemailer';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
+import fs from 'fs';
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const PORT = process.env.NODE_ENV === 'production' ? (process.env.PORT || 3000) : 3001;
+const PORT = Number(process.env.NODE_ENV === 'production' ? (process.env.PORT || 3000) : 3003);
+
+console.log(`Starting server in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}...`);
+
+process.on('uncaughtException', (err) => {
+  console.error('Uncaught Exception:', err);
+});
+
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('Unhandled Rejection at:', promise, 'reason:', reason);
+});
 
 app.use(express.json());
 
 // Serve static files from the Angular build directory
 const distPath = path.join(__dirname, 'dist');
-app.use(express.static(distPath));
+if (fs.existsSync(distPath)) {
+  app.use(express.static(distPath));
+} else {
+  console.warn(`Warning: dist directory not found at ${distPath}. Static files will not be served.`);
+}
 
 // API route for contact form
 app.post('/api/contact', async (req, res) => {
@@ -62,9 +78,14 @@ app.post('/api/contact', async (req, res) => {
 
 // For any other request, serve the Angular index.html
 app.get('(.*)', (req, res) => {
-  res.sendFile(path.join(distPath, 'index.html'));
+  const indexPath = path.join(distPath, 'index.html');
+  if (fs.existsSync(indexPath)) {
+    res.sendFile(indexPath);
+  } else {
+    res.status(404).send('Not Found (and index.html missing)');
+  }
 });
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server listening on 0.0.0.0:${PORT}`);
 });

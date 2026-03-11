@@ -5,9 +5,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "concurrently \"ng serve --host 0.0.0.0 --port 3000 --proxy-config proxy.conf.json\" \"tsx watch server.ts\"",
+    "dev": "concurrently --kill-others \"ng serve --host 0.0.0.0 --port 3000 --proxy-config proxy.conf.json\" \"npx tsx watch server.ts\"",
     "build": "ng build",
-    "start": "tsx server.ts",
+    "start": "npx tsx server.ts",
     "lint": "ng lint"
   },
   "dependencies": {
