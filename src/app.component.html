@@ -10,11 +10,7 @@
                 <div class="bg-primary p-1.5 rounded-lg text-deep-green" aria-hidden="true">
                     <span class="material-symbols-outlined text-2xl font-bold">polyline</span>
                 </div>
-<<<<<<< HEAD
-                <h2 class="text-deep-green dark:text-white text-xl font-bold tracking-tight uppercase">AGSL</h2>
-=======
                 <h2 class="text-deep-green dark:text-white text-xl font-bold tracking-tight uppercase">Alaran Geo-Service</h2>
->>>>>>> 8549b7e00d2fd09c7de833227737130ff82ec9e0
             </a>
         </div>
         <nav class="hidden md:flex items-center gap-10" aria-label="Main Navigation">
@@ -58,22 +54,22 @@
                      [class.pointer-events-auto]="isMenuOpen()">
                     <nav class="flex flex-col gap-4" aria-label="Mobile Navigation">
                         <a routerLink="/home" (click)="closeMenu()" routerLinkActive="bg-primary/10 text-primary" [routerLinkActiveOptions]="{exact: true}" 
-                           class="text-xl font-bold hover:text-primary hover:bg-primary/5 p-3 rounded-xl transition-all duration-500 delay-100"
+                           class="text-xl font-bold hover:text-primary hover:bg-primary/5 p-3 rounded-xl transition-all duration-500 delay-[100ms]"
                            [class.translate-x-0]="isMenuOpen()" [class.opacity-100]="isMenuOpen()" [class.-translate-x-4]="!isMenuOpen()" [class.opacity-0]="!isMenuOpen()">Home</a>
                         <a routerLink="/about" (click)="closeMenu()" routerLinkActive="bg-primary/10 text-primary" 
-                           class="text-xl font-bold hover:text-primary hover:bg-primary/5 p-3 rounded-xl transition-all duration-500 delay-150"
+                           class="text-xl font-bold hover:text-primary hover:bg-primary/5 p-3 rounded-xl transition-all duration-500 delay-[150ms]"
                            [class.translate-x-0]="isMenuOpen()" [class.opacity-100]="isMenuOpen()" [class.-translate-x-4]="!isMenuOpen()" [class.opacity-0]="!isMenuOpen()">About</a>
                         <a routerLink="/services" (click)="closeMenu()" routerLinkActive="bg-primary/10 text-primary" 
-                           class="text-xl font-bold hover:text-primary hover:bg-primary/5 p-3 rounded-xl transition-all duration-500 delay-200"
+                           class="text-xl font-bold hover:text-primary hover:bg-primary/5 p-3 rounded-xl transition-all duration-500 delay-[200ms]"
                            [class.translate-x-0]="isMenuOpen()" [class.opacity-100]="isMenuOpen()" [class.-translate-x-4]="!isMenuOpen()" [class.opacity-0]="!isMenuOpen()">Services</a>
                         <a routerLink="/projects" (click)="closeMenu()" routerLinkActive="bg-primary/10 text-primary" 
-                           class="text-xl font-bold hover:text-primary hover:bg-primary/5 p-3 rounded-xl transition-all duration-500 delay-250"
+                           class="text-xl font-bold hover:text-primary hover:bg-primary/5 p-3 rounded-xl transition-all duration-500 delay-[250ms]"
                            [class.translate-x-0]="isMenuOpen()" [class.opacity-100]="isMenuOpen()" [class.-translate-x-4]="!isMenuOpen()" [class.opacity-0]="!isMenuOpen()">Projects</a>
                         <a routerLink="/contact" (click)="closeMenu()" routerLinkActive="bg-primary/10 text-primary" 
-                           class="text-xl font-bold hover:text-primary hover:bg-primary/5 p-3 rounded-xl transition-all duration-500 delay-300"
+                           class="text-xl font-bold hover:text-primary hover:bg-primary/5 p-3 rounded-xl transition-all duration-500 delay-[300ms]"
                            [class.translate-x-0]="isMenuOpen()" [class.opacity-100]="isMenuOpen()" [class.-translate-x-4]="!isMenuOpen()" [class.opacity-0]="!isMenuOpen()">Contact</a>
                     </nav>
-                    <div class="mt-10 pt-10 border-t border-deep-green/10 dark:border-white/10 transition-all duration-500 delay-350"
+                    <div class="mt-10 pt-10 border-t border-deep-green/10 dark:border-white/10 transition-all duration-500 delay-[350ms]"
                          [class.translate-y-0]="isMenuOpen()" [class.opacity-100]="isMenuOpen()" [class.translate-y-4]="!isMenuOpen()" [class.opacity-0]="!isMenuOpen()">
                         <a routerLink="/contact" (click)="closeMenu()" class="w-full flex items-center justify-center bg-primary text-deep-green py-4 rounded-xl font-bold text-lg shadow-lg shadow-primary/20">
                             Request Quote
@@ -98,7 +94,7 @@
 }
 
 @if (selectedStat(); as stat) {
-    <div class="fixed inset-0 z-100 flex items-center justify-center p-6">
+    <div class="fixed inset-0 z-[100] flex items-center justify-center p-6">
         <div id="modal-backdrop" (click)="closeModal()" class="absolute inset-0 bg-deep-green/90 backdrop-blur-sm modal-backdrop-fade-in"></div>
         <div 
             #statModalContainer
@@ -151,11 +147,7 @@
                     <div class="bg-primary p-1.5 rounded-lg text-deep-green">
                         <span class="material-symbols-outlined text-2xl font-bold">polyline</span>
                     </div>
-<<<<<<< HEAD
-                    <h2 class="text-deep-green dark:text-white text-xl font-bold uppercase tracking-tight">AGSL</h2>
-=======
                     <h2 class="text-deep-green dark:text-white text-xl font-bold uppercase tracking-tight">Alaran Geo-Service</h2>
->>>>>>> 8549b7e00d2fd09c7de833227737130ff82ec9e0
                 </div>
                 <p class="text-base text-deep-green/60 dark:text-white/60 leading-relaxed mb-8 max-w-sm">
                     Pioneering professional geospatial solutions for a better-built environment. Accuracy is our signature, speed is our promise.
@@ -187,7 +179,7 @@
                     </li>
                     <li class="flex items-center gap-3">
                         <span class="material-symbols-outlined text-primary text-lg">call</span>
-                        <span>+234 814 488 9705</span>
+                        <span>+234 814 488 9105</span>
                     </li>
                     <li class="flex items-center gap-3">
                         <span class="material-symbols-outlined text-primary text-lg">mail</span>
@@ -205,7 +197,7 @@
             </div>
         </div>
         <div class="pt-8 border-t border-deep-green/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-medium text-deep-green/40 dark:text-white/40">
-            <p>© {{ currentYear() }} ALARAN GEO-SERVICES LIMITED. All Rights Reserved.</p>
+            <p>© {{ currentYear() }} ALARAN GEO-SERVICE LIMITED. All Rights Reserved.</p>
             <div class="flex gap-8">
                 <a class="hover:text-deep-green dark:hover:text-white transition-colors" routerLink="/privacy">Privacy Policy</a>
                 <a class="hover:text-deep-green dark:hover:text-white transition-colors" routerLink="/terms">Terms of Service</a>
@@ -215,6 +207,6 @@
 </footer>
 
 <!-- WhatsApp Floating Button -->
-<a routerLink="/chat" aria-label="Chat with us on WhatsApp" class="fixed bottom-8 right-8 w-16 h-16 bg-primary text-deep-green rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-60 shadow-primary/40 focus-visible:outline-primary">
+<a routerLink="/chat" aria-label="Chat with us on WhatsApp" class="fixed bottom-8 right-8 w-16 h-16 bg-primary text-deep-green rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-[60] shadow-primary/40 focus-visible:outline-primary">
     <span class="material-symbols-outlined text-3xl font-bold" aria-hidden="true">chat</span>
 </a>
