@@ -136,7 +136,7 @@ export class DataService {
   technologies = signal<Technology[]>([
     {
       icon: 'hub',
-      title: 'GNSS',
+      title: 'GNSS & RTK Receivers',
       description: 'Utilizing Trimble and Leica systems for centimeter-level accuracy in real-time positioning.'
     },
     {

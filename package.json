@@ -5,9 +5,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "ng serve",
+    "dev": "concurrently \"ng serve --host 0.0.0.0 --port 3000 --proxy-config proxy.conf.json\" \"tsx watch server.ts\"",
     "build": "ng build",
-    "preview": "ng serve --configuration=production",
+    "start": "tsx server.ts",
     "lint": "ng lint"
   },
   "dependencies": {
@@ -20,11 +20,17 @@
     "@angular/forms": "^21.1.4",
     "@angular/platform-browser": "^21.1.0",
     "@angular/router": "^21.1.4",
+    "@types/express": "^5.0.6",
+    "@types/nodemailer": "^7.0.11",
+    "concurrently": "^9.2.1",
     "d3": "^7.9.0",
+    "express": "^5.2.1",
     "leaflet": "^1.9.4",
     "motion": "^12.34.5",
+    "nodemailer": "^8.0.2",
     "rxjs": "^7.8.2",
-    "tailwindcss": "latest"
+    "tailwindcss": "latest",
+    "tsx": "^4.21.0"
   },
   "devDependencies": {
     "@types/d3": "^7.4.3",

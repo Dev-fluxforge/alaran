@@ -1,6 +1,6 @@
 {
   "name": "Alaran Geo-Service Showcase",
-  "description": "Professional surveying and geospatial solutions company specializing in engineering, mapping, and cadastral services. Delivering precision and accuracy since 2008.",
+  "description": "Professional surveying and geospatial solutions company specializing in engineering, mapping, and cadastral services. Delivering precision and accuracy since 2008. Features a functional contact form that sends messages directly to the company email.",
   "keywords": "surveying, geospatial, mapping, cadastral, engineering, Nigeria, West Africa, GIS, LiDAR, hydrography",
   "requestFramePermissions": []
 }
