@@ -36,15 +36,18 @@ export class ModalComponent {
     });
 
     effect(() => {
-      // Focus the close button when the modal opens
-      this.closeButton()?.nativeElement.focus();
+      const closeButton = this.closeButton();
+      if (closeButton) {
+        closeButton.nativeElement.focus();
+      }
     });
   }
 
   onTab(event: KeyboardEvent): void {
-    if (!this.modalContainer()) return;
+    const container = this.modalContainer();
+    if (!container) return;
     
-    const focusableElements = this.modalContainer()!.nativeElement.querySelectorAll(
+    const focusableElements = container.nativeElement.querySelectorAll(
       'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
     );
     const firstElement = focusableElements[0] as HTMLElement;
