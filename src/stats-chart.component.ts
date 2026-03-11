@@ -95,15 +95,11 @@ export class StatsChartComponent implements AfterViewInit, OnDestroy {
     };
   });
 
-  private isDestroyed = false;
-
   constructor() {
     effect(() => {
       const data = this.chartData();
-      if (data.length > 0 && this.svgElement && !this.isDestroyed) {
-        setTimeout(() => {
-          if (!this.isDestroyed) this.renderChart();
-        }, 0);
+      if (data.length > 0 && this.svgElement) {
+        this.renderChart();
       }
     });
   }
@@ -117,32 +113,18 @@ export class StatsChartComponent implements AfterViewInit, OnDestroy {
     }));
   }
 
-  private lastWidth = 0;
-  private lastHeight = 0;
-
   ngAfterViewInit() {
     this.renderChart();
     
     if (typeof window !== 'undefined') {
-      this.resizeObserver = new ResizeObserver((entries) => {
-        if (this.isDestroyed) return;
-        for (const entry of entries) {
-          const { width, height } = entry.contentRect;
-          if (Math.abs(width - this.lastWidth) > 0.5 || Math.abs(height - this.lastHeight) > 0.5) {
-            this.lastWidth = width;
-            this.lastHeight = height;
-            setTimeout(() => {
-              if (!this.isDestroyed) this.renderChart();
-            }, 0);
-          }
-        }
+      this.resizeObserver = new ResizeObserver(() => {
+        this.renderChart();
       });
       this.resizeObserver.observe(this.container.nativeElement);
     }
   }
 
   ngOnDestroy() {
-    this.isDestroyed = true;
     this.resizeObserver?.disconnect();
   }
 
