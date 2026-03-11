@@ -1,5 +1,5 @@
 
-import { Component, OnInit, OnDestroy, ElementRef, viewChild, inject, input, effect, AfterViewInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, ElementRef, ViewChild, inject, input, effect, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import * as L from 'leaflet';
 import { Project } from './data.service';
@@ -95,7 +95,7 @@ import { UiStateService } from './ui-state.service';
   `]
 })
 export class MapComponent implements AfterViewInit, OnDestroy {
-  mapContainer = viewChild.required<ElementRef>('mapContainer');
+  @ViewChild('mapContainer', { static: true }) mapContainer!: ElementRef;
   
   projects = input<Project[]>([]);
   
@@ -149,10 +149,7 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     // Default center of Nigeria
     const center: L.LatLngExpression = [9.0820, 8.6753];
     
-    const container = this.mapContainer();
-    if (!container) return;
-
-    this.map = L.map(container.nativeElement, {
+    this.map = L.map(this.mapContainer.nativeElement, {
       center: center,
       zoom: 6,
       scrollWheelZoom: false // Better for page scrolling
