@@ -60,7 +60,7 @@
 <!-- Our Mission Section -->
 <section class="py-24 px-6 bg-deep-green text-white overflow-hidden relative">
     <div class="absolute inset-0 opacity-10 pointer-events-none">
-        <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary via-transparent to-transparent"></div>
+        <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,var(--tw-gradient-stops))] from-primary via-transparent to-transparent"></div>
     </div>
     <div class="max-w-4xl mx-auto text-center relative z-10">
         <span class="text-primary font-bold tracking-widest uppercase text-sm">Our Purpose</span>
@@ -92,12 +92,12 @@
                         [style.transform]="'translateX(-' + (currentMemberIndex() * 100) + '%)'">
                         @for (member of team(); track member.name; let i = $index) {
                             <div 
-                                class="flex-shrink-0 w-full px-4"
+                                class="shrink-0 w-full px-4"
                                 role="group"
                                 aria-roledescription="slide"
                                 [attr.aria-label]="(i + 1) + ' of ' + team().length">
                                 <div class="bg-background-light dark:bg-white/5 rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center gap-12 border border-deep-green/5 dark:border-white/5">
-                                    <div class="relative w-64 h-64 md:w-80 md:h-80 rounded-2xl overflow-hidden shadow-2xl flex-shrink-0 group/member">
+                                    <div class="relative w-64 h-64 md:w-80 md:h-80 rounded-2xl overflow-hidden shadow-2xl shrink-0 group/member">
                                         <img [ngSrc]="member.imageUrl" [alt]="member.name" width="400" height="400" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                                         <div class="absolute inset-0 bg-deep-green/60 opacity-0 group-hover/member:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
                                             <a [href]="member.socials.linkedin" [attr.aria-label]="'Visit ' + member.name + '\'s LinkedIn profile'" class="w-12 h-12 rounded-full bg-primary text-deep-green flex items-center justify-center hover:scale-110 transition-transform focus-visible:outline-white">
@@ -146,7 +146,7 @@
                     }
                 </div>
             } @placeholder {
-                <div class="bg-deep-green/5 dark:bg-white/5 h-[500px] rounded-3xl animate-pulse"></div>
+                <div class="bg-deep-green/5 dark:bg-white/5 h-125 rounded-3xl animate-pulse"></div>
             }
         </div>
     </div>

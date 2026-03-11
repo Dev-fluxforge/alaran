@@ -58,22 +58,22 @@
                      [class.pointer-events-auto]="isMenuOpen()">
                     <nav class="flex flex-col gap-4" aria-label="Mobile Navigation">
                         <a routerLink="/home" (click)="closeMenu()" routerLinkActive="bg-primary/10 text-primary" [routerLinkActiveOptions]="{exact: true}" 
-                           class="text-xl font-bold hover:text-primary hover:bg-primary/5 p-3 rounded-xl transition-all duration-500 delay-[100ms]"
+                           class="text-xl font-bold hover:text-primary hover:bg-primary/5 p-3 rounded-xl transition-all duration-500 delay-100"
                            [class.translate-x-0]="isMenuOpen()" [class.opacity-100]="isMenuOpen()" [class.-translate-x-4]="!isMenuOpen()" [class.opacity-0]="!isMenuOpen()">Home</a>
                         <a routerLink="/about" (click)="closeMenu()" routerLinkActive="bg-primary/10 text-primary" 
-                           class="text-xl font-bold hover:text-primary hover:bg-primary/5 p-3 rounded-xl transition-all duration-500 delay-[150ms]"
+                           class="text-xl font-bold hover:text-primary hover:bg-primary/5 p-3 rounded-xl transition-all duration-500 delay-150"
                            [class.translate-x-0]="isMenuOpen()" [class.opacity-100]="isMenuOpen()" [class.-translate-x-4]="!isMenuOpen()" [class.opacity-0]="!isMenuOpen()">About</a>
                         <a routerLink="/services" (click)="closeMenu()" routerLinkActive="bg-primary/10 text-primary" 
-                           class="text-xl font-bold hover:text-primary hover:bg-primary/5 p-3 rounded-xl transition-all duration-500 delay-[200ms]"
+                           class="text-xl font-bold hover:text-primary hover:bg-primary/5 p-3 rounded-xl transition-all duration-500 delay-200"
                            [class.translate-x-0]="isMenuOpen()" [class.opacity-100]="isMenuOpen()" [class.-translate-x-4]="!isMenuOpen()" [class.opacity-0]="!isMenuOpen()">Services</a>
                         <a routerLink="/projects" (click)="closeMenu()" routerLinkActive="bg-primary/10 text-primary" 
-                           class="text-xl font-bold hover:text-primary hover:bg-primary/5 p-3 rounded-xl transition-all duration-500 delay-[250ms]"
+                           class="text-xl font-bold hover:text-primary hover:bg-primary/5 p-3 rounded-xl transition-all duration-500 delay-250"
                            [class.translate-x-0]="isMenuOpen()" [class.opacity-100]="isMenuOpen()" [class.-translate-x-4]="!isMenuOpen()" [class.opacity-0]="!isMenuOpen()">Projects</a>
                         <a routerLink="/contact" (click)="closeMenu()" routerLinkActive="bg-primary/10 text-primary" 
-                           class="text-xl font-bold hover:text-primary hover:bg-primary/5 p-3 rounded-xl transition-all duration-500 delay-[300ms]"
+                           class="text-xl font-bold hover:text-primary hover:bg-primary/5 p-3 rounded-xl transition-all duration-500 delay-300"
                            [class.translate-x-0]="isMenuOpen()" [class.opacity-100]="isMenuOpen()" [class.-translate-x-4]="!isMenuOpen()" [class.opacity-0]="!isMenuOpen()">Contact</a>
                     </nav>
-                    <div class="mt-10 pt-10 border-t border-deep-green/10 dark:border-white/10 transition-all duration-500 delay-[350ms]"
+                    <div class="mt-10 pt-10 border-t border-deep-green/10 dark:border-white/10 transition-all duration-500 delay-350"
                          [class.translate-y-0]="isMenuOpen()" [class.opacity-100]="isMenuOpen()" [class.translate-y-4]="!isMenuOpen()" [class.opacity-0]="!isMenuOpen()">
                         <a routerLink="/contact" (click)="closeMenu()" class="w-full flex items-center justify-center bg-primary text-deep-green py-4 rounded-xl font-bold text-lg shadow-lg shadow-primary/20">
                             Request Quote
@@ -98,7 +98,7 @@
 }
 
 @if (selectedStat(); as stat) {
-    <div class="fixed inset-0 z-[100] flex items-center justify-center p-6">
+    <div class="fixed inset-0 z-100 flex items-center justify-center p-6">
         <div id="modal-backdrop" (click)="closeModal()" class="absolute inset-0 bg-deep-green/90 backdrop-blur-sm modal-backdrop-fade-in"></div>
         <div 
             #statModalContainer
@@ -215,6 +215,6 @@
 </footer>
 
 <!-- WhatsApp Floating Button -->
-<a routerLink="/chat" aria-label="Chat with us on WhatsApp" class="fixed bottom-8 right-8 w-16 h-16 bg-primary text-deep-green rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-[60] shadow-primary/40 focus-visible:outline-primary">
+<a routerLink="/chat" aria-label="Chat with us on WhatsApp" class="fixed bottom-8 right-8 w-16 h-16 bg-primary text-deep-green rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-60 shadow-primary/40 focus-visible:outline-primary">
     <span class="material-symbols-outlined text-3xl font-bold" aria-hidden="true">chat</span>
 </a>
