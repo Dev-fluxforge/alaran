@@ -1,6 +1,4 @@
 @import "tailwindcss";
-@source "../*.{html,ts,tsx}";
-@source "./**/*.{html,ts,tsx}";
 
 @theme {
   --font-display: "Space Grotesk", sans-serif;
@@ -15,6 +13,11 @@
   --color-space: #1B1B1B;
   --color-light-blue: #ADD8E6;
 
+  @keyframes loading {
+    0% { transform: translateX(-100%); }
+    50% { transform: translateX(0); }
+    100% { transform: translateX(100%); }
+  }
   @keyframes scrolling-text {
     0% { transform: translateX(0%); }
     100% { transform: translateX(-100%); }
