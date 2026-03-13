@@ -36,6 +36,37 @@ export class HomeComponent implements OnInit, OnDestroy {
   testimonialCard = viewChild<ElementRef>('testimonialCard');
   quoteCard = viewChild<ElementRef>('quoteCard');
 
+  @HostListener('window:keydown', ['$event'])
+  handleKeyDown(event: KeyboardEvent) {
+    if (event.key === 'ArrowLeft') {
+      this.navigateSections('prev');
+    } else if (event.key === 'ArrowRight') {
+      this.navigateSections('next');
+    }
+  }
+
+  private navigateSections(direction: 'next' | 'prev') {
+    const testimonialEl = this.testimonialCard()?.nativeElement;
+    const quoteEl = this.quoteCard()?.nativeElement;
+
+    if (!testimonialEl || !quoteEl) return;
+
+    const testimonialRect = testimonialEl.getBoundingClientRect();
+    const quoteRect = quoteEl.getBoundingClientRect();
+
+    const windowHeight = window.innerHeight;
+    
+    // Check which section is more visible in the viewport
+    const testimonialVisibility = Math.min(testimonialRect.bottom, windowHeight) - Math.max(testimonialRect.top, 0);
+    const quoteVisibility = Math.min(quoteRect.bottom, windowHeight) - Math.max(quoteRect.top, 0);
+
+    if (testimonialVisibility > quoteVisibility && testimonialVisibility > 0) {
+      direction === 'next' ? this.nextTestimonial() : this.prevTestimonial();
+    } else if (quoteVisibility > 0) {
+      direction === 'next' ? this.nextQuote() : this.prevQuote();
+    }
+  }
+
   surveyingQuotes = signal([
     { quote: "I was once a surveyor.", author: "George Washington", title: "1st U.S. President", imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Gilbert_Stuart_Williamstown_Portrait_of_George_Washington.jpg/500px-Gilbert_Stuart_Williamstown_Portrait_of_George_Washington.jpg", country: "us" },
     { quote: "The work of the surveyor is the basis of all property rights.", author: "Abraham Lincoln", title: "16th U.S. President", imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Abraham_Lincoln_head_on_shoulders_photo_portrait.jpg/800px-Abraham_Lincoln_head_on_shoulders_photo_portrait.jpg", country: "us" },
