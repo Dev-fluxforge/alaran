@@ -1,181 +1,71 @@
 {
-<<<<<<< HEAD
-<<<<<<< HEAD
-  "hash": "25e103e6",
+  "hash": "6fee7289",
   "configHash": "8612a2d2",
-  "lockfileHash": "18253151",
-  "browserHash": "c2f7e2ea",
-=======
-  "hash": "4b9641a9",
-  "configHash": "8612a2d2",
-  "lockfileHash": "c3082618",
-  "browserHash": "21beb494",
->>>>>>> c57373d9e51e4396472b9bcc29ed5ed8d6705f0b
-=======
-  "hash": "844f9414",
-  "configHash": "8612a2d2",
-  "lockfileHash": "c0738224",
-  "browserHash": "6deaec7e",
->>>>>>> 3f950cb (feat: Update company name and founder details)
+  "lockfileHash": "348c2fd9",
+  "browserHash": "4a2f33c9",
   "optimized": {
     "@angular/common": {
       "src": "../../../../../../node_modules/@angular/common/fesm2022/common.mjs",
       "file": "@angular_common.js",
-<<<<<<< HEAD
-<<<<<<< HEAD
-      "fileHash": "8a120d88",
-=======
-      "fileHash": "fe44dab7",
->>>>>>> c57373d9e51e4396472b9bcc29ed5ed8d6705f0b
-=======
-      "fileHash": "a76caa90",
->>>>>>> 3f950cb (feat: Update company name and founder details)
+      "fileHash": "147d6736",
       "needsInterop": false
     },
     "@angular/core": {
       "src": "../../../../../../node_modules/@angular/core/fesm2022/core.mjs",
       "file": "@angular_core.js",
-<<<<<<< HEAD
-<<<<<<< HEAD
-      "fileHash": "6ad9a738",
-=======
-      "fileHash": "5095842c",
->>>>>>> c57373d9e51e4396472b9bcc29ed5ed8d6705f0b
-=======
-      "fileHash": "93b507d6",
->>>>>>> 3f950cb (feat: Update company name and founder details)
+      "fileHash": "66fa0ad7",
       "needsInterop": false
     },
     "@angular/core/rxjs-interop": {
       "src": "../../../../../../node_modules/@angular/core/fesm2022/rxjs-interop.mjs",
       "file": "@angular_core_rxjs-interop.js",
-<<<<<<< HEAD
-<<<<<<< HEAD
-      "fileHash": "001a00c0",
-=======
-      "fileHash": "221db7ed",
->>>>>>> c57373d9e51e4396472b9bcc29ed5ed8d6705f0b
-=======
-      "fileHash": "1fa0e0ae",
->>>>>>> 3f950cb (feat: Update company name and founder details)
+      "fileHash": "c45cb9a8",
       "needsInterop": false
     },
     "@angular/forms": {
       "src": "../../../../../../node_modules/@angular/forms/fesm2022/forms.mjs",
       "file": "@angular_forms.js",
-<<<<<<< HEAD
-<<<<<<< HEAD
-      "fileHash": "aae4e09d",
-=======
-      "fileHash": "a917cae1",
->>>>>>> c57373d9e51e4396472b9bcc29ed5ed8d6705f0b
-=======
-      "fileHash": "eee41e81",
->>>>>>> 3f950cb (feat: Update company name and founder details)
+      "fileHash": "ebb1ffc8",
       "needsInterop": false
     },
     "@angular/platform-browser": {
       "src": "../../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
       "file": "@angular_platform-browser.js",
-<<<<<<< HEAD
-<<<<<<< HEAD
-      "fileHash": "c4b8d23a",
-=======
-      "fileHash": "ea1a8374",
->>>>>>> c57373d9e51e4396472b9bcc29ed5ed8d6705f0b
-=======
-      "fileHash": "277e0396",
->>>>>>> 3f950cb (feat: Update company name and founder details)
+      "fileHash": "35ee3db5",
       "needsInterop": false
     },
     "@angular/router": {
       "src": "../../../../../../node_modules/@angular/router/fesm2022/router.mjs",
       "file": "@angular_router.js",
-<<<<<<< HEAD
-<<<<<<< HEAD
-      "fileHash": "d591dfbc",
-=======
-      "fileHash": "27c24117",
->>>>>>> c57373d9e51e4396472b9bcc29ed5ed8d6705f0b
-=======
-      "fileHash": "fab0d244",
->>>>>>> 3f950cb (feat: Update company name and founder details)
+      "fileHash": "393f4703",
       "needsInterop": false
     },
     "d3": {
       "src": "../../../../../../node_modules/d3/src/index.js",
       "file": "d3.js",
-<<<<<<< HEAD
-<<<<<<< HEAD
-      "fileHash": "451e653b",
-=======
-      "fileHash": "64de94fa",
->>>>>>> c57373d9e51e4396472b9bcc29ed5ed8d6705f0b
-=======
-      "fileHash": "c728189f",
->>>>>>> 3f950cb (feat: Update company name and founder details)
+      "fileHash": "e45a9320",
       "needsInterop": false
     },
     "leaflet": {
       "src": "../../../../../../node_modules/leaflet/dist/leaflet-src.js",
       "file": "leaflet.js",
-<<<<<<< HEAD
-<<<<<<< HEAD
-      "fileHash": "f8a30f43",
-=======
-      "fileHash": "5e54addf",
->>>>>>> c57373d9e51e4396472b9bcc29ed5ed8d6705f0b
-=======
-      "fileHash": "27d40ac8",
->>>>>>> 3f950cb (feat: Update company name and founder details)
+      "fileHash": "b0ccc439",
       "needsInterop": true
     },
     "motion": {
       "src": "../../../../../../node_modules/motion/dist/es/index.mjs",
       "file": "motion.js",
-<<<<<<< HEAD
-<<<<<<< HEAD
-      "fileHash": "289afaae",
-=======
-      "fileHash": "9d65b139",
->>>>>>> c57373d9e51e4396472b9bcc29ed5ed8d6705f0b
-=======
-      "fileHash": "a154b193",
->>>>>>> 3f950cb (feat: Update company name and founder details)
+      "fileHash": "a8edbd09",
       "needsInterop": false
     },
     "rxjs/operators": {
       "src": "../../../../../../node_modules/rxjs/dist/esm5/operators/index.js",
       "file": "rxjs_operators.js",
-<<<<<<< HEAD
-<<<<<<< HEAD
-      "fileHash": "48a45240",
-=======
-      "fileHash": "5b94e4ff",
->>>>>>> c57373d9e51e4396472b9bcc29ed5ed8d6705f0b
-=======
-      "fileHash": "64a2fbbc",
->>>>>>> 3f950cb (feat: Update company name and founder details)
+      "fileHash": "cc8f5d1e",
       "needsInterop": false
     }
   },
   "chunks": {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    "chunk-3REAEEXS": {
-      "file": "chunk-3REAEEXS.js"
-    },
-    "chunk-P4NJ3LRS": {
-      "file": "chunk-P4NJ3LRS.js"
-    },
-    "chunk-S4G6S2VO": {
-      "file": "chunk-S4G6S2VO.js"
-    },
-    "chunk-T7K5OC3G": {
-      "file": "chunk-T7K5OC3G.js"
-=======
-=======
->>>>>>> 3f950cb (feat: Update company name and founder details)
     "chunk-IMDUXMDZ": {
       "file": "chunk-IMDUXMDZ.js"
     },
@@ -187,10 +77,6 @@
     },
     "chunk-DH77L6SJ": {
       "file": "chunk-DH77L6SJ.js"
-<<<<<<< HEAD
->>>>>>> c57373d9e51e4396472b9bcc29ed5ed8d6705f0b
-=======
->>>>>>> 3f950cb (feat: Update company name and founder details)
     },
     "chunk-3OW44ZN3": {
       "file": "chunk-3OW44ZN3.js"

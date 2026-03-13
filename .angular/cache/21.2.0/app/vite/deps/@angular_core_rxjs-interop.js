@@ -13,11 +13,7 @@ import {
   resource,
   signal,
   untracked
-<<<<<<< HEAD
-} from "./chunk-T7K5OC3G.js";
-=======
 } from "./chunk-DH77L6SJ.js";
->>>>>>> 3f950cb (feat: Update company name and founder details)
 import {
   Observable,
   ReplaySubject,

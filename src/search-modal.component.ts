@@ -32,7 +32,10 @@ export class SearchModalComponent {
   constructor() {
     // Autofocus the input when the modal is created
     effect(() => {
-        this.searchInput()?.nativeElement.focus();
+        const searchInput = this.searchInput();
+        if (searchInput) {
+            searchInput.nativeElement.focus();
+        }
     });
   }
 

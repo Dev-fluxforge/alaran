@@ -97,19 +97,6 @@ import {
   provideNetlifyLoader,
   registerLocaleData,
   setRootDomAdapter
-<<<<<<< HEAD
-<<<<<<< HEAD
-} from "./chunk-P4NJ3LRS.js";
-=======
-} from "./chunk-DQTULCGL.js";
->>>>>>> c57373d9e51e4396472b9bcc29ed5ed8d6705f0b
-import {
-  IMAGE_CONFIG
-} from "./chunk-S4G6S2VO.js";
-import {
-  DOCUMENT
-} from "./chunk-T7K5OC3G.js";
-=======
 } from "./chunk-DQTULCGL.js";
 import {
   IMAGE_CONFIG
@@ -117,7 +104,6 @@ import {
 import {
   DOCUMENT
 } from "./chunk-DH77L6SJ.js";
->>>>>>> 3f950cb (feat: Update company name and founder details)
 import "./chunk-3OW44ZN3.js";
 import "./chunk-H2SRQSE4.js";
 export {
