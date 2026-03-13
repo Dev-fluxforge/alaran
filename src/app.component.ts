@@ -99,10 +99,10 @@ export class AppComponent {
     });
 
     effect(() => {
-      const stat = this.selectedStat();
-      const closeButton = this.statModalCloseButton();
-      if (stat && closeButton) {
-        closeButton.nativeElement.focus();
+      if (this.selectedStat()) {
+        setTimeout(() => {
+          this.statModalCloseButton()?.nativeElement.focus();
+        }, 100);
       }
     });
   }
@@ -114,10 +114,9 @@ export class AppComponent {
   }
 
   onTab(event: KeyboardEvent): void {
-    const container = this.statModalContainer();
-    if (!this.selectedStat() || !container) return;
+    if (!this.selectedStat() || !this.statModalContainer()) return;
     
-    const focusableElements = container.nativeElement.querySelectorAll(
+    const focusableElements = this.statModalContainer()!.nativeElement.querySelectorAll(
       'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
     );
     const firstElement = focusableElements[0] as HTMLElement;

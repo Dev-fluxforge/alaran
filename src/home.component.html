@@ -168,168 +168,146 @@
 </section>
 
 <!-- Testimonials Section -->
-<section id="testimonials" class="py-32 px-6 bg-white dark:bg-background-dark/50 overflow-hidden">
+<section id="testimonials" class="py-24 px-6 bg-white dark:bg-background-dark/50 overflow-hidden">
     <div class="max-w-7xl mx-auto">
-        <div class="flex flex-col md:flex-row items-center justify-between mb-20 gap-8">
-            <div class="max-w-2xl">
-                <span class="text-primary font-bold tracking-[0.3em] uppercase text-xs mb-4 block">Client Feedback</span>
-                <h2 class="text-5xl md:text-6xl font-bold text-deep-green dark:text-white leading-tight">Voices of <span class="text-primary italic">Trust</span></h2>
-            </div>
-            <div class="hidden md:flex gap-4">
-                <button 
-                    (click)="prevTestimonial()"
-                    class="w-14 h-14 border border-deep-green/10 dark:border-white/10 rounded-full flex items-center justify-center text-deep-green dark:text-white hover:bg-primary hover:text-deep-green transition-all focus-visible:outline-primary"
-                    aria-label="Previous testimonial">
-                    <span class="material-symbols-outlined">west</span>
-                </button>
-                <button 
-                    (click)="nextTestimonial()"
-                    class="w-14 h-14 bg-deep-green text-white dark:bg-white dark:text-deep-green rounded-full flex items-center justify-center hover:bg-primary hover:text-deep-green transition-all focus-visible:outline-primary"
-                    aria-label="Next testimonial">
-                    <span class="material-symbols-outlined">east</span>
-                </button>
-            </div>
+        <div class="text-center max-w-2xl mx-auto mb-16">
+            <span class="text-primary font-bold tracking-widest uppercase text-sm">Client Feedback</span>
+            <h2 class="text-4xl font-bold mt-2 text-deep-green dark:text-white">What Our Partners Say</h2>
         </div>
-
-        <div class="relative group max-w-5xl mx-auto" role="region" aria-roledescription="carousel" aria-label="Client testimonials">
-            <div #testimonialCard class="relative min-h-[450px] md:min-h-[400px]" aria-live="polite">
+        <div class="relative group max-w-4xl mx-auto" role="region" aria-roledescription="carousel" aria-label="Client testimonials">
+            <!-- Carousel Track (Fade Transition) -->
+            <div class="relative min-h-[400px] md:min-h-[350px]" aria-live="polite">
                 @for(testimonial of testimonials(); track testimonial.author; let i = $index) {
-                    @if (currentTestimonialIndex() === i) {
-                        <div 
-                            class="absolute inset-0"
-                            role="group"
-                            aria-roledescription="slide"
-                            [attr.aria-label]="(i + 1) + ' of ' + testimonials().length">
-                            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center h-full">
-                                <!-- Quote Content -->
-                                <div class="lg:col-span-8">
-                                    <div class="relative">
-                                        <span class="text-[120px] font-serif text-primary/10 absolute -top-16 -left-8 pointer-events-none">"</span>
-                                        <p class="text-2xl md:text-4xl font-medium text-deep-green dark:text-white leading-relaxed mb-10 relative z-10">
-                                            {{ testimonial.quote }}
-                                        </p>
-                                        <div class="flex items-center gap-6">
-                                            <div class="w-16 h-16 bg-primary/20 rounded-2xl flex items-center justify-center text-primary font-bold text-2xl">
-                                                {{ testimonial.author[0] }}
-                                            </div>
-                                            <div>
-                                                <h4 class="text-xl font-bold text-deep-green dark:text-white">{{ testimonial.author }}</h4>
-                                                <p class="text-sm text-deep-green/50 dark:text-white/50 uppercase tracking-widest font-bold">{{ testimonial.company }}</p>
-                                            </div>
-                                        </div>
-                                    </div>
+                    <div 
+                        class="absolute inset-0 transition-all duration-700 ease-in-out transform"
+                        role="group"
+                        aria-roledescription="slide"
+                        [attr.aria-label]="(i + 1) + ' of ' + testimonials().length"
+                        [class.opacity-100]="currentTestimonialIndex() === i"
+                        [class.scale-100]="currentTestimonialIndex() === i"
+                        [class.translate-y-0]="currentTestimonialIndex() === i"
+                        [class.opacity-0]="currentTestimonialIndex() !== i"
+                        [class.scale-95]="currentTestimonialIndex() !== i"
+                        [class.translate-y-4]="currentTestimonialIndex() !== i"
+                        [class.pointer-events-none]="currentTestimonialIndex() !== i"
+                        [class.z-10]="currentTestimonialIndex() === i">
+                        <div class="bg-background-light dark:bg-deep-green/80 p-8 md:p-12 rounded-3xl border border-deep-green/10 dark:border-white/10 h-full flex flex-col justify-center text-center items-center">
+                            <div class="flex gap-1 mb-6 text-accent-yellow">
+                                @for(star of [1,2,3,4,5]; track star) {
+                                    <span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1">star</span>
+                                }
+                            </div>
+                            <span class="material-symbols-outlined text-primary text-5xl mb-6 block">format_quote</span>
+                            <p class="text-deep-green/80 dark:text-white/80 text-lg md:text-xl mb-8 italic leading-relaxed">"{{ testimonial.quote }}"</p>
+                            <div class="flex flex-col items-center gap-3">
+                                <div class="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center text-primary font-bold">
+                                    {{ testimonial.author[0] }}
                                 </div>
-                                <!-- Visual Accent / Rating -->
-                                <div class="lg:col-span-4 flex flex-col items-center lg:items-end justify-center">
-                                    <div class="bg-background-light dark:bg-white/5 p-10 rounded-3xl border border-deep-green/5 dark:border-white/5 text-center lg:text-right w-full">
-                                        <div class="flex justify-center lg:justify-end gap-1 mb-4 text-accent-yellow">
-                                            @for(star of [1,2,3,4,5]; track star) {
-                                                <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1">star</span>
-                                            }
-                                        </div>
-                                        <p class="text-xs font-bold uppercase tracking-widest text-deep-green/40 dark:text-white/40 mb-2">Verified Partner</p>
-                                        <p class="text-deep-green dark:text-white font-bold">Lagos, Nigeria</p>
-                                    </div>
+                                <div>
+                                    <h4 class="font-bold text-lg">{{ testimonial.author }}</h4>
+                                    <p class="text-sm text-deep-green/50 dark:text-white/50">{{ testimonial.company }}</p>
                                 </div>
                             </div>
                         </div>
-                    }
+                    </div>
                 }
             </div>
 
-            <!-- Progress Bar -->
-            <div class="mt-16 flex items-center gap-4">
-                <span class="text-xs font-mono text-deep-green/40 dark:text-white/40">0{{ currentTestimonialIndex() + 1 }}</span>
-                <div class="flex-grow h-px bg-deep-green/10 dark:bg-white/10 relative">
-                    <div 
-                        class="absolute top-0 left-0 h-full bg-primary transition-all duration-500" 
-                        [style.width.%]="((currentTestimonialIndex() + 1) / testimonials().length) * 100">
-                    </div>
-                </div>
-                <span class="text-xs font-mono text-deep-green/40 dark:text-white/40">0{{ testimonials().length }}</span>
+            <!-- Navigation Buttons -->
+            <button 
+                (click)="prevTestimonial()"
+                class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-16 w-12 h-12 bg-white dark:bg-deep-green shadow-xl rounded-full flex items-center justify-center text-deep-green dark:text-white hover:bg-primary hover:text-deep-green transition-all z-10 focus-visible:outline-primary"
+                aria-label="Previous testimonial">
+                <span class="material-symbols-outlined">chevron_left</span>
+            </button>
+            <button 
+                (click)="nextTestimonial()"
+                class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-16 w-12 h-12 bg-white dark:bg-deep-green shadow-xl rounded-full flex items-center justify-center text-deep-green dark:text-white hover:bg-primary hover:text-deep-green transition-all z-10 focus-visible:outline-primary"
+                aria-label="Next testimonial">
+                <span class="material-symbols-outlined">chevron_right</span>
+            </button>
+
+            <!-- Pagination Indicators -->
+            <div class="flex justify-center gap-3 mt-12">
+                @for(testimonial of testimonials(); track testimonial.author; let i = $index) {
+                    <button 
+                        (click)="setTestimonialIndex(i)"
+                        [class]="'w-3 h-3 rounded-full transition-all ' + (currentTestimonialIndex() === i ? 'bg-primary w-8' : 'bg-deep-green/20 dark:bg-white/20')"
+                        [attr.aria-label]="'Go to testimonial ' + (i + 1)">
+                    </button>
+                }
             </div>
         </div>
     </div>
 </section>
 
 <!-- Surveying Quotes Section -->
-<section class="py-32 px-6 bg-deep-green text-white overflow-hidden relative">
-    <!-- Background Accents -->
-    <div class="absolute top-0 right-0 w-1/2 h-full bg-primary/5 -skew-x-12 translate-x-1/4 pointer-events-none"></div>
-    
-    <div class="max-w-7xl mx-auto relative z-10">
-        <div class="text-center max-w-3xl mx-auto mb-20">
-            <span class="text-primary font-bold tracking-[0.4em] uppercase text-xs mb-4 block">Wisdom from the Field</span>
-            <h2 class="text-5xl font-bold leading-tight">Voices of <span class="italic text-primary">Precision</span></h2>
+<section class="py-24 px-6 bg-background-light dark:bg-background-dark border-y border-deep-green/5 overflow-hidden">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+            <span class="text-primary font-bold tracking-widest uppercase text-sm">Wisdom from the Field</span>
+            <h2 class="text-4xl font-bold mt-2 text-deep-green dark:text-white">Voices of Precision</h2>
         </div>
         
-        <div #quoteCard class="relative max-w-5xl mx-auto" role="region" aria-roledescription="carousel" aria-label="Surveying wisdom quotes">
+        <div class="relative max-w-4xl mx-auto" role="region" aria-roledescription="carousel" aria-label="Surveying wisdom quotes">
+            <!-- Carousel Track (Fade Transition) -->
             <div class="relative min-h-[500px] md:min-h-[450px]" aria-live="polite">
                 @for(item of surveyingQuotes(); track item.author; let i = $index) {
-                    @if (currentQuoteIndex() === i) {
-                        <div 
-                            class="absolute inset-0"
-                            role="group"
-                            aria-roledescription="slide"
-                            [attr.aria-label]="(i + 1) + ' of ' + surveyingQuotes().length">
-                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center h-full">
-                                <div class="order-2 lg:order-1">
-                                    <div class="mb-8">
-                                        <img [src]="'https://flagcdn.com/w80/' + item.country + '.png'" [alt]="item.country + ' flag'" class="h-10 w-auto rounded shadow-sm opacity-80" referrerpolicy="no-referrer">
-                                    </div>
-                                    <p class="text-3xl md:text-4xl font-serif italic text-white mb-10 leading-snug">
-                                        "{{ item.quote }}"
-                                    </p>
-                                    <div class="flex items-center gap-4">
-                                        <div class="h-px w-12 bg-primary"></div>
-                                        <div>
-                                            <h4 class="text-2xl font-bold text-white">{{ item.author }}</h4>
-                                            <p class="text-primary font-medium uppercase tracking-widest text-xs mt-1">{{ item.title }}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="order-1 lg:order-2 flex justify-center lg:justify-end">
-                                    <div class="relative group">
-                                        <div class="absolute -inset-4 bg-primary/20 rounded-full blur-2xl group-hover:bg-primary/30 transition-all duration-700"></div>
-                                        <div class="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-8 border-white/10 shadow-2xl">
-                                            <img [src]="item.imageUrl" [alt]="item.author" class="w-full h-full object-cover hover:scale-105 transition-all duration-700" referrerPolicy="no-referrer">
-                                        </div>
-                                        <!-- Floating Badge -->
-                                        <div class="absolute -bottom-4 -right-4 bg-primary text-deep-green p-6 rounded-2xl shadow-2xl rotate-12">
-                                            <span class="material-symbols-outlined text-3xl">verified</span>
-                                        </div>
-                                    </div>
+                    <div 
+                        class="absolute inset-0 transition-all duration-1000 ease-in-out"
+                        role="group"
+                        aria-roledescription="slide"
+                        [attr.aria-label]="(i + 1) + ' of ' + surveyingQuotes().length"
+                        [class.opacity-100]="currentQuoteIndex() === i"
+                        [class.opacity-0]="currentQuoteIndex() !== i"
+                        [class.pointer-events-none]="currentQuoteIndex() !== i"
+                        [class.z-10]="currentQuoteIndex() === i">
+                        <div class="py-12 flex flex-col items-center text-center h-full justify-center">
+                            <div class="relative inline-block mb-10">
+                                <div class="w-40 h-40 rounded-full overflow-hidden border-4 border-primary/30 shadow-2xl mx-auto">
+                                    <img [src]="item.imageUrl" [alt]="item.author" class="w-full h-full object-cover" referrerPolicy="no-referrer">
                                 </div>
                             </div>
+                            <p class="text-2xl md:text-3xl font-serif italic text-deep-green dark:text-white mb-10 leading-snug">
+                                "{{ item.quote }}"
+                            </p>
+                            <div class="flex flex-col items-center">
+                                <div class="h-1 w-12 bg-primary mb-6 rounded-full"></div>
+                                <h4 class="text-xl font-bold text-deep-green dark:text-white">{{ item.author }}</h4>
+                                <p class="text-primary font-medium uppercase tracking-widest text-xs mt-1">{{ item.title }}</p>
+                            </div>
                         </div>
-                    }
+                    </div>
                 }
             </div>
 
-            <!-- Navigation -->
-            <div class="flex items-center justify-between mt-12">
-                <div class="flex gap-2">
-                    @for(item of surveyingQuotes(); track item.author; let i = $index) {
-                        <button 
-                            (click)="setQuoteIndex(i)"
-                            [class]="'h-1 transition-all duration-500 ' + (currentQuoteIndex() === i ? 'bg-primary w-12' : 'bg-white/20 w-4')"
-                            [attr.aria-label]="'Go to quote ' + (i + 1)">
-                        </button>
-                    }
-                </div>
-                <div class="hidden md:flex gap-4">
-                    <button (click)="prevQuote()" class="text-white/50 hover:text-primary transition-colors" aria-label="Previous quote">
-                        <span class="material-symbols-outlined text-4xl">west</span>
+            <!-- Navigation Buttons -->
+            <button 
+                (click)="prevQuote()"
+                class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-16 w-12 h-12 flex items-center justify-center text-deep-green/30 dark:text-white/30 hover:text-primary transition-colors z-10 focus-visible:outline-primary"
+                aria-label="Previous quote">
+                <span class="material-symbols-outlined text-4xl">west</span>
+            </button>
+            <button 
+                (click)="nextQuote()"
+                class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-16 w-12 h-12 flex items-center justify-center text-deep-green/30 dark:text-white/30 hover:text-primary transition-colors z-10 focus-visible:outline-primary"
+                aria-label="Next quote">
+                <span class="material-symbols-outlined text-4xl">east</span>
+            </button>
+
+            <!-- Pagination Indicators -->
+            <div class="flex justify-center gap-2 mt-8">
+                @for(item of surveyingQuotes(); track item.author; let i = $index) {
+                    <button 
+                        (click)="setQuoteIndex(i)"
+                        [class]="'h-1 transition-all duration-500 ' + (currentQuoteIndex() === i ? 'bg-primary w-12' : 'bg-deep-green/10 dark:bg-white/10 w-4')"
+                        [attr.aria-label]="'Go to quote ' + (i + 1)">
                     </button>
-                    <button (click)="nextQuote()" class="text-white/50 hover:text-primary transition-colors" aria-label="Next quote">
-                        <span class="material-symbols-outlined text-4xl">east</span>
-                    </button>
-                </div>
+                }
             </div>
         </div>
     </div>
 </section>
-
 
 <!-- CTA Section -->
 <section class="py-20 px-6">
