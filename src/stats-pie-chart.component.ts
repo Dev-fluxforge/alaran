@@ -1,5 +1,5 @@
 
-import { Component, ElementRef, ViewChild, AfterViewInit, inject, effect, ChangeDetectionStrategy, OnDestroy, computed } from '@angular/core';
+import { Component, ElementRef, viewChild, AfterViewInit, inject, effect, ChangeDetectionStrategy, OnDestroy, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import * as d3 from 'd3';
 import { DataService } from './data.service';
@@ -54,8 +54,8 @@ import { DataService } from './data.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StatsPieChartComponent implements AfterViewInit, OnDestroy {
-  @ViewChild('chartContainer') container!: ElementRef<HTMLDivElement>;
-  @ViewChild('svg') svgElement!: ElementRef<SVGSVGElement>;
+  svgElement = viewChild<ElementRef<SVGSVGElement>>('svg');
+  container = viewChild<ElementRef<HTMLDivElement>>('chartContainer');
 
   private dataService = inject(DataService);
   private resizeObserver?: ResizeObserver;
@@ -66,7 +66,8 @@ export class StatsPieChartComponent implements AfterViewInit, OnDestroy {
   constructor() {
     effect(() => {
       const data = this.chartData();
-      if (data.length > 0 && this.svgElement) {
+      const svg = this.svgElement();
+      if (data.length > 0 && svg) {
         this.renderChart();
       }
     });
@@ -95,9 +96,12 @@ export class StatsPieChartComponent implements AfterViewInit, OnDestroy {
     
     if (typeof window !== 'undefined') {
       this.resizeObserver = new ResizeObserver(() => {
-        this.renderChart();
+        requestAnimationFrame(() => this.renderChart());
       });
-      this.resizeObserver.observe(this.container.nativeElement);
+      const container = this.container();
+      if (container) {
+        this.resizeObserver.observe(container.nativeElement);
+      }
     }
   }
 
@@ -106,11 +110,13 @@ export class StatsPieChartComponent implements AfterViewInit, OnDestroy {
   }
 
   private renderChart() {
-    if (!this.svgElement || !this.container) return;
+    const svgEl = this.svgElement();
+    const containerEl = this.container();
+    if (!svgEl || !containerEl) return;
 
     const data = this.chartData();
-    const element = this.svgElement.nativeElement;
-    const container = this.container.nativeElement;
+    const element = svgEl.nativeElement;
+    const container = containerEl.nativeElement;
     
     const width = Math.min(container.clientWidth, container.clientHeight);
     const height = width;

@@ -1,6 +1,7 @@
 
 import { Component, ChangeDetectionStrategy, inject, signal } from '@angular/core';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-contact',
@@ -11,6 +12,7 @@ import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 })
 export class ContactComponent {
   private fb = inject(FormBuilder);
+  private http = inject(HttpClient);
   
   contactForm = this.fb.group({
     fullName: ['', Validators.required],
@@ -24,12 +26,17 @@ export class ContactComponent {
   onSubmit(): void {
     if (this.contactForm.valid) {
       this.formStatus.set('submitting');
-      console.log(this.contactForm.value);
-      // Simulate API call
-      setTimeout(() => {
-        this.formStatus.set('success');
-        // this.contactForm.reset();
-      }, 1500);
+      
+      this.http.post('/api/contact', this.contactForm.value).subscribe({
+        next: (response: any) => {
+          this.formStatus.set('success');
+          this.contactForm.reset();
+        },
+        error: (error) => {
+          console.error('Error sending message:', error);
+          this.formStatus.set('error');
+        }
+      });
     } else {
       this.contactForm.markAllAsTouched();
     }
