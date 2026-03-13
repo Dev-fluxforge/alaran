@@ -8,9 +8,206 @@
     <meta name="description" content="Professional surveying and geospatial solutions company specializing in engineering, mapping, and cadastral services. Delivering precision and accuracy since 2008." />
     <meta name="keywords" content="surveying, geospatial, mapping, cadastral, engineering, Nigeria, West Africa, GIS, LiDAR, hydrography" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#19e64d",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#112115",
+                        "accent-yellow": "#FFD700",
+                        "deep-green": "#0e1b11",
+                        "sand": "#C2B280",
+                        "water": "#0077be",
+                        "space": "#1B1B1B",
+                        "light-blue": "#ADD8E6",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    keyframes: {
+                        'scrolling-text': {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-100%)' },
+                        },
+                        'scroll-linear': {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-50%)' }
+                        },
+                        'float': {
+                            '0%, 100%': { transform: 'translateY(-50%) rotate(6deg)' },
+                            '50%': { transform: 'translateY(-55%) rotate(8deg)' }
+                        }
+                    },
+                    animation: {
+                        'scrolling-text': 'scrolling-text 40s linear infinite',
+                        'scroll-linear': 'scroll-linear 20s linear infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            --primary-color: #19e64d;
+            --deep-green-color: #0e1b11;
+        }
+        .glass-nav {
+            background: rgba(246, 248, 246, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .dark .glass-nav {
+            background: rgba(17, 33, 21, 0.8);
+        }
+        .hero-video-container {
+            position: absolute;
+            top: -15%;
+            left: 0;
+            width: 100%;
+            height: 130%;
+            overflow: hidden;
+            z-index: -1;
+            will-change: transform;
+        }
+        #hero-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(25, 230, 77, 0.1);
+            border-color: rgba(25, 230, 77, 0.3);
+            transition: all 0.3s ease-in-out;
+        }
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 0,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        section {
+            animation: fadeIn 1s ease-out forwards;
+        }
+        @keyframes fadeInBackdrop {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .modal-backdrop-fade-in {
+            animation: fadeInBackdrop 0.3s ease-out forwards;
+        }
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .modal-content-slide-in-up {
+            animation: slideInUp 0.4s ease-out forwards;
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0.5); opacity: 0; }
+            70% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .animate-pop {
+            animation: popIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        /* Hero Text Animation */
+        @keyframes revealUp {
+            from {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        .hero-text-line {
+            display: block;
+            overflow: hidden;
+        }
+        .hero-text-line span {
+            display: block;
+            animation: revealUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+            opacity: 0;
+        }
+        h1 .hero-text-line:nth-child(2) span { animation-delay: 0.1s; }
+        h1 .hero-text-line:nth-child(3) span { animation-delay: 0.2s; }
+        .hero-subtext {
+            animation: revealUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards;
+            opacity: 0;
+        }
+
+        /* Accessibility */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+        :focus-visible {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+
+        @keyframes float-slow {
+            0%, 100% { transform: translate(0, 0); }
+            33% { transform: translate(30px, -50px); }
+            66% { transform: translate(-20px, 20px); }
+        }
+        .animate-float-slow {
+            animation: float-slow 20s ease-in-out infinite;
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "rxjs": "https://esm.sh/rxjs@^7.8.2?conditions=es2015",
+    "rxjs/operators": "https://esm.sh/rxjs@^7.8.2/operators?conditions=es2015",
+    "rxjs/ajax": "https://esm.sh/rxjs@^7.8.2/ajax?conditions=es2015",
+    "rxjs/webSocket": "https://esm.sh/rxjs@^7.8.2/webSocket?conditions=es2015",
+    "rxjs/testing": "https://esm.sh/rxjs@^7.8.2/testing?conditions=es2015",
+    "rxjs/fetch": "https://esm.sh/rxjs@^7.8.2/fetch?conditions=es2015",
+    "leaflet": "https://esm.sh/leaflet@^1.9.4",
+    "@angular/compiler": "https://esm.sh/@angular/compiler@^21.1.4?external=rxjs",
+    "@angular/platform-browser": "https://esm.sh/@angular/platform-browser@^21.1.4?external=rxjs",
+    "@angular/core": "https://esm.sh/@angular/core@^21.1.4?external=rxjs",
+    "@angular/common": "https://esm.sh/@angular/common@^21.1.4?external=rxjs",
+    "@angular/router": "https://esm.sh/@angular/router@^21.1.4?external=rxjs",
+    "@angular/forms": "https://esm.sh/@angular/forms@^21.1.4?external=rxjs",
+    "@angular/core/rxjs-interop": "https://esm.sh/@angular/core@^21.1.4/rxjs-interop?external=rxjs",
+    "rxjs/": "https://esm.sh/rxjs@^7.8.2/",
+    "@angular/core/": "https://esm.sh/@angular/core@^21.1.4/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
 </head>
 <body class="bg-background-light dark:bg-background-dark text-deep-green dark:text-white antialiased">
     <app-root></app-root>

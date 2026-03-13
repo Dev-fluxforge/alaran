@@ -36,8 +36,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   quoteCard = viewChild<ElementRef>('quoteCard');
 
   surveyingQuotes = signal([
-    { quote: "I was once a surveyor.", author: "George Washington", title: "1st U.S. President", imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Gilbert_Stuart_Williamstown_Portrait_of_George_Washington.jpg/500px-Gilbert_Stuart_Williamstown_Portrait_of_George_Washington.jpg", country: "us" },
-    { quote: "The work of the surveyor is the basis of all property rights.", author: "Abraham Lincoln", title: "16th U.S. President", imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Abraham_Lincoln_head_on_shoulders_photo_portrait.jpg/800px-Abraham_Lincoln_head_on_shoulders_photo_portrait.jpg", country: "us" },
+    { quote: "I was once a surveyor.", author: "George Washington", title: "1st U.S. President", imageUrl: "https://images.unsplash.com/photo-1580129924098-9533375803fa?auto=format&fit=crop&q=80&w=800", country: "us" },
+    { quote: "The work of the surveyor is the basis of all property rights.", author: "Abraham Lincoln", title: "16th U.S. President", imageUrl: "https://images.unsplash.com/photo-1585076641399-5c0f74408027?auto=format&fit=crop&q=80&w=800", country: "us" },
     { quote: "The surveyor is the pioneer of civilization.", author: "Thomas Jefferson", title: "3rd U.S. President", imageUrl: "https://images.unsplash.com/photo-1599447421416-3414500d18a5?auto=format&fit=crop&q=80&w=400&h=400", country: "us" },
     { quote: "Geography is the subject which holds the key to our future.", author: "Michael Palin", title: "Geographer & Broadcaster", imageUrl: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=400&h=400", country: "gb" },
     { quote: "Everything happens somewhere.", author: "Nancy Tosta", title: "Geospatial Expert", imageUrl: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400&h=400", country: "us" },
@@ -136,6 +136,25 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   setQuoteIndex(index: number): void {
     this.currentQuoteIndex.set(index);
+  }
+
+  @HostListener('window:keydown', ['$event'])
+  handleKeyDown(event: KeyboardEvent) {
+    // Don't trigger if user is typing in an input or textarea
+    const target = event.target as HTMLElement;
+    if (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA') {
+      return;
+    }
+
+    if (event.key === 'ArrowRight') {
+      this.nextTestimonial();
+      this.nextQuote();
+      event.preventDefault();
+    } else if (event.key === 'ArrowLeft') {
+      this.prevTestimonial();
+      this.prevQuote();
+      event.preventDefault();
+    }
   }
 }
 
