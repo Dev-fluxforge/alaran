@@ -1,10 +1,14 @@
 import {
   Title
 <<<<<<< HEAD
+<<<<<<< HEAD
 } from "./chunk-3REAEEXS.js";
 =======
 } from "./chunk-IMDUXMDZ.js";
 >>>>>>> c57373d9e51e4396472b9bcc29ed5ed8d6705f0b
+=======
+} from "./chunk-IMDUXMDZ.js";
+>>>>>>> 3f950cb (feat: Update company name and founder details)
 import {
   HashLocationStrategy,
   LOCATION_INITIALIZED,
@@ -17,10 +21,14 @@ import {
   PlatformNavigation,
   ViewportScroller
 <<<<<<< HEAD
+<<<<<<< HEAD
 } from "./chunk-P4NJ3LRS.js";
 =======
 } from "./chunk-DQTULCGL.js";
 >>>>>>> c57373d9e51e4396472b9bcc29ed5ed8d6705f0b
+=======
+} from "./chunk-DQTULCGL.js";
+>>>>>>> 3f950cb (feat: Update company name and founder details)
 import {
   APP_BOOTSTRAP_LISTENER,
   ApplicationRef,
@@ -69,7 +77,11 @@ import {
   ɵɵloadQuery,
   ɵɵqueryRefresh,
   ɵɵsanitizeUrlOrResourceUrl
+<<<<<<< HEAD
 } from "./chunk-S4G6S2VO.js";
+=======
+} from "./chunk-ZA3BDLLP.js";
+>>>>>>> 3f950cb (feat: Update company name and founder details)
 import {
   DOCUMENT,
   DestroyRef,
@@ -100,7 +112,11 @@ import {
   ɵɵdefineInjectable,
   ɵɵdefineInjector,
   ɵɵinject
+<<<<<<< HEAD
 } from "./chunk-T7K5OC3G.js";
+=======
+} from "./chunk-DH77L6SJ.js";
+>>>>>>> 3f950cb (feat: Update company name and founder details)
 import {
   BehaviorSubject,
   EMPTY,

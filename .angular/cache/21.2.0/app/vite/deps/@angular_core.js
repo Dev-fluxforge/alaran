@@ -422,7 +422,11 @@ import {
   ɵɵvalidateAttribute,
   ɵɵviewQuery,
   ɵɵviewQuerySignal
+<<<<<<< HEAD
 } from "./chunk-S4G6S2VO.js";
+=======
+} from "./chunk-ZA3BDLLP.js";
+>>>>>>> 3f950cb (feat: Update company name and founder details)
 import {
   CONTAINER_HEADER_OFFSET,
   ChangeDetectionScheduler,
@@ -504,7 +508,11 @@ import {
   ɵɵnamespaceSVG,
   ɵɵresetView,
   ɵɵrestoreView
+<<<<<<< HEAD
 } from "./chunk-T7K5OC3G.js";
+=======
+} from "./chunk-DH77L6SJ.js";
+>>>>>>> 3f950cb (feat: Update company name and founder details)
 import "./chunk-3OW44ZN3.js";
 import "./chunk-H2SRQSE4.js";
 export {

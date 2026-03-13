@@ -98,6 +98,7 @@ import {
   registerLocaleData,
   setRootDomAdapter
 <<<<<<< HEAD
+<<<<<<< HEAD
 } from "./chunk-P4NJ3LRS.js";
 =======
 } from "./chunk-DQTULCGL.js";
@@ -108,6 +109,15 @@ import {
 import {
   DOCUMENT
 } from "./chunk-T7K5OC3G.js";
+=======
+} from "./chunk-DQTULCGL.js";
+import {
+  IMAGE_CONFIG
+} from "./chunk-ZA3BDLLP.js";
+import {
+  DOCUMENT
+} from "./chunk-DH77L6SJ.js";
+>>>>>>> 3f950cb (feat: Update company name and founder details)
 import "./chunk-3OW44ZN3.js";
 import "./chunk-H2SRQSE4.js";
 export {

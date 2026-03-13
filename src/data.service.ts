@@ -147,7 +147,11 @@ export class DataService {
     {
       icon: 'water',
       title: 'Kongsberg Echo Sounder',
+<<<<<<< HEAD
       description: 'Advanced multibeam echosounders for high-resolution seafloor mapping and underwater object detection.'
+=======
+      description: 'Advanced multibeam echosounders for high-resolution seafloor mapping and underwater object detection. We also deploy dual frequency single beam in shallow water.'
+>>>>>>> 3f950cb (feat: Update company name and founder details)
     },
     {
       icon: 'scanner',
@@ -162,7 +166,11 @@ export class DataService {
     {
       icon: 'share_location',
       title: 'GIS & Data Processing',
+<<<<<<< HEAD
       description: 'Leveraging ArcGIS and QGIS for spatial analysis, data management, and creating insightful cartographic products.'
+=======
+      description: 'Leveraging ArcGIS and QGIS for spatial analysis, data management, and creating insightful cartographic products.For hydrographic operations, We utilize EIVA and HYPACK for the acquisition and processing of seabed and water column data.'
+>>>>>>> 3f950cb (feat: Update company name and founder details)
     }
   ]);
 
