@@ -1,7 +1,6 @@
 
 import { Component, ChangeDetectionStrategy, inject, signal } from '@angular/core';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-contact',
@@ -12,7 +11,6 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ContactComponent {
   private fb = inject(FormBuilder);
-  private http = inject(HttpClient);
   
   contactForm = this.fb.group({
     fullName: ['', Validators.required],
@@ -27,16 +25,26 @@ export class ContactComponent {
     if (this.contactForm.valid) {
       this.formStatus.set('submitting');
       
-      this.http.post('/api/contact', this.contactForm.value).subscribe({
-        next: (response: any) => {
-          this.formStatus.set('success');
-          this.contactForm.reset();
-        },
-        error: (error) => {
-          console.error('Error sending message:', error);
-          this.formStatus.set('error');
-        }
-      });
+      const formValue = this.contactForm.value;
+      const recipient = 'alarangeoserviceslimited@gmail.com';
+      const subject = encodeURIComponent(formValue.subject || 'Contact from Website');
+      const body = encodeURIComponent(
+        `Full Name: ${formValue.fullName}\n` +
+        `Email: ${formValue.email}\n\n` +
+        `Message:\n${formValue.message}`
+      );
+      
+      // Construct the mailto link
+      const mailtoLink = `mailto:${recipient}?subject=${subject}&body=${body}`;
+      
+      // Open the user's default email client
+      window.location.href = mailtoLink;
+      
+      // Set status to success and reset form
+      setTimeout(() => {
+        this.formStatus.set('success');
+        this.contactForm.reset();
+      }, 500);
     } else {
       this.contactForm.markAllAsTouched();
     }
