@@ -23,7 +23,8 @@
               "src/styles.css"
             ],
             "assets": [
-              "src/assets"
+              "src/assets",
+              { "glob": "**/*", "input": "public", "output": "/" }
             ]
           },
           "configurations": {
