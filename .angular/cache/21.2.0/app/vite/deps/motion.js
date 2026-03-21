@@ -1848,7 +1848,6 @@ function memoSupports(callback, supportsFlag) {
 
 // node_modules/motion-dom/dist/es/utils/supports/scroll-timeline.mjs
 var supportsScrollTimeline = memoSupports(() => window.ScrollTimeline !== void 0, "scrollTimeline");
-var supportsViewTimeline = memoSupports(() => window.ViewTimeline !== void 0, "viewTimeline");
 
 // node_modules/motion-dom/dist/es/utils/supports/linear-easing.mjs
 var supportsLinearEasing = memoSupports(() => {
@@ -2068,17 +2067,13 @@ var NativeAnimation = class extends WithPromise {
   /**
    * Attaches a timeline to the animation, for instance the `ScrollTimeline`.
    */
-  attachTimeline({ timeline, rangeStart, rangeEnd, observe }) {
+  attachTimeline({ timeline, observe }) {
     if (this.allowFlatten) {
       this.animation.effect?.updateTiming({ easing: "linear" });
     }
     this.animation.onfinish = null;
     if (timeline && supportsScrollTimeline()) {
       this.animation.timeline = timeline;
-      if (rangeStart)
-        this.animation.rangeStart = rangeStart;
-      if (rangeEnd)
-        this.animation.rangeEnd = rangeEnd;
       return noop;
     } else {
       return observe(this);
@@ -5256,15 +5251,9 @@ function transformAxis(axis, axisTranslate, axisScale, boxScale, axisOrigin = 0.
   const originPoint = mixNumber(axis.min, axis.max, axisOrigin);
   applyAxisDelta(axis, axisTranslate, axisScale, originPoint, boxScale);
 }
-function resolveAxisTranslate(value, axis) {
-  if (typeof value === "string") {
-    return parseFloat(value) / 100 * (axis.max - axis.min);
-  }
-  return value;
-}
 function transformBox(box, transform2) {
-  transformAxis(box.x, resolveAxisTranslate(transform2.x, box.x), transform2.scaleX, transform2.scale, transform2.originX);
-  transformAxis(box.y, resolveAxisTranslate(transform2.y, box.y), transform2.scaleY, transform2.scale, transform2.originY);
+  transformAxis(box.x, transform2.x, transform2.scaleX, transform2.scale, transform2.originX);
+  transformAxis(box.y, transform2.y, transform2.scaleY, transform2.scale, transform2.originY);
 }
 
 // node_modules/motion-dom/dist/es/projection/utils/measure.mjs
@@ -8109,13 +8098,6 @@ var createScopedWaapiAnimate = (scope) => {
 };
 var animateMini = createScopedWaapiAnimate();
 
-// node_modules/framer-motion/dist/es/render/dom/scroll/utils/can-use-native-timeline.mjs
-function canUseNativeTimeline(target) {
-  if (typeof window === "undefined")
-    return false;
-  return target ? supportsViewTimeline() : supportsScrollTimeline();
-}
-
 // node_modules/framer-motion/dist/es/render/dom/scroll/info.mjs
 var maxElapsed2 = 50;
 var createAxisInfo = () => ({
@@ -8252,18 +8234,6 @@ function resolveOffset(offset, containerLength, targetLength, targetInset) {
 
 // node_modules/framer-motion/dist/es/render/dom/scroll/offsets/presets.mjs
 var ScrollOffset = {
-  Enter: [
-    [0, 1],
-    [1, 1]
-  ],
-  Exit: [
-    [0, 0],
-    [1, 0]
-  ],
-  Any: [
-    [1, 0],
-    [0, 1]
-  ],
   All: [
     [0, 0],
     [1, 1]
@@ -8423,34 +8393,9 @@ function scrollInfo(onScroll, _a = {}) {
   };
 }
 
-// node_modules/framer-motion/dist/es/render/dom/scroll/utils/offset-to-range.mjs
-var presets = [
-  [ScrollOffset.Enter, "entry"],
-  [ScrollOffset.Exit, "exit"],
-  [ScrollOffset.Any, "cover"],
-  [ScrollOffset.All, "contain"]
-];
-function matchesPreset(offset, preset) {
-  if (offset.length !== 2)
-    return false;
-  for (let i = 0; i < 2; i++) {
-    const o = offset[i];
-    const p = preset[i];
-    if (!Array.isArray(o) || o.length !== 2 || o[0] !== p[0] || o[1] !== p[1])
-      return false;
-  }
-  return true;
-}
-function offsetToViewTimelineRange(offset) {
-  if (!offset) {
-    return { rangeStart: "contain 0%", rangeEnd: "contain 100%" };
-  }
-  for (const [preset, name] of presets) {
-    if (matchesPreset(offset, preset)) {
-      return { rangeStart: `${name} 0%`, rangeEnd: `${name} 100%` };
-    }
-  }
-  return void 0;
+// node_modules/framer-motion/dist/es/render/dom/scroll/utils/can-use-native-timeline.mjs
+function canUseNativeTimeline(target) {
+  return typeof window !== "undefined" && !target && supportsScrollTimeline();
 }
 
 // node_modules/framer-motion/dist/es/render/dom/scroll/utils/get-timeline.mjs
@@ -8467,41 +8412,13 @@ function getTimeline(_a) {
   const { axis } = options;
   if (source)
     container = source;
-  let containerCache = timelineCache.get(container);
-  if (!containerCache) {
-    containerCache = /* @__PURE__ */ new Map();
-    timelineCache.set(container, containerCache);
-  }
+  const containerCache = timelineCache.get(container) ?? /* @__PURE__ */ new Map();
+  timelineCache.set(container, containerCache);
   const targetKey = options.target ?? "self";
-  let targetCache = containerCache.get(targetKey);
-  if (!targetCache) {
-    targetCache = {};
-    containerCache.set(targetKey, targetCache);
-  }
+  const targetCache = containerCache.get(targetKey) ?? {};
   const axisKey = axis + (options.offset ?? []).join(",");
   if (!targetCache[axisKey]) {
-    if (options.target && canUseNativeTimeline(options.target)) {
-      const range = offsetToViewTimelineRange(options.offset);
-      if (range) {
-        targetCache[axisKey] = new ViewTimeline({
-          subject: options.target,
-          axis
-        });
-      } else {
-        targetCache[axisKey] = scrollTimelineFallback(__spreadValues({
-          container
-        }, options));
-      }
-    } else if (canUseNativeTimeline()) {
-      targetCache[axisKey] = new ScrollTimeline({
-        source: container,
-        axis
-      });
-    } else {
-      targetCache[axisKey] = scrollTimelineFallback(__spreadValues({
-        container
-      }, options));
-    }
+    targetCache[axisKey] = canUseNativeTimeline(options.target) ? new ScrollTimeline({ source: container, axis }) : scrollTimelineFallback(__spreadValues({ container }, options));
   }
   return targetCache[axisKey];
 }
@@ -8509,21 +8426,15 @@ function getTimeline(_a) {
 // node_modules/framer-motion/dist/es/render/dom/scroll/attach-animation.mjs
 function attachToAnimation(animation, options) {
   const timeline = getTimeline(options);
-  const range = options.target ? offsetToViewTimelineRange(options.offset) : void 0;
-  const useNative = options.target ? canUseNativeTimeline(options.target) && !!range : canUseNativeTimeline();
-  return animation.attachTimeline(__spreadProps(__spreadValues({
-    timeline: useNative ? timeline : void 0
-  }, range && useNative && {
-    rangeStart: range.rangeStart,
-    rangeEnd: range.rangeEnd
-  }), {
+  return animation.attachTimeline({
+    timeline: options.target ? void 0 : timeline,
     observe: (valueAnimation) => {
       valueAnimation.pause();
       return observeTimeline((progress2) => {
         valueAnimation.time = valueAnimation.iterationDuration * progress2;
       }, timeline);
     }
-  }));
+  });
 }
 
 // node_modules/framer-motion/dist/es/render/dom/scroll/attach-function.mjs
@@ -8880,7 +8791,6 @@ export {
   supportsLinearEasing,
   supportsPartialKeyframes,
   supportsScrollTimeline,
-  supportsViewTimeline,
   svgEffect,
   sync,
   testValueType,
