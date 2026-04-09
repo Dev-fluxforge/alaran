@@ -31,10 +31,10 @@ export class AppComponent {
   statModalContainer = viewChild<ElementRef<HTMLElement>>('statModalContainer');
   statModalCloseButton = viewChild<ElementRef<HTMLButtonElement>>('statModalCloseButton');
 
+  isDarkMode = signal<boolean>(false);
   isMenuOpen = signal<boolean>(false);
   currentYear = signal(new Date().getFullYear());
   
-  isDarkMode = this.uiStateService.isDarkMode;
   selectedService = this.uiStateService.selectedService;
   selectedStat = this.uiStateService.selectedStat;
   isSearchModalOpen = this.uiStateService.isSearchModalOpen;
@@ -80,14 +80,19 @@ export class AppComponent {
   });
 
   constructor() {
+    // Initialize based on user's OS/browser preference
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+    const prefersDark = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    if (isMobile || prefersDark) {
+        this.isDarkMode.set(true);
+    }
+
     effect(() => {
       if (typeof document !== 'undefined') {
-        const root = document.documentElement;
         if (this.isDarkMode()) {
-          root.classList.add('dark');
           document.body.classList.add('dark');
         } else {
-          root.classList.remove('dark');
           document.body.classList.remove('dark');
         }
       }
@@ -149,7 +154,7 @@ export class AppComponent {
   }
 
   toggleDarkMode(): void {
-    this.uiStateService.toggleDarkMode();
+    this.isDarkMode.update(value => !value);
   }
 
   toggleMenu(): void {
