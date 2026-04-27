@@ -82,14 +82,8 @@ export class AppComponent {
   constructor() {
     effect(() => {
       if (typeof document !== 'undefined') {
-        const root = document.documentElement;
-        if (this.isDarkMode()) {
-          root.classList.add('dark');
-          document.body.classList.add('dark');
-        } else {
-          root.classList.remove('dark');
-          document.body.classList.remove('dark');
-        }
+        document.documentElement.classList.add('dark');
+        document.body.classList.add('dark');
       }
     });
 
@@ -146,10 +140,6 @@ export class AppComponent {
 
   onQueryChange(query: string): void {
     this.searchQuery.set(query);
-  }
-
-  toggleDarkMode(): void {
-    this.uiStateService.toggleDarkMode();
   }
 
   toggleMenu(): void {

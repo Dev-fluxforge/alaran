@@ -49,12 +49,9 @@
 
 @layer components {
   .glass-nav {
-    background: rgba(246, 248, 246, 0.8);
+    background: rgba(17, 33, 21, 0.8);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-  }
-  .dark .glass-nav {
-    background: rgba(17, 33, 21, 0.8);
   }
   .hero-video-container {
     position: absolute;

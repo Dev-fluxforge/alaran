@@ -53,7 +53,7 @@
 </section>
 
 <!-- Quick Services Overview -->
-<section id="services" class="py-24 px-6 bg-white dark:bg-background-dark/50">
+<section id="services" class="py-24 px-6 bg-white dark:bg-deep-green">
     <div class="max-w-7xl mx-auto">
         <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
             <div class="max-w-xl">
@@ -73,8 +73,8 @@
                 <div [class]="'w-14 h-14 rounded-lg flex items-center justify-center mb-6 bg-' + service.color + '/20 text-' + service.color" aria-hidden="true">
                     <span class="material-symbols-outlined text-3xl">{{ service.icon }}</span>
                 </div>
-                <h3 class="text-xl font-bold mb-3">{{ service.title }}</h3>
-                <p class="text-deep-green/60 dark:text-white/60 text-sm leading-relaxed mb-6 grow">{{ service.description }}</p>
+                <h3 class="text-xl font-bold mb-3 text-deep-green dark:text-white">{{ service.title }}</h3>
+                <p class="text-deep-green/80 dark:text-white/60 text-sm leading-relaxed mb-6 grow">{{ service.description }}</p>
                 <div class="mt-auto">
                     <span class="text-xs font-bold text-deep-green/40 dark:text-white/30 uppercase tracking-widest">{{ service.category }}</span>
                 </div>
@@ -114,12 +114,12 @@
 </section>
 
 <!-- Our Technology Section -->
-<section id="tech" class="py-24 px-6 bg-white dark:bg-background-dark/50">
+<section id="tech" class="py-24 px-6 bg-white dark:bg-deep-green">
     <div class="max-w-7xl mx-auto">
         <div class="text-center max-w-2xl mx-auto mb-16">
             <span class="text-primary font-bold tracking-widest uppercase text-sm">Our Tools</span>
             <h2 class="text-4xl font-bold mt-2 text-deep-green dark:text-white">Powered by Cutting-Edge Technology</h2>
-            <p class="text-deep-green/60 dark:text-white/60 mt-4">We invest in the latest geospatial technology to ensure we deliver the highest quality data with maximum efficiency.</p>
+            <p class="text-deep-green/80 dark:text-white/60 mt-4">We invest in the latest geospatial technology to ensure we deliver the highest quality data with maximum efficiency.</p>
         </div>
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
             <div class="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -128,8 +128,8 @@
                         <div class="w-16 h-16 bg-primary/20 rounded-lg flex items-center justify-center text-primary text-3xl mb-6">
                             <span class="material-symbols-outlined">{{ tech.icon }}</span>
                         </div>
-                        <h3 class="text-xl font-bold mb-3">{{ tech.title }}</h3>
-                        <p class="text-deep-green/60 dark:text-white/60 text-sm leading-relaxed">{{ tech.description }}</p>
+                        <h3 class="text-xl font-bold mb-3 text-deep-green dark:text-white">{{ tech.title }}</h3>
+                        <p class="text-deep-green/80 dark:text-white/60 text-sm leading-relaxed">{{ tech.description }}</p>
                     </div>
                 }
             </div>
@@ -141,13 +141,13 @@
 </section>
 
 <!-- Nationwide Presence Map Section -->
-<section id="projects" class="py-24 px-6 bg-background-light dark:bg-background-dark">
+<section id="projects" class="py-24 px-6 bg-background-light dark:bg-deep-green">
     <div class="max-w-7xl mx-auto">
         <div class="flex flex-col md:flex-row items-center justify-between mb-16 gap-8">
             <div class="max-w-2xl">
                 <span class="text-primary font-bold tracking-widest uppercase text-sm">Nationwide Presence</span>
                 <h2 class="text-4xl font-bold mt-2 text-deep-green dark:text-white">Mapping Nigeria's Growth</h2>
-                <p class="text-deep-green/60 dark:text-white/60 mt-4">From the bustling streets of Lagos to the industrial hubs of Kano, we are on the ground delivering precision geospatial data for critical infrastructure.</p>
+                <p class="text-deep-green/80 dark:text-white/60 mt-4">From the bustling streets of Lagos to the industrial hubs of Kano, we are on the ground delivering precision geospatial data for critical infrastructure.</p>
             </div>
             <div class="shrink-0">
                 <a routerLink="/projects" class="inline-flex items-center gap-2 bg-deep-green text-white dark:bg-white dark:text-deep-green px-8 py-4 rounded-xl font-bold transition-all hover:scale-105">
@@ -162,7 +162,7 @@
 <!-- Client Logo Slider Section -->
 <section class="py-16 bg-background-light dark:bg-background-dark border-y border-deep-green/5 overflow-hidden">
     <div class="max-w-7xl mx-auto px-6 mb-10 text-center">
-        <p class="text-xs font-bold uppercase tracking-[0.3em] text-deep-green/40 dark:text-white/40">Trusted by Infrastructure Giants</p>
+        <p class="text-xs font-bold uppercase tracking-[0.3em] text-deep-green/60 dark:text-white/40">Trusted by Infrastructure Giants</p>
     </div>
     <div class="relative flex overflow-hidden" role="region" aria-label="Our trusted partners">
         <div class="flex animate-scroll-linear gap-16 md:gap-32 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-700 whitespace-nowrap py-4" aria-hidden="true">
@@ -179,7 +179,7 @@
 </section>
 
 <!-- Testimonials Section -->
-<section id="testimonials" class="py-32 px-6 bg-white dark:bg-background-dark/50 overflow-hidden">
+<section id="testimonials" class="py-32 px-6 bg-white dark:bg-deep-green overflow-hidden">
     <div class="max-w-7xl mx-auto">
         <div class="flex flex-col md:flex-row items-center justify-between mb-20 gap-8">
             <div class="max-w-2xl">
@@ -225,7 +225,7 @@
                                             </div>
                                             <div>
                                                 <h4 class="text-xl font-bold text-deep-green dark:text-white">{{ testimonial.author }}</h4>
-                                                <p class="text-sm text-deep-green/50 dark:text-white/50 uppercase tracking-widest font-bold">{{ testimonial.company }}</p>
+                                                <p class="text-sm text-deep-green/70 dark:text-white/50 uppercase tracking-widest font-bold">{{ testimonial.company }}</p>
                                             </div>
                                         </div>
                                     </div>
