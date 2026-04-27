@@ -26,11 +26,14 @@ export class HomeComponent implements OnInit, OnDestroy {
   testimonials = this.dataService.testimonials;
   projects = this.dataService.projects;
 
+  currentTestimonialIndex = signal(0);
   currentQuoteIndex = signal(0);
   isLoading = signal(true);
   
+  private testimonialInterval: any;
   private quoteInterval: any;
 
+  testimonialCard = viewChild<ElementRef>('testimonialCard');
   quoteCard = viewChild<ElementRef>('quoteCard');
 
   @HostListener('window:keydown', ['$event'])
@@ -43,17 +46,23 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   private navigateSections(direction: 'next' | 'prev') {
+    const testimonialEl = this.testimonialCard()?.nativeElement;
     const quoteEl = this.quoteCard()?.nativeElement;
 
-    if (!quoteEl) return;
+    if (!testimonialEl || !quoteEl) return;
 
+    const testimonialRect = testimonialEl.getBoundingClientRect();
     const quoteRect = quoteEl.getBoundingClientRect();
+
     const windowHeight = window.innerHeight;
     
     // Check which section is more visible in the viewport
+    const testimonialVisibility = Math.min(testimonialRect.bottom, windowHeight) - Math.max(testimonialRect.top, 0);
     const quoteVisibility = Math.min(quoteRect.bottom, windowHeight) - Math.max(quoteRect.top, 0);
 
-    if (quoteVisibility > 0) {
+    if (testimonialVisibility > quoteVisibility && testimonialVisibility > 0) {
+      direction === 'next' ? this.nextTestimonial() : this.prevTestimonial();
+    } else if (quoteVisibility > 0) {
       direction === 'next' ? this.nextQuote() : this.prevQuote();
     }
   }
@@ -86,6 +95,14 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   constructor() {
     effect(() => {
+      const index = this.currentTestimonialIndex();
+      const el = this.testimonialCard()?.nativeElement;
+      if (el) {
+        animate(el, { opacity: [0, 1], x: [20, 0], scale: [0.98, 1] }, { duration: 1.2, ease: 'easeOut' });
+      }
+    });
+
+    effect(() => {
       const index = this.currentQuoteIndex();
       const el = this.quoteCard()?.nativeElement;
       if (el) {
@@ -107,12 +124,17 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   private startAutoPlay(): void {
+    this.testimonialInterval = setInterval(() => {
+      this.nextTestimonial();
+    }, 8000);
+
     this.quoteInterval = setInterval(() => {
       this.nextQuote();
     }, 12000);
   }
 
   private stopAutoPlay(): void {
+    if (this.testimonialInterval) clearInterval(this.testimonialInterval);
     if (this.quoteInterval) clearInterval(this.quoteInterval);
   }
 
@@ -122,6 +144,20 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   selectStat(stat: Stat): void {
     this.uiStateService.selectStat(stat);
+  }
+
+  nextTestimonial(): void {
+    const total = this.testimonials().length;
+    this.currentTestimonialIndex.update(i => (i + 1) % total);
+  }
+
+  prevTestimonial(): void {
+    const total = this.testimonials().length;
+    this.currentTestimonialIndex.update(i => (i - 1 + total) % total);
+  }
+
+  setTestimonialIndex(index: number): void {
+    this.currentTestimonialIndex.set(index);
   }
 
   nextQuote(): void {

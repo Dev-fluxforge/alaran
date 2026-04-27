@@ -181,105 +181,83 @@
 <!-- Testimonials Section -->
 <section id="testimonials" class="py-32 px-6 bg-white dark:bg-deep-green overflow-hidden">
     <div class="max-w-7xl mx-auto">
-        <div class="text-center mb-20 max-w-3xl mx-auto">
-            <span class="text-primary font-bold tracking-[0.3em] uppercase text-xs mb-4 block">Client Feedback</span>
-            <h2 class="text-5xl md:text-6xl font-bold text-deep-green dark:text-white leading-tight mb-6">Trust Built on <span class="text-primary italic">Precision</span></h2>
-            <p class="text-deep-green/60 dark:text-white/60 text-lg md:text-xl leading-relaxed">
-                We've partnered with Nigeria's most ambitious infrastructure projects to deliver certainty through geospatial expertise.
-            </p>
+        <div class="flex flex-col md:flex-row items-center justify-between mb-20 gap-8">
+            <div class="max-w-2xl">
+                <span class="text-primary font-bold tracking-[0.3em] uppercase text-xs mb-4 block">Client Feedback</span>
+                <h2 class="text-5xl md:text-6xl font-bold text-deep-green dark:text-white leading-tight">Voices of <span class="text-primary italic">Trust</span></h2>
+            </div>
+            <div class="hidden md:flex gap-4">
+                <button 
+                    (click)="prevTestimonial()"
+                    class="w-14 h-14 border border-deep-green/10 dark:border-white/10 rounded-full flex items-center justify-center text-deep-green dark:text-white hover:bg-primary hover:text-deep-green transition-all focus-visible:outline-primary"
+                    aria-label="Previous testimonial">
+                    <span class="material-symbols-outlined">west</span>
+                </button>
+                <button 
+                    (click)="nextTestimonial()"
+                    class="w-14 h-14 bg-deep-green text-white dark:bg-white dark:text-deep-green rounded-full flex items-center justify-center hover:bg-primary hover:text-deep-green transition-all focus-visible:outline-primary"
+                    aria-label="Next testimonial">
+                    <span class="material-symbols-outlined">east</span>
+                </button>
+            </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 auto-rows-[minmax(280px,auto)]" role="region" aria-label="Client testimonials">
-            <!-- Testimonial 1: Large/Featured -->
-            <div class="md:col-span-2 lg:row-span-2 p-10 md:p-14 bg-deep-green/5 dark:bg-white/5 rounded-[3rem] border border-deep-green/5 dark:border-white/5 flex flex-col justify-between group hover:border-primary/30 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/5">
-                <div class="relative">
-                    <span class="text-[160px] font-serif text-primary/10 absolute -top-24 -left-10 pointer-events-none select-none" aria-hidden="true">"</span>
-                    <p class="text-2xl md:text-4xl font-medium text-deep-green dark:text-white leading-tight md:leading-relaxed mb-12 relative z-10">
-                        {{ testimonials()[4].quote }}
-                    </p>
-                </div>
-                <div class="flex items-center gap-6">
-                    <div class="w-24 h-24 bg-primary/20 rounded-[2rem] flex items-center justify-center text-primary font-bold text-4xl group-hover:scale-110 transition-transform duration-500 shadow-inner">
-                        {{ testimonials()[4].author[0] }}
-                    </div>
-                    <div>
-                        <h4 class="text-2xl font-bold text-deep-green dark:text-white">{{ testimonials()[4].author }}</h4>
-                        <p class="text-sm text-deep-green/60 dark:text-white/50 uppercase tracking-widest font-bold">{{ testimonials()[4].company }}</p>
-                        <div class="flex gap-1 mt-3 text-accent-yellow">
-                            <span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1" aria-hidden="true">star</span>
-                            <span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1" aria-hidden="true">star</span>
-                            <span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1" aria-hidden="true">star</span>
-                            <span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1" aria-hidden="true">star</span>
-                            <span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1" aria-hidden="true">star</span>
+        <div class="relative group max-w-5xl mx-auto" role="region" aria-roledescription="carousel" aria-label="Client testimonials">
+            <div #testimonialCard class="relative min-h-112.5 md:min-h-100" aria-live="polite">
+                @for(testimonial of testimonials(); track testimonial.author; let i = $index) {
+                    @if (currentTestimonialIndex() === i) {
+                        <div 
+                            class="absolute inset-0"
+                            role="group"
+                            aria-roledescription="slide"
+                            [attr.aria-label]="(i + 1) + ' of ' + testimonials().length">
+                            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center h-full">
+                                <!-- Quote Content -->
+                                <div class="lg:col-span-8">
+                                    <div class="relative">
+                                        <span class="text-[120px] font-serif text-primary/10 absolute -top-16 -left-8 pointer-events-none">"</span>
+                                        <p class="text-2xl md:text-4xl font-medium text-deep-green dark:text-white leading-relaxed mb-10 relative z-10">
+                                            {{ testimonial.quote }}
+                                        </p>
+                                        <div class="flex items-center gap-6">
+                                            <div class="w-16 h-16 bg-primary/20 rounded-2xl flex items-center justify-center text-primary font-bold text-2xl">
+                                                {{ testimonial.author[0] }}
+                                            </div>
+                                            <div>
+                                                <h4 class="text-xl font-bold text-deep-green dark:text-white">{{ testimonial.author }}</h4>
+                                                <p class="text-sm text-deep-green/70 dark:text-white/50 uppercase tracking-widest font-bold">{{ testimonial.company }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Visual Accent / Rating -->
+                                <div class="lg:col-span-4 flex flex-col items-center lg:items-end justify-center">
+                                    <div class="bg-background-light dark:bg-white/5 p-10 rounded-3xl border border-deep-green/5 dark:border-white/5 text-center lg:text-right w-full">
+                                        <div class="flex justify-center lg:justify-end gap-1 mb-4 text-accent-yellow">
+                                            @for(star of [1,2,3,4,5]; track star) {
+                                                <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1">star</span>
+                                            }
+                                        </div>
+                                        <p class="text-xs font-bold uppercase tracking-widest text-deep-green/40 dark:text-white/40 mb-2">Verified Partner</p>
+                                        <p class="text-deep-green dark:text-white font-bold">Lagos, Nigeria</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
+                    }
+                }
             </div>
 
-            <!-- Testimonial 2 -->
-            <div class="p-10 bg-background-light dark:bg-deep-green/40 rounded-[3rem] border border-deep-green/5 dark:border-white/5 flex flex-col justify-between hover:border-primary/30 transition-all duration-500 group">
-                <p class="text-xl text-deep-green/80 dark:text-white/80 leading-relaxed mb-10 italic">
-                    "{{ testimonials()[0].quote }}"
-                </p>
-                <div class="flex items-center gap-5">
-                    <div class="w-14 h-14 bg-primary/20 rounded-2xl flex items-center justify-center text-primary font-bold text-xl group-hover:rotate-6 transition-transform duration-300">
-                        {{ testimonials()[0].author[0] }}
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-deep-green dark:text-white">{{ testimonials()[0].author }}</h4>
-                        <p class="text-xs text-deep-green/50 dark:text-white/40 font-bold uppercase tracking-wider">{{ testimonials()[0].company }}</p>
+            <!-- Progress Bar -->
+            <div class="mt-16 flex items-center gap-4">
+                <span class="text-xs font-mono text-deep-green/40 dark:text-white/40">0{{ currentTestimonialIndex() + 1 }}</span>
+                <div class="grow h-px bg-deep-green/10 dark:bg-white/10 relative">
+                    <div 
+                        class="absolute top-0 left-0 h-full bg-primary transition-all duration-500" 
+                        [style.width.%]="((currentTestimonialIndex() + 1) / testimonials().length) * 100">
                     </div>
                 </div>
-            </div>
-
-            <!-- Testimonial 3 -->
-            <div class="p-10 bg-white dark:bg-white/10 rounded-[3rem] border border-deep-green/5 dark:border-white/5 flex flex-col justify-between hover:border-primary/30 transition-all duration-500 shadow-xl shadow-deep-green/5 dark:shadow-none group">
-                <p class="text-xl text-deep-green/80 dark:text-white/80 leading-relaxed mb-10 italic">
-                    "{{ testimonials()[1].quote }}"
-                </p>
-                <div class="flex items-center gap-5">
-                    <div class="w-14 h-14 bg-primary/20 rounded-2xl flex items-center justify-center text-primary font-bold text-xl group-hover:-rotate-6 transition-transform duration-300">
-                        {{ testimonials()[1].author[0] }}
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-deep-green dark:text-white">{{ testimonials()[1].author }}</h4>
-                        <p class="text-xs text-deep-green/50 dark:text-white/40 font-bold uppercase tracking-wider">{{ testimonials()[1].company }}</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Testimonial 4: Horizontal -->
-            <div class="md:col-span-2 p-10 bg-primary/5 dark:bg-primary/20 rounded-[3rem] border border-primary/20 dark:border-primary/10 flex flex-col md:flex-row gap-10 items-center hover:bg-primary/10 transition-all duration-500 group">
-                <div class="flex-1">
-                    <p class="text-xl md:text-2xl text-deep-green dark:text-white leading-relaxed italic">
-                        "{{ testimonials()[2].quote }}"
-                    </p>
-                </div>
-                <div class="flex items-center gap-5 shrink-0 border-t md:border-t-0 md:border-l border-primary/20 md:pl-10 pt-8 md:pt-0">
-                    <div class="w-16 h-16 bg-primary text-deep-green rounded-[1.5rem] flex items-center justify-center font-bold text-2xl group-hover:scale-110 transition-transform duration-500 shadow-lg">
-                        {{ testimonials()[2].author[0] }}
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-deep-green dark:text-white text-lg">{{ testimonials()[2].author }}</h4>
-                        <p class="text-xs text-deep-green/50 dark:text-white/40 font-bold uppercase tracking-wider">{{ testimonials()[2].company }}</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Testimonial 5 -->
-            <div class="p-10 bg-background-light dark:bg-deep-green/40 rounded-[3rem] border border-deep-green/5 dark:border-white/5 flex flex-col justify-between hover:border-primary/30 transition-all duration-500 group">
-                <p class="text-xl text-deep-green/80 dark:text-white/80 leading-relaxed mb-10 italic">
-                    "{{ testimonials()[3].quote }}"
-                </p>
-                <div class="flex items-center gap-5">
-                    <div class="w-14 h-14 bg-primary/20 rounded-[2rem] flex items-center justify-center text-primary font-bold text-xl group-hover:translate-y-1 transition-transform duration-300">
-                        {{ testimonials()[3].author[0] }}
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-deep-green dark:text-white">{{ testimonials()[3].author }}</h4>
-                        <p class="text-xs text-deep-green/50 dark:text-white/40 font-bold uppercase tracking-wider">{{ testimonials()[3].company }}</p>
-                    </div>
-                </div>
+                <span class="text-xs font-mono text-deep-green/40 dark:text-white/40">0{{ testimonials().length }}</span>
             </div>
         </div>
     </div>
