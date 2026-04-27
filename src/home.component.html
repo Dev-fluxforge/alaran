@@ -296,18 +296,6 @@
                                         <div>
                                             <h4 class="text-2xl font-bold text-white">{{ item.author }}</h4>
                                             <p class="text-primary font-medium uppercase tracking-widest text-xs mt-1">{{ item.title }}</p>
-                                            
-                                            <!-- Mobile Navigation Indicators: Below Author -->
-                                            <div class="md:hidden flex items-center gap-3 mt-6">
-                                                @for(dot of surveyingQuotes(); track dot.author; let dotIdx = $index) {
-                                                    <button 
-                                                        (click)="setQuoteIndex(dotIdx)"
-                                                        class="group relative p-1.5 -m-1.5 focus:outline-none"
-                                                        [attr.aria-label]="'Go to quote ' + (dotIdx + 1)">
-                                                        <div [class]="'w-2 h-2 rounded-full transition-all duration-300 ' + (currentQuoteIndex() === dotIdx ? 'bg-primary scale-125 ring-4 ring-primary/20' : 'bg-white/20 scale-100 hover:bg-white/40')"></div>
-                                                    </button>
-                                                }
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -342,16 +330,36 @@
                     }
                 </div>
 
-                <div class="flex gap-4 w-full md:w-auto justify-between md:justify-start">
-                    <div class="md:hidden"></div> <!-- Spacer for mobile flex -->
-                    <div class="flex gap-4">
-                        <button (click)="prevQuote()" [class]="'w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center transition-all bg-white/5 border border-white/10 text-white hover:bg-primary hover:text-deep-green focus-visible:outline-primary'" aria-label="Previous quote">
-                            <span class="material-symbols-outlined">west</span>
+                <!-- Mobile Navigation: Circular Dial (Literal interpretation of "form a single circle") -->
+                <div class="md:hidden relative w-16 h-16 flex items-center justify-center">
+                    <div class="absolute inset-0 border border-white/5 rounded-full bg-white/2 transition-all duration-300"></div>
+                    
+                    <!-- Individual dots forming a ring -->
+                    @for(item of surveyingQuotes(); track item.author; let i = $index) {
+                        <button 
+                            (click)="setQuoteIndex(i)"
+                            class="absolute transition-all duration-500 touch-manipulation"
+                            [style.transform]="'rotate(' + (i * 360 / surveyingQuotes().length) + 'deg) translateY(-24px)'"
+                            [attr.aria-label]="'Go to quote ' + (i + 1)">
+                            <div [class]="'w-1.5 h-1.5 rounded-full transition-all duration-300 ' + (currentQuoteIndex() === i ? 'bg-primary scale-150 shadow-[0_0_10px_rgba(34,197,94,0.5)]' : 'bg-white/20 scale-100')"></div>
                         </button>
-                        <button (click)="nextQuote()" [class]="'w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center transition-all bg-white/5 border border-white/10 text-white hover:bg-primary hover:text-deep-green focus-visible:outline-primary'" aria-label="Next quote">
-                            <span class="material-symbols-outlined">east</span>
-                        </button>
+                    }
+                    
+                    <!-- Center Counter -->
+                    <div class="flex flex-col items-center">
+                        <span class="text-[10px] font-black text-primary leading-none">{{ currentQuoteIndex() + 1 }}</span>
+                        <div class="w-4 h-[1px] bg-white/10 my-0.5"></div>
+                        <span class="text-[8px] font-bold text-white/30 leading-none">{{ surveyingQuotes().length }}</span>
                     </div>
+                </div>
+
+                <div class="flex gap-4">
+                    <button (click)="prevQuote()" [class]="'w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center transition-all bg-white/5 border border-white/10 text-white hover:bg-primary hover:text-deep-green focus-visible:outline-primary'" aria-label="Previous quote">
+                        <span class="material-symbols-outlined">west</span>
+                    </button>
+                    <button (click)="nextQuote()" [class]="'w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center transition-all bg-white/5 border border-white/10 text-white hover:bg-primary hover:text-deep-green focus-visible:outline-primary'" aria-label="Next quote">
+                        <span class="material-symbols-outlined">east</span>
+                    </button>
                 </div>
             </div>
         </div>
