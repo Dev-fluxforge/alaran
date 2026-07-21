@@ -1,11 +1,14 @@
-
 @if (project(); as p) {
   <div class="fade-in">
     <!-- Project Header -->
     <section class="relative py-20 text-white text-center overflow-hidden">
       <div class="absolute inset-0 pointer-events-none">
         @if (p.imageUrls.length > 0) {
-          <img [src]="p.imageUrls[0]" [alt]="p.title" class="w-full h-full object-cover" referrerPolicy="no-referrer">
+          @if (p.imageUrls[0].split('?')[0].toLowerCase().match('\\.(mp4|webm|mov|ogg)$')) {
+            <video [src]="p.imageUrls[0]" class="w-full h-full object-cover" muted autoplay loop playsinline preload="metadata"></video>
+          } @else {
+            <img [src]="p.imageUrls[0]" [alt]="p.title" class="w-full h-full object-cover" referrerPolicy="no-referrer">
+          }
         } @else {
           <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2000" alt="Project background" class="w-full h-full object-cover" referrerPolicy="no-referrer">
         }

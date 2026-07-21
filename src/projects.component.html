@@ -1,8 +1,9 @@
-
 <!-- Projects Hero Section -->
 <section class="relative py-32 text-white flex items-center justify-center overflow-hidden">
     <div class="absolute inset-0 pointer-events-none">
-        <video src="/video/project-hero.mp4" autoplay muted loop playsinline class="w-full h-full object-cover" aria-label="Professional surveying equipment in the field"></video>
+        <video src="/video/project-hero.mp4" class="w-full h-full object-cover" autoplay muted loop playsinline
+            preload="auto" aria-hidden="true">
+        </video>
     </div>
     <div class="absolute inset-0 bg-deep-green/40 pointer-events-none"></div>
     <div class="relative z-10 max-w-4xl px-6 text-center fade-in">
@@ -11,7 +12,8 @@
             A Portfolio of Precision
         </h1>
         <p class="text-white/80 text-lg md:text-xl font-light max-w-3xl mx-auto leading-relaxed">
-            Browse a selection of our successfully completed projects. Each one stands as a testament to our commitment to accuracy, efficiency, and client satisfaction.
+            Browse a selection of our successfully completed projects. Each one stands as a testament to our commitment
+            to accuracy, efficiency, and client satisfaction.
         </p>
     </div>
 </section>
@@ -22,35 +24,35 @@
         <!-- Filter Section -->
         <div class="mb-16">
             <!-- Desktop Filter Buttons -->
-            <div class="hidden md:flex items-center justify-center flex-wrap gap-3" role="group" aria-label="Filter projects by category">
+            <div class="hidden md:flex items-center justify-center flex-wrap gap-3" role="group"
+                aria-label="Filter projects by category">
                 @for(cat of categoriesWithCounts(); track cat.title) {
-                    <button
-                        (click)="setFilter(cat.title)"
-                        [attr.aria-current]="activeCategory() === cat.title ? 'true' : 'false'"
-                        [class]="activeCategory() === cat.title 
+                <button (click)="setFilter(cat.title)"
+                    [attr.aria-current]="activeCategory() === cat.title ? 'true' : 'false'"
+                    [class]="activeCategory() === cat.title 
                             ? 'bg-primary text-deep-green shadow-lg shadow-primary/20 scale-105' 
                             : 'bg-white dark:bg-deep-green/50 text-deep-green/70 dark:text-white/70 hover:bg-primary/10 hover:text-primary border border-deep-green/5 dark:border-white/5'"
-                        class="px-6 py-3 rounded-xl font-bold text-sm tracking-wide transition-all duration-300 flex items-center gap-2 focus-visible:outline-primary">
-                        {{ cat.title === 'All' ? 'All Projects' : cat.title }}
-                        <span class="px-2 py-0.5 rounded-full text-[10px] bg-black/5 dark:bg-white/10 opacity-60">
-                            {{ cat.count }}
-                        </span>
-                    </button>
+                    class="px-6 py-3 rounded-xl font-bold text-sm tracking-wide transition-all duration-300 flex items-center gap-2 focus-visible:outline-primary">
+                    {{ cat.title === 'All' ? 'All Projects' : cat.title }}
+                    <span class="px-2 py-0.5 rounded-full text-[10px] bg-black/5 dark:bg-white/10 opacity-60">
+                        {{ cat.count }}
+                    </span>
+                </button>
                 }
             </div>
 
             <!-- Mobile Filter Dropdown -->
             <div class="md:hidden relative max-w-xs mx-auto">
-                <label for="category-filter" class="block text-[10px] font-bold uppercase tracking-widest text-deep-green/40 dark:text-white/40 mb-2 ml-1">Filter by Category</label>
+                <label for="category-filter"
+                    class="block text-[10px] font-bold uppercase tracking-widest text-deep-green/40 dark:text-white/40 mb-2 ml-1">Filter
+                    by Category</label>
                 <div class="relative">
-                    <select 
-                        id="category-filter"
-                        (change)="setFilter($any($event.target).value)"
+                    <select id="category-filter" (change)="setFilter($any($event.target).value)"
                         class="w-full appearance-none bg-white dark:bg-deep-green border border-deep-green/10 dark:border-white/10 rounded-xl px-5 py-4 text-sm font-bold text-deep-green dark:text-white focus:outline-none focus:border-primary transition-colors shadow-lg shadow-deep-green/5 dark:shadow-none">
                         @for(cat of categoriesWithCounts(); track cat.title) {
-                            <option [value]="cat.title" [selected]="activeCategory() === cat.title">
-                                {{ cat.title === 'All' ? 'All Projects' : cat.title }} ({{ cat.count }})
-                            </option>
+                        <option [value]="cat.title" [selected]="activeCategory() === cat.title">
+                            {{ cat.title === 'All' ? 'All Projects' : cat.title }} ({{ cat.count }})
+                        </option>
                         }
                     </select>
                     <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-primary">
@@ -59,12 +61,13 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Interactive Map Section -->
         <div class="mb-20 fade-in">
             <div class="mb-8">
                 <h3 class="text-2xl font-bold text-deep-green dark:text-white mb-2">Project Locations</h3>
-                <p class="text-deep-green/60 dark:text-white/60">Explore our nationwide presence and key project sites across Nigeria.</p>
+                <p class="text-deep-green/60 dark:text-white/60">Explore our nationwide presence and key project sites
+                    across Nigeria.</p>
             </div>
             <app-map [projects]="filteredProjects()"></app-map>
         </div>
@@ -72,50 +75,51 @@
         <!-- Projects Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             @for (project of filteredProjects(); track project.title) {
-                <a 
-                  [routerLink]="['/project', project.slug]" 
-                  [attr.aria-label]="'View details for project: ' + project.title" 
-                  (mouseenter)="setHoveredProject(project.slug)"
-                  (mouseleave)="setHoveredProject(null)"
-                  [class.ring-4]="hoveredProjectId() === project.slug"
-                  [class.ring-primary]="hoveredProjectId() === project.slug"
-                  [class.scale-105]="hoveredProjectId() === project.slug"
-                  [class.shadow-2xl]="hoveredProjectId() === project.slug"
-                  [class.shadow-primary/20]="hoveredProjectId() === project.slug"
-                  class="group bg-white dark:bg-deep-green/50 rounded-lg overflow-hidden border border-deep-green/5 dark:border-white/10 flex flex-col fade-in transition-all duration-300 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2 focus-visible:outline-primary">
-                  <div class="relative w-full h-56 overflow-hidden">
-                      @if (project.imageUrls.length > 0) {
-                        <img [ngSrc]="project.imageUrls[0]" [alt]="project.title" fill class="object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy" referrerPolicy="no-referrer" />
-                      }
-                      <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                      <div class="absolute bottom-4 right-4 bg-primary text-deep-green p-2 rounded-full opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+            <a [routerLink]="['/project', project.slug]"
+                [attr.aria-label]="'View details for project: ' + project.title"
+                (mouseenter)="setHoveredProject(project.slug)" (mouseleave)="setHoveredProject(null)"
+                [class.ring-4]="hoveredProjectId() === project.slug"
+                [class.ring-primary]="hoveredProjectId() === project.slug"
+                [class.scale-105]="hoveredProjectId() === project.slug"
+                [class.shadow-2xl]="hoveredProjectId() === project.slug"
+                [class.shadow-primary/20]="hoveredProjectId() === project.slug"
+                class="group bg-white dark:bg-deep-green/50 rounded-lg overflow-hidden border border-deep-green/5 dark:border-white/10 flex flex-col fade-in transition-all duration-300 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2 focus-visible:outline-primary">
+                <div class="relative w-full h-56 overflow-hidden">
+                    @if (project.imageUrls.length > 0) {
+                    <img [ngSrc]="project.imageUrls[0]" [alt]="project.title" fill
+                        class="object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy"
+                        referrerPolicy="no-referrer" />
+                    }
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                    <div
+                        class="absolute bottom-4 right-4 bg-primary text-deep-green p-2 rounded-full opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
                         <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
-                      </div>
-                  </div>
-                  <div class="p-6 flex-grow flex flex-col">
-                    <h4 class="font-bold text-deep-green dark:text-white flex-grow">{{ project.title }}</h4>
-                    <p class="text-sm text-deep-green/60 dark:text-white/60 mt-2 line-clamp-2">{{ project.description }}</p>
-                  </div>
-                  <div class="p-6 pt-0 mt-4">
-                    <span class="text-xs font-bold text-deep-green/40 dark:text-white/30 uppercase tracking-widest">{{ project.serviceCategory }}</span>
-                  </div>
-                </a>
-            }
- @empty {
-                <div class="md:col-span-2 lg:col-span-3 text-center py-12 bg-deep-green/5 dark:bg-white/5 rounded-lg">
-                    <span class="material-symbols-outlined text-4xl text-deep-green/40 dark:text-white/40 mb-4">folder_off</span>
-                    <p class="text-deep-green/60 dark:text-white/60">No projects to display for this category.</p>
+                    </div>
                 </div>
+                <div class="p-6 flex-grow flex flex-col">
+                    <h4 class="font-bold text-deep-green dark:text-white flex-grow">{{ project.title }}</h4>
+                    <p class="text-sm text-deep-green/60 dark:text-white/60 mt-2 line-clamp-2">{{ project.description }}
+                    </p>
+                </div>
+                <div class="p-6 pt-0 mt-4">
+                    <span class="text-xs font-bold text-deep-green/40 dark:text-white/30 uppercase tracking-widest">{{
+                        project.serviceCategory }}</span>
+                </div>
+            </a>
+            }
+            @empty {
+            <div class="md:col-span-2 lg:col-span-3 text-center py-12 bg-deep-green/5 dark:bg-white/5 rounded-lg">
+                <span
+                    class="material-symbols-outlined text-4xl text-deep-green/40 dark:text-white/40 mb-4">folder_off</span>
+                <p class="text-deep-green/60 dark:text-white/60">No projects to display for this category.</p>
+            </div>
             }
         </div>
     </div>
 </section>
 
 <!-- Scroll to Top Button -->
-<button 
-    (click)="scrollToTop()"
-    [class.opacity-0]="!showScrollTop()"
-    [class.pointer-events-none]="!showScrollTop()"
+<button (click)="scrollToTop()" [class.opacity-0]="!showScrollTop()" [class.pointer-events-none]="!showScrollTop()"
     [class.translate-y-10]="!showScrollTop()"
     class="fixed bottom-28 right-8 w-14 h-14 bg-white dark:bg-deep-green text-primary rounded-full shadow-2xl flex items-center justify-center transition-all duration-500 z-[60] border border-primary/20 hover:scale-110 active:scale-95 focus-visible:outline-primary"
     aria-label="Scroll to top">

@@ -1,4 +1,3 @@
-
 import { Injectable, signal } from '@angular/core';
 
 export interface Service {
@@ -273,7 +272,7 @@ export class DataService {
     },
     {
       title: 'Dam Construction Control Survey',
-      imageUrls: ['https://images.unsplash.com/photo-1511068129126-53061a5aa811?auto=format&fit=crop&q=80&w=1200'],
+      imageUrls: ['/images/dam1.jpg', '/images/dam2.jpg', '/video/dam1.mp4', '/video/dam2.mp4'],
       description: 'Establishing high-accuracy control for a large hydroelectric dam.',
       longDescription: 'Our surveyors established the primary and secondary control networks that governed all construction activities for the Zungeru Hydroelectric Dam. Precision was paramount to ensure the correct alignment and elevation of this massive concrete structure.',
       serviceCategory: 'Engineering Surveying',
@@ -341,7 +340,7 @@ export class DataService {
     },
     {
       title: 'Offshore Wind Farm Seabed Mapping',
-      imageUrls: ['https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&q=80&w=1200', 'https://images.unsplash.com/photo-1466611653911-95282fc3656b?auto=format&fit=crop&q=80&w=1200', 'https://images.unsplash.com/photo-1413882353057-a15144677510?auto=format&fit=crop&q=80&w=1200'],
+      imageUrls: [ '/images/offshore1.jpg','/images/offshore2.jpg', '/video/offshore.mp4', '/video/offshore2.mp4'],
       description: 'Detailed seabed characterization for turbine foundation planning.',
       longDescription: 'In the preliminary stages of a major offshore wind farm project, we mapped a 100-square-kilometer area of the seabed. Our hydrographic data revealed the underwater topography and sediment types, which was essential information for the engineers designing the turbine foundations.',
       serviceCategory: 'Hydrographic Surveying',

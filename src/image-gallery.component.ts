@@ -1,5 +1,4 @@
-
-import { Component, ChangeDetectionStrategy, input, signal, computed, HostListener } from '@angular/core';
+import { Component, ChangeDetectionStrategy, input, signal, computed, HostListener, viewChildren, ElementRef, effect } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 
 @Component({
@@ -15,13 +14,27 @@ import { CommonModule, NgOptimizedImage } from '@angular/common';
            (click)="openLightbox()">
         
         @for (imageUrl of imageUrls(); track $index) {
-          <img [ngSrc]="imageUrl" 
-               [alt]="'Gallery image ' + ($index + 1)" 
-               fill 
-               class="w-full h-full object-cover absolute top-0 left-0 transition-all duration-700 ease-in-out"
-               [class.opacity-0]="currentIndex() !== $index"
-               [class.scale-110]="currentIndex() !== $index"
-               [priority]="$index === 0" />
+          @if (isVideo(imageUrl)) {
+            <video #mainVideo
+                   [src]="imageUrl"
+                   class="w-full h-full object-cover absolute top-0 left-0 transition-all duration-700 ease-in-out"
+                   [class.opacity-0]="currentIndex() !== $index"
+                   [class.scale-110]="currentIndex() !== $index"
+                   [attr.data-index]="$index"
+                   muted
+                   loop
+                   playsinline
+                   preload="metadata">
+            </video>
+          } @else {
+            <img [ngSrc]="imageUrl" 
+                 [alt]="'Gallery image ' + ($index + 1)" 
+                 fill 
+                 class="w-full h-full object-cover absolute top-0 left-0 transition-all duration-700 ease-in-out"
+                 [class.opacity-0]="currentIndex() !== $index"
+                 [class.scale-110]="currentIndex() !== $index"
+                 [priority]="$index === 0" />
+          }
         }
 
         <!-- Navigation Overlay -->
@@ -54,9 +67,16 @@ import { CommonModule, NgOptimizedImage } from '@angular/common';
               (click)="setIndex($index)"
               class="relative flex-shrink-0 w-24 aspect-video rounded-lg overflow-hidden border-2 transition-all duration-300"
               [class]="currentIndex() === $index ? 'border-primary ring-4 ring-primary/20 scale-105 z-10' : 'border-transparent opacity-50 hover:opacity-100'">
-              <img [ngSrc]="imageUrl" [alt]="'Thumbnail ' + ($index + 1)" 
-                   width="96" height="54"
-                   class="w-full h-full object-cover">
+              @if (isVideo(imageUrl)) {
+                <video [src]="imageUrl" class="w-full h-full object-cover" muted preload="metadata"></video>
+                <div class="absolute inset-0 flex items-center justify-center bg-black/20">
+                  <span class="material-symbols-outlined text-white text-lg drop-shadow">play_circle</span>
+                </div>
+              } @else {
+                <img [ngSrc]="imageUrl" [alt]="'Thumbnail ' + ($index + 1)" 
+                     width="96" height="54"
+                     class="w-full h-full object-cover">
+              }
               @if (currentIndex() === $index) {
                 <div class="absolute inset-0 bg-primary/10"></div>
               }
@@ -92,13 +112,29 @@ import { CommonModule, NgOptimizedImage } from '@angular/common';
 
             <div class="relative w-full h-full max-w-6xl max-h-[80vh] flex items-center justify-center">
               @for (imageUrl of imageUrls(); track $index) {
-                <img [src]="imageUrl" 
-                     [alt]="'Full size image ' + ($index + 1)" 
-                     class="max-w-full max-h-full object-contain absolute transition-all duration-500 ease-out"
-                     [class.opacity-0]="currentIndex() !== $index"
-                     [class.scale-95]="currentIndex() !== $index"
-                     [class.translate-x-full]="currentIndex() < $index"
-                     [class.-translate-x-full]="currentIndex() > $index" />
+                @if (isVideo(imageUrl)) {
+                  <video #lightboxVideo
+                         [src]="imageUrl"
+                         class="max-w-full max-h-full object-contain absolute transition-all duration-500 ease-out"
+                         [class.opacity-0]="currentIndex() !== $index"
+                         [class.scale-95]="currentIndex() !== $index"
+                         [class.translate-x-full]="currentIndex() < $index"
+                         [class.-translate-x-full]="currentIndex() > $index"
+                         [attr.data-index]="$index"
+                         muted
+                         controls
+                         playsinline
+                         preload="auto">
+                  </video>
+                } @else {
+                  <img [src]="imageUrl" 
+                       [alt]="'Full size image ' + ($index + 1)" 
+                       class="max-w-full max-h-full object-contain absolute transition-all duration-500 ease-out"
+                       [class.opacity-0]="currentIndex() !== $index"
+                       [class.scale-95]="currentIndex() !== $index"
+                       [class.translate-x-full]="currentIndex() < $index"
+                       [class.-translate-x-full]="currentIndex() > $index" />
+                }
               }
             </div>
 
@@ -134,6 +170,42 @@ export class ImageGalleryComponent {
   currentIndex = signal(0);
   isLightboxOpen = signal(false);
   private touchStartX = 0;
+  private static readonly VIDEO_EXTENSIONS = ['.mp4', '.webm', '.mov', '.ogg'];
+
+  private mainVideos = viewChildren<ElementRef<HTMLVideoElement>>('mainVideo');
+  private lightboxVideos = viewChildren<ElementRef<HTMLVideoElement>>('lightboxVideo');
+
+  constructor() {
+    effect(() => {
+      const active = this.currentIndex();
+      const lightboxOpen = this.isLightboxOpen();
+
+      for (const ref of this.mainVideos()) {
+        const video = ref.nativeElement;
+        const index = Number(video.dataset['index']);
+        if (index === active && !lightboxOpen) {
+          video.play().catch(err => console.warn('Gallery video failed to play:', video.src, err));
+        } else {
+          video.pause();
+        }
+      }
+
+      for (const ref of this.lightboxVideos()) {
+        const video = ref.nativeElement;
+        const index = Number(video.dataset['index']);
+        if (index === active && lightboxOpen) {
+          video.play().catch(err => console.warn('Lightbox video failed to play:', video.src, err));
+        } else {
+          video.pause();
+        }
+      }
+    });
+  }
+
+  isVideo(url: string): boolean {
+    const clean = url.split('?')[0].toLowerCase();
+    return ImageGalleryComponent.VIDEO_EXTENSIONS.some(ext => clean.endsWith(ext));
+  }
 
   @HostListener('window:keydown', ['$event'])
   handleKeyDown(event: KeyboardEvent): void {
