@@ -1,4 +1,5 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable, signal, computed, inject } from '@angular/core';
+import { FirebaseService, StoredProject } from './firebase.service';
 
 export interface Service {
   icon: string;
@@ -57,7 +58,7 @@ export interface Article {
 }
 
 // Helper to create URL-friendly slugs
-const slugify = (text: string): string => 
+export const slugify = (text: string): string => 
   text.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
 
 
@@ -65,6 +66,8 @@ const slugify = (text: string): string =>
   providedIn: 'root',
 })
 export class DataService {
+  private firebaseService = inject(FirebaseService);
+
   services = signal<Service[]>([
     {
       icon: 'architecture',
@@ -229,7 +232,10 @@ export class DataService {
     },
   ]);
 
-  private allProjects: Project[] = [
+  // These projects are baked into the site's code. The client's uploads
+  // (added through the hidden "manage projects" page) load separately from
+  // Firestore and are merged in below — nobody has to re-enter this list.
+  private staticProjects: Project[] = [
     {
       title: 'City Center Tower Construction',
       imageUrls: ['https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1200', 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80&w=1200', 'https://images.unsplash.com/photo-1503387762-592dee58c460?auto=format&fit=crop&q=80&w=1200'],
@@ -423,6 +429,14 @@ export class DataService {
       coordinates: { lat: 13.0059, lng: 5.2476 }
     }
   ].map(p => ({...p, slug: slugify(p.title)}));
-  
-  projects = signal<Project[]>(this.allProjects);
+
+  // Projects the client has added themselves via the hidden upload page.
+  // Kept live and up to date automatically by Firestore.
+  private clientProjects = signal<StoredProject[]>([]);
+
+  projects = computed<Project[]>(() => [...this.staticProjects, ...this.clientProjects()]);
+
+  constructor() {
+    this.firebaseService.watchProjects((projects) => this.clientProjects.set(projects));
+  }
 }

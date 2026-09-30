@@ -1,5 +1,6 @@
 
 import { Routes } from '@angular/router';
+import { MANAGE_PROJECTS_PATH } from './app-config';
 
 export const APP_ROUTES: Routes = [
   {
@@ -61,6 +62,11 @@ export const APP_ROUTES: Routes = [
     path: 'terms',
     title: 'Terms of Service | Alaran Geo-Service',
     loadComponent: () => import('./terms.component').then(c => c.TermsComponent)
+  },
+  {
+    path: MANAGE_PROJECTS_PATH,
+    title: 'Manage Projects | Alaran Geo-Service',
+    loadComponent: () => import('./manage-projects.component').then(c => c.ManageProjectsComponent)
   },
   {
     path: '',

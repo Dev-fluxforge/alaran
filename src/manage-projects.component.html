@@ -1,0 +1,217 @@
+<section class="py-16 px-6 bg-background-light dark:bg-background-dark min-h-screen">
+  <div class="max-w-4xl mx-auto">
+
+    <div class="mb-10">
+      <h1 class="text-3xl md:text-4xl font-bold text-deep-green dark:text-white">Manage Projects</h1>
+      <p class="mt-2 text-deep-green/70 dark:text-white/70">
+        Add new projects to the site, or edit and remove existing ones. Changes appear on the
+        public Projects page within a few seconds.
+      </p>
+      <p class="mt-2 text-xs text-deep-green/50 dark:text-white/50">
+        This page isn't linked anywhere on the site — keep this link private.
+      </p>
+    </div>
+
+    @if (!isConfigured) {
+      <div class="p-6 rounded-lg bg-red-50 border border-red-200 text-red-800 mb-10">
+        <p class="font-bold">Setup needed</p>
+        <p class="text-sm mt-1">
+          This page isn't connected to a database yet. Follow SETUP_INSTRUCTIONS.md in the
+          project files to finish the one-time setup, then this message will disappear.
+        </p>
+      </div>
+    }
+
+    <!-- Add / Edit Form -->
+    <form [formGroup]="projectForm" (ngSubmit)="onSubmit()"
+          class="p-6 md:p-8 rounded-2xl border border-deep-green/10 dark:border-white/10 bg-white dark:bg-white/5 space-y-6">
+
+      <h2 class="text-xl font-bold text-deep-green dark:text-white">
+        {{ editingId() ? 'Edit Project' : 'Add a New Project' }}
+      </h2>
+
+      <div>
+        <label class="block text-sm font-semibold mb-2 text-deep-green dark:text-white">Project Title</label>
+        <input type="text" formControlName="title" placeholder="e.g. Riverside Bridge Survey"
+               class="w-full px-4 py-3 rounded-lg border border-deep-green/20 dark:border-white/20 bg-transparent focus:outline-none focus:border-primary" />
+      </div>
+
+      <div>
+        <label class="block text-sm font-semibold mb-2 text-deep-green dark:text-white">Short Description</label>
+        <textarea formControlName="description" rows="2"
+                  placeholder="One or two sentences, shown on the Projects listing page"
+                  class="w-full px-4 py-3 rounded-lg border border-deep-green/20 dark:border-white/20 bg-transparent focus:outline-none focus:border-primary"></textarea>
+      </div>
+
+      <div>
+        <label class="block text-sm font-semibold mb-2 text-deep-green dark:text-white">Full Description</label>
+        <textarea formControlName="longDescription" rows="5"
+                  placeholder="The full story of the project, shown on its own page"
+                  class="w-full px-4 py-3 rounded-lg border border-deep-green/20 dark:border-white/20 bg-transparent focus:outline-none focus:border-primary"></textarea>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label class="block text-sm font-semibold mb-2 text-deep-green dark:text-white">Service Category</label>
+          <select formControlName="serviceCategory"
+                  class="w-full px-4 py-3 rounded-lg border border-deep-green/20 dark:border-white/20 bg-transparent focus:outline-none focus:border-primary">
+            <option value="" disabled>Select a category</option>
+            @for (service of serviceCategories(); track service.title) {
+              <option [value]="service.title">{{ service.title }}</option>
+            }
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-semibold mb-2 text-deep-green dark:text-white">Client Name</label>
+          <input type="text" formControlName="client" placeholder="e.g. City-Dev Properties"
+                 class="w-full px-4 py-3 rounded-lg border border-deep-green/20 dark:border-white/20 bg-transparent focus:outline-none focus:border-primary" />
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-sm font-semibold mb-2 text-deep-green dark:text-white">Location</label>
+        <input type="text" formControlName="location" placeholder="e.g. Lagos, Nigeria"
+               class="w-full px-4 py-3 rounded-lg border border-deep-green/20 dark:border-white/20 bg-transparent focus:outline-none focus:border-primary" />
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label class="block text-sm font-semibold mb-2 text-deep-green dark:text-white">
+            Map Latitude <span class="font-normal text-deep-green/50 dark:text-white/50">(optional)</span>
+          </label>
+          <input type="text" formControlName="lat" placeholder="e.g. 6.4654"
+                 class="w-full px-4 py-3 rounded-lg border border-deep-green/20 dark:border-white/20 bg-transparent focus:outline-none focus:border-primary" />
+        </div>
+        <div>
+          <label class="block text-sm font-semibold mb-2 text-deep-green dark:text-white">
+            Map Longitude <span class="font-normal text-deep-green/50 dark:text-white/50">(optional)</span>
+          </label>
+          <input type="text" formControlName="lng" placeholder="e.g. 3.4064"
+                 class="w-full px-4 py-3 rounded-lg border border-deep-green/20 dark:border-white/20 bg-transparent focus:outline-none focus:border-primary" />
+        </div>
+      </div>
+      <p class="text-xs text-deep-green/50 dark:text-white/50 -mt-4">
+        Tip: right-click the project's location on Google Maps and the coordinates appear as the first option.
+      </p>
+
+      <!-- Media -->
+      <div>
+        <label class="block text-sm font-semibold mb-2 text-deep-green dark:text-white">Photos & Videos</label>
+
+        @if (existingImageUrls().length > 0) {
+          <div class="grid grid-cols-3 sm:grid-cols-4 gap-3 mb-3">
+            @for (url of existingImageUrls(); track url) {
+              <div class="relative aspect-video rounded-lg overflow-hidden border border-deep-green/10 group">
+                @if (isVideo(url)) {
+                  <video [src]="url" class="w-full h-full object-cover" muted></video>
+                } @else {
+                  <img [src]="url" class="w-full h-full object-cover" alt="Project media" />
+                }
+                <button type="button" (click)="removeExistingImage(url)"
+                        class="absolute top-1 right-1 w-6 h-6 rounded-full bg-black/60 text-white text-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                  ✕
+                </button>
+              </div>
+            }
+          </div>
+        }
+
+        @if (pendingFiles().length > 0) {
+          <div class="grid grid-cols-3 sm:grid-cols-4 gap-3 mb-3">
+            @for (item of pendingFiles(); track item.previewUrl; let i = $index) {
+              <div class="relative aspect-video rounded-lg overflow-hidden border border-deep-green/10 group">
+                @if (item.file.type.startsWith('video/')) {
+                  <video [src]="item.previewUrl" class="w-full h-full object-cover" muted></video>
+                } @else {
+                  <img [src]="item.previewUrl" class="w-full h-full object-cover" alt="Selected media" />
+                }
+                @if (item.status === 'uploading') {
+                  <div class="absolute inset-0 bg-black/50 flex items-center justify-center text-white text-xs font-bold">
+                    {{ item.progress }}%
+                  </div>
+                }
+                @if (item.status === 'error') {
+                  <div class="absolute inset-0 bg-red-900/70 flex items-center justify-center text-white text-[10px] text-center p-1">
+                    Failed
+                  </div>
+                }
+                <button type="button" (click)="removePendingFile(i)"
+                        class="absolute top-1 right-1 w-6 h-6 rounded-full bg-black/60 text-white text-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                  ✕
+                </button>
+              </div>
+            }
+          </div>
+        }
+
+        <label class="flex items-center justify-center gap-2 px-4 py-4 rounded-lg border-2 border-dashed border-deep-green/20 dark:border-white/20 cursor-pointer hover:border-primary transition-colors">
+          <span class="material-symbols-outlined text-primary">upload</span>
+          <span class="text-sm font-semibold text-deep-green dark:text-white">Click to upload photos or videos</span>
+          <input type="file" accept="image/*,video/*" multiple class="hidden" (change)="onFilesSelected($event)" />
+        </label>
+      </div>
+
+      @if (errorMessage()) {
+        <p class="text-sm text-red-600 font-semibold">{{ errorMessage() }}</p>
+      }
+      @if (formStatus() === 'success') {
+        <p class="text-sm text-green-600 font-semibold">Saved! It will appear on the Projects page shortly.</p>
+      }
+
+      <div class="flex items-center gap-4">
+        <button type="submit" [disabled]="isSubmitting()"
+                class="bg-primary hover:bg-primary/90 disabled:opacity-50 text-deep-green px-8 py-3 rounded-lg font-bold text-sm tracking-wide transition-all">
+          {{ isSubmitting() ? 'Saving…' : (editingId() ? 'Save Changes' : 'Add Project') }}
+        </button>
+        @if (editingId()) {
+          <button type="button" (click)="cancelEdit()"
+                  class="text-sm font-semibold text-deep-green/70 dark:text-white/70 hover:text-primary">
+            Cancel Edit
+          </button>
+        }
+      </div>
+    </form>
+
+    <!-- Existing client-added projects -->
+    <div class="mt-14">
+      <h2 class="text-xl font-bold text-deep-green dark:text-white mb-4">
+        Your Uploaded Projects ({{ clientProjects().length }})
+      </h2>
+
+      @if (clientProjects().length === 0) {
+        <p class="text-deep-green/60 dark:text-white/60 text-sm">
+          Nothing uploaded yet — projects you add above will show up here.
+        </p>
+      }
+
+      <div class="space-y-3">
+        @for (project of clientProjects(); track project.id) {
+          <div class="flex items-center gap-4 p-4 rounded-lg border border-deep-green/10 dark:border-white/10 bg-white dark:bg-white/5">
+            <div class="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 bg-deep-green/5">
+              @if (project.imageUrls[0] && !isVideo(project.imageUrls[0])) {
+                <img [src]="project.imageUrls[0]" class="w-full h-full object-cover" alt="" />
+              } @else {
+                <div class="w-full h-full flex items-center justify-center text-deep-green/30">
+                  <span class="material-symbols-outlined">image</span>
+                </div>
+              }
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="font-bold text-deep-green dark:text-white truncate">{{ project.title }}</p>
+              <p class="text-xs text-deep-green/60 dark:text-white/60 truncate">{{ project.serviceCategory }} · {{ project.location }}</p>
+            </div>
+            <button type="button" (click)="startEdit(project)"
+                    class="text-sm font-semibold text-primary hover:underline flex-shrink-0">
+              Edit
+            </button>
+            <button type="button" (click)="deleteProject(project)" [disabled]="deletingId() === project.id"
+                    class="text-sm font-semibold text-red-600 hover:underline flex-shrink-0 disabled:opacity-50">
+              {{ deletingId() === project.id ? 'Deleting…' : 'Delete' }}
+            </button>
+          </div>
+        }
+      </div>
+    </div>
+
+  </div>
+</section>
