@@ -1,8 +1,11 @@
 import { Component, ChangeDetectionStrategy, inject, signal, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { DataService, Project } from './data.service';
 import { FirebaseService, StoredProject } from './firebase.service';
+import { AuthService } from './auth.service';
+import { LOGIN_PATH } from './app-config';
 
 interface PendingFile {
   file: File;
@@ -24,9 +27,12 @@ export class ManageProjectsComponent {
   private fb = inject(FormBuilder);
   private firebaseService = inject(FirebaseService);
   private dataService = inject(DataService);
+  private authService = inject(AuthService);
+  private router = inject(Router);
 
   isConfigured = this.firebaseService.isConfigured;
   serviceCategories = this.dataService.services;
+  userEmail = this.authService.userEmail;
 
   clientProjects = signal<StoredProject[]>([]);
   editingId = signal<string | null>(null);
@@ -55,6 +61,11 @@ export class ManageProjectsComponent {
 
   constructor() {
     this.firebaseService.watchProjects((projects) => this.clientProjects.set(projects));
+  }
+
+  async logout(): Promise<void> {
+    await this.authService.logout();
+    this.router.navigateByUrl('/' + LOGIN_PATH);
   }
 
   onFilesSelected(event: Event): void {

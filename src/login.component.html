@@ -1,0 +1,39 @@
+<section class="min-h-screen flex items-center justify-center px-6 bg-background-light dark:bg-background-dark">
+  <div class="w-full max-w-md p-8 rounded-2xl border border-deep-green/10 dark:border-white/10 bg-white dark:bg-white/5">
+
+    <h1 class="text-2xl font-bold text-deep-green dark:text-white mb-2">Project Manager Login</h1>
+    <p class="text-sm text-deep-green/60 dark:text-white/60 mb-8">
+      Sign in to add, edit, or remove projects.
+    </p>
+
+    @if (!isConfigured) {
+      <div class="p-4 rounded-lg bg-red-50 border border-red-200 text-red-800 mb-6 text-sm">
+        Login isn't set up yet — see SETUP_INSTRUCTIONS.md to finish the one-time setup.
+      </div>
+    }
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="space-y-5">
+      <div>
+        <label class="block text-sm font-semibold mb-2 text-deep-green dark:text-white">Email</label>
+        <input type="email" formControlName="email" autocomplete="username"
+               class="w-full px-4 py-3 rounded-lg border border-deep-green/20 dark:border-white/20 bg-transparent focus:outline-none focus:border-primary" />
+      </div>
+
+      <div>
+        <label class="block text-sm font-semibold mb-2 text-deep-green dark:text-white">Password</label>
+        <input type="password" formControlName="password" autocomplete="current-password"
+               class="w-full px-4 py-3 rounded-lg border border-deep-green/20 dark:border-white/20 bg-transparent focus:outline-none focus:border-primary" />
+      </div>
+
+      @if (errorMessage()) {
+        <p class="text-sm text-red-600 font-semibold">{{ errorMessage() }}</p>
+      }
+
+      <button type="submit" [disabled]="isSubmitting()"
+              class="w-full bg-primary hover:bg-primary/90 disabled:opacity-50 text-deep-green px-6 py-3 rounded-lg font-bold text-sm tracking-wide transition-all">
+        {{ isSubmitting() ? 'Signing in…' : 'Sign In' }}
+      </button>
+    </form>
+
+  </div>
+</section>

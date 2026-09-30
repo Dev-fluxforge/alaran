@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { initializeApp, FirebaseApp } from 'firebase/app';
 import {
   getFirestore,
   Firestore,
@@ -11,7 +10,8 @@ import {
   doc,
   CollectionReference,
 } from 'firebase/firestore';
-import { FIREBASE_CONFIG, CLOUDINARY_CONFIG } from './app-config';
+import { getFirebaseApp } from './firebase-app';
+import { CLOUDINARY_CONFIG } from './app-config';
 import { Project } from './data.service';
 
 export interface StoredProject extends Project {
@@ -20,14 +20,13 @@ export interface StoredProject extends Project {
 
 @Injectable({ providedIn: 'root' })
 export class FirebaseService {
-  private app: FirebaseApp | null = null;
   private db: Firestore | null = null;
   private projectsCol: CollectionReference | null = null;
   isConfigured = false;
 
   constructor() {
-    const looksConfigured = !FIREBASE_CONFIG.apiKey.startsWith('YOUR_');
-    if (!looksConfigured) {
+    const app = getFirebaseApp();
+    if (!app) {
       console.warn(
         '[Alaran] Firebase is not configured yet — see SETUP_INSTRUCTIONS.md. ' +
           'Client-uploaded projects will not appear until this is set up.'
@@ -35,8 +34,7 @@ export class FirebaseService {
       return;
     }
     try {
-      this.app = initializeApp(FIREBASE_CONFIG);
-      this.db = getFirestore(this.app);
+      this.db = getFirestore(app);
       this.projectsCol = collection(this.db, 'projects');
       this.isConfigured = true;
     } catch (err) {

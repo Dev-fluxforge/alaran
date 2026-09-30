@@ -28,5 +28,11 @@ export const CLOUDINARY_CONFIG = {
 // hash-based routing) where the client goes to add/edit/delete projects.
 // Change this to something only you and the client know, e.g.
 // 'manage-projects-8f2k1x'. Nobody else can guess it, and it is never
-// linked to from anywhere on the public site.
+// linked to from anywhere on the public site. This page now also requires
+// logging in (see SETUP_INSTRUCTIONS.md), so the hidden path is just an
+// extra layer, not the only protection.
 export const MANAGE_PROJECTS_PATH = 'manage-projects-8f2k1x';
+
+// The URL path for the login page. Keep this private too, for the same
+// reason as above.
+export const LOGIN_PATH = 'client-login-8f2k1x';

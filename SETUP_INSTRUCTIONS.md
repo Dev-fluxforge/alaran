@@ -37,20 +37,26 @@ Do this once. It takes about 10–15 minutes.
      match /databases/{database}/documents {
        match /projects/{projectId} {
          allow read: if true;
-         allow write: if true;
+         allow write: if request.auth != null;
        }
      }
    }
    ```
 
-   Click **Publish**.
+   Click **Publish**. This means anyone can *view* projects (needed for the
+   public site), but only someone logged in can add, edit, or delete one.
 
-   ⚠️ **Note on security:** you asked for no login, so these rules let
-   anyone who has the hidden upload-page link add, edit, or delete
-   projects — there's no password check. That matches what you asked for,
-   but it also means the link itself *is* the only protection. Don't post
-   it publicly. If you ever want a lightweight PIN gate added on top (still
-   no full login system) let me know — it's a small addition.
+6. Set up the login. In the left sidebar go to **Build → Authentication →
+   Get started**, then on the **Sign-in method** tab enable **Email/Password**
+   and save.
+
+7. Create the client's account. Still in Authentication, go to the **Users**
+   tab → **Add user**. Enter the client's email and a password (share the
+   password with them directly, e.g. by phone — not over email or chat).
+   This is the only account that can log in; there's no public sign-up page.
+
+   Want more than one person to be able to log in (e.g. you and the
+   client)? Just repeat this step to add another user.
 
 ## 2. Create a Cloudinary account (free)
 
@@ -69,12 +75,13 @@ Do this once. It takes about 10–15 minutes.
 4. Paste that name into `CLOUDINARY_CONFIG.uploadPreset` in
    `src/app-config.ts`.
 
-## 3. Choose the hidden page's address
+## 3. Choose the hidden pages' addresses
 
-Open `src/app-config.ts` and change `MANAGE_PROJECTS_PATH` to something
-private and hard to guess, e.g. `'manage-projects-8f2k1x'`. This is the
-only "login" — treat it like a password and share it with your client
-directly rather than posting it anywhere.
+Open `src/app-config.ts` and change `MANAGE_PROJECTS_PATH` and
+`LOGIN_PATH` to something private and hard to guess (they can be anything,
+e.g. `'manage-projects-8f2k1x'` and `'client-login-8f2k1x'`). These paths
+being unguessable is a nice extra layer, but the real protection now is
+the login from step 6 above.
 
 ## 4. Install, commit, and deploy
 
@@ -85,24 +92,34 @@ git commit -m "Add client project upload page"
 git push
 ```
 
-Vercel/Netlify will redeploy automatically. Once it's live, the upload
-page is at:
+Vercel/Netlify will redeploy automatically. Once it's live, the client
+goes to:
 
 ```
-https://your-site.com/#/manage-projects-8f2k1x
+https://your-site.com/#/client-login-8f2k1x
 ```
+
+logs in with the email/password you created in step 7, and is taken to the
+upload page automatically. Their login is remembered by the browser, so
+they won't have to sign in every visit — only after they explicitly log
+out or clear their browser data.
 
 (Note the `#` — this site uses hash-based routing, so the `#` before the
 path is required.)
 
 ## What the client will see
 
-A simple form: project title, descriptions, category, client name,
-location, optional map coordinates, and a "click to upload" box for
-photos and videos. Below the form is a list of everything they've added,
-each with **Edit** and **Delete** buttons. Saved projects show up on the
-public `/projects` page automatically, usually within a few seconds —
-no redeploy needed.
+A login page, then: a form with project title, descriptions, category,
+client name, location, optional map coordinates, and a "click to upload"
+box for photos and videos. Below the form is a list of everything they've
+added, each with **Edit** and **Delete** buttons, plus a **Log Out**
+button. Saved projects show up on the public `/projects` page
+automatically, usually within a few seconds — no redeploy needed.
 
 The 20 existing projects already in the code are untouched and keep
 showing up alongside anything the client adds.
+
+## If you ever need to change the client's password
+
+Firebase console → Authentication → Users → find their email → the "⋮"
+menu has a **Reset password** option, which emails them a reset link.

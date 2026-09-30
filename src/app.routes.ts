@@ -1,6 +1,7 @@
 
 import { Routes } from '@angular/router';
-import { MANAGE_PROJECTS_PATH } from './app-config';
+import { MANAGE_PROJECTS_PATH, LOGIN_PATH } from './app-config';
+import { authGuard } from './auth.guard';
 
 export const APP_ROUTES: Routes = [
   {
@@ -64,8 +65,14 @@ export const APP_ROUTES: Routes = [
     loadComponent: () => import('./terms.component').then(c => c.TermsComponent)
   },
   {
+    path: LOGIN_PATH,
+    title: 'Login | Alaran Geo-Service',
+    loadComponent: () => import('./login.component').then(c => c.LoginComponent)
+  },
+  {
     path: MANAGE_PROJECTS_PATH,
     title: 'Manage Projects | Alaran Geo-Service',
+    canActivate: [authGuard],
     loadComponent: () => import('./manage-projects.component').then(c => c.ManageProjectsComponent)
   },
   {

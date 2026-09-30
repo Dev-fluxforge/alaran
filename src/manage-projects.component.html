@@ -1,15 +1,23 @@
 <section class="py-16 px-6 bg-background-light dark:bg-background-dark min-h-screen">
   <div class="max-w-4xl mx-auto">
 
-    <div class="mb-10">
-      <h1 class="text-3xl md:text-4xl font-bold text-deep-green dark:text-white">Manage Projects</h1>
-      <p class="mt-2 text-deep-green/70 dark:text-white/70">
-        Add new projects to the site, or edit and remove existing ones. Changes appear on the
-        public Projects page within a few seconds.
-      </p>
-      <p class="mt-2 text-xs text-deep-green/50 dark:text-white/50">
-        This page isn't linked anywhere on the site — keep this link private.
-      </p>
+    <div class="mb-10 flex items-start justify-between gap-4">
+      <div>
+        <h1 class="text-3xl md:text-4xl font-bold text-deep-green dark:text-white">Manage Projects</h1>
+        <p class="mt-2 text-deep-green/70 dark:text-white/70">
+          Add new projects to the site, or edit and remove existing ones. Changes appear on the
+          public Projects page within a few seconds.
+        </p>
+        @if (userEmail()) {
+          <p class="mt-2 text-xs text-deep-green/50 dark:text-white/50">
+            Signed in as {{ userEmail() }}
+          </p>
+        }
+      </div>
+      <button type="button" (click)="logout()"
+              class="flex-shrink-0 text-sm font-semibold text-deep-green/70 dark:text-white/70 hover:text-primary border border-deep-green/20 dark:border-white/20 px-4 py-2 rounded-lg">
+        Log Out
+      </button>
     </div>
 
     @if (!isConfigured) {
