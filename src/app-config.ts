@@ -8,17 +8,17 @@
 // ─────────────────────────────────────────────────────────────────────────
 
 export const FIREBASE_CONFIG = {
-  apiKey: 'YOUR_FIREBASE_API_KEY',
-  authDomain: 'YOUR_PROJECT_ID.firebaseapp.com',
-  projectId: 'YOUR_PROJECT_ID',
-  storageBucket: 'YOUR_PROJECT_ID.firebasestorage.app',
-  messagingSenderId: 'YOUR_SENDER_ID',
-  appId: 'YOUR_APP_ID',
+  apiKey: 'AIzaSyD_ff55CzGazgTOLiFekcfzVUyXtbmlGS8',
+  authDomain: 'a-gsl-1f942.firebaseapp.com',
+  projectId: 'a-gsl-1f942',
+  storageBucket: 'a-gsl-1f942.firebasestorage.app',
+  messagingSenderId: '996396632065',
+  appId: '1:996396632065:web:e9a03b44ecb1f85722d800',
 };
 
 export const CLOUDINARY_CONFIG = {
   // Found on your Cloudinary Dashboard home page.
-  cloudName: 'YOUR_CLOUDINARY_CLOUD_NAME',
+  cloudName: 'wlrrtyk7',
   // The name you give the "Unsigned" upload preset you create.
   // See SETUP_INSTRUCTIONS.md, step 2.
   uploadPreset: 'alaran_project_uploads',
