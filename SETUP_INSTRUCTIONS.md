@@ -66,9 +66,9 @@ Do this once. It takes about 10–15 minutes.
    tab enable:
    - **Email/Password** — toggle on, save.
    - **Google** — toggle on, pick a support email, save. Then go to
-     **Authentication → Settings → Authorized domains** and add your real
-     site domain (e.g. `your-site.com`) if it isn't already listed —
-     Google sign-in will fail on any domain not in this list.
+     **Authentication → Settings → Authorized domains** and add
+     `a-gsl.com` (and `www.a-gsl.com` too, if the site is reachable at
+     both) — Google sign-in will fail on any domain not in this list.
    - **Phone** — toggle on, save. Phone sign-in sends real SMS messages;
      Firebase's free tier includes a monthly quota, then charges per SMS
      (see Firebase's pricing page). The login page always shows the phone
@@ -118,7 +118,7 @@ Vercel/Netlify will redeploy automatically. Once it's live, the client
 goes to:
 
 ```
-https://your-site.com/#/client-login-8f2k1x
+https://a-gsl.com/#/client-login-8f2k1x
 ```
 
 and signs up themselves the first time — using the email address or phone
