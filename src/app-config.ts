@@ -36,3 +36,22 @@ export const MANAGE_PROJECTS_PATH = 'manage-projects-8f2k1x';
 // The URL path for the login page. Keep this private too, for the same
 // reason as above.
 export const LOGIN_PATH = 'client-login-8f2k1x';
+
+// ─────────────────────────────────────────────────────────────────────────
+// WHO IS ALLOWED TO ACTUALLY MANAGE PROJECTS
+// ─────────────────────────────────────────────────────────────────────────
+// The login page lets ANYONE create an account (email/password, Google, or
+// phone) — that's what makes it self-service. But creating an account is
+// not the same as being allowed to add/edit/delete projects: only the
+// email addresses and phone numbers listed here are granted that access.
+// Everyone else can sign up but will see a "not authorized" message.
+//
+// IMPORTANT: this list is for a friendlier message in the app only. The
+// real enforcement happens in your Firestore security rules, which must
+// list the same emails/phone numbers — see SETUP_INSTRUCTIONS.md.
+export const AUTHORIZED_EMAILS: string[] = [
+  // 'client@example.com',
+];
+export const AUTHORIZED_PHONE_NUMBERS: string[] = [
+  // '+2348012345678',
+];

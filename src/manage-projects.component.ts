@@ -33,6 +33,8 @@ export class ManageProjectsComponent {
   isConfigured = this.firebaseService.isConfigured;
   serviceCategories = this.dataService.services;
   userEmail = this.authService.userEmail;
+  userPhone = this.authService.userPhone;
+  isAuthorizedUser = this.authService.isAuthorizedUser;
 
   clientProjects = signal<StoredProject[]>([]);
   editingId = signal<string | null>(null);

@@ -30,6 +30,17 @@
       </div>
     }
 
+    @if (isConfigured && !isAuthorizedUser()) {
+      <div class="p-6 rounded-lg bg-amber-50 border border-amber-200 text-amber-900">
+        <p class="font-bold">Your account isn't authorized yet</p>
+        <p class="text-sm mt-1">
+          You're signed in as {{ userEmail() || userPhone() }}, but this identity hasn't been
+          given access to manage projects. Ask the site owner to add it to the authorized list.
+        </p>
+      </div>
+    }
+
+    @if (isConfigured && isAuthorizedUser()) {
     <!-- Add / Edit Form -->
     <form [formGroup]="projectForm" (ngSubmit)="onSubmit()"
           class="p-6 md:p-8 rounded-2xl border border-deep-green/10 dark:border-white/10 bg-white dark:bg-white/5 space-y-6">
@@ -220,6 +231,7 @@
         }
       </div>
     </div>
+    }
 
   </div>
 </section>

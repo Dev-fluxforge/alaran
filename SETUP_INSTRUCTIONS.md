@@ -29,7 +29,9 @@ Do this once. It takes about 10–15 minutes.
 4. In the left sidebar, go to **Build → Firestore Database → Create database**.
    Choose **Start in production mode**, pick any region close to your
    users, and click **Enable**.
-5. Go to the **Rules** tab of Firestore and replace the rules with:
+5. Go to the **Rules** tab of Firestore and replace the rules with the
+   block below. **Edit the email/phone list first** — put in your client's
+   real email and/or phone number (the ones they'll actually sign up with):
 
    ```
    rules_version = '2';
@@ -37,26 +39,46 @@ Do this once. It takes about 10–15 minutes.
      match /databases/{database}/documents {
        match /projects/{projectId} {
          allow read: if true;
-         allow write: if request.auth != null;
+         allow write: if request.auth != null && (
+           request.auth.token.email in ['client@example.com'] ||
+           request.auth.token.phone_number in ['+2348012345678']
+         );
        }
      }
    }
    ```
 
    Click **Publish**. This means anyone can *view* projects (needed for the
-   public site), but only someone logged in can add, edit, or delete one.
+   public site), but only someone signed in **and** on this list can add,
+   edit, or delete one — even though sign-up itself is open to anyone.
 
-6. Set up the login. In the left sidebar go to **Build → Authentication →
-   Get started**, then on the **Sign-in method** tab enable **Email/Password**
-   and save.
+   To authorize more than one person, just add more entries to either
+   array, e.g. `['client@example.com', 'you@example.com']`.
 
-7. Create the client's account. Still in Authentication, go to the **Users**
-   tab → **Add user**. Enter the client's email and a password (share the
-   password with them directly, e.g. by phone — not over email or chat).
-   This is the only account that can log in; there's no public sign-up page.
+6. Open `src/app-config.ts` in this repo and fill in the **same** emails
+   and/or phone numbers in `AUTHORIZED_EMAILS` / `AUTHORIZED_PHONE_NUMBERS`.
+   This list doesn't grant access by itself (step 5's rules do that) — it
+   just makes the app show a clear "not authorized" message instead of a
+   confusing error for anyone who signs up but isn't on the list.
 
-   Want more than one person to be able to log in (e.g. you and the
-   client)? Just repeat this step to add another user.
+7. Turn on the sign-in methods you want. In the left sidebar go to
+   **Build → Authentication → Get started**, then on the **Sign-in method**
+   tab enable:
+   - **Email/Password** — toggle on, save.
+   - **Google** — toggle on, pick a support email, save. Then go to
+     **Authentication → Settings → Authorized domains** and add your real
+     site domain (e.g. `your-site.com`) if it isn't already listed —
+     Google sign-in will fail on any domain not in this list.
+   - **Phone** — toggle on, save. Phone sign-in sends real SMS messages;
+     Firebase's free tier includes a monthly quota, then charges per SMS
+     (see Firebase's pricing page). The login page always shows the phone
+     option; if you'd rather not enable Phone at all, that's fine too —
+     anyone who tries it will just see a "Something went wrong" message,
+     so only point your client at email or Google in that case.
+
+   Your client now signs up themselves the first time (email/password,
+   Google, or phone — whichever you enabled), instead of you creating
+   their account manually.
 
 ## 2. Create a Cloudinary account (free)
 
@@ -99,8 +121,9 @@ goes to:
 https://your-site.com/#/client-login-8f2k1x
 ```
 
-logs in with the email/password you created in step 7, and is taken to the
-upload page automatically. Their login is remembered by the browser, so
+and signs up themselves the first time — using the email address or phone
+number you put on the authorized list in step 5/6 — then is taken to the
+upload page automatically. Their session is remembered by the browser, so
 they won't have to sign in every visit — only after they explicitly log
 out or clear their browser data.
 
@@ -109,17 +132,35 @@ path is required.)
 
 ## What the client will see
 
-A login page, then: a form with project title, descriptions, category,
+A page to sign up or sign in (email/password, Google, or phone — whichever
+you enabled), then: a form with project title, descriptions, category,
 client name, location, optional map coordinates, and a "click to upload"
 box for photos and videos. Below the form is a list of everything they've
 added, each with **Edit** and **Delete** buttons, plus a **Log Out**
 button. Saved projects show up on the public `/projects` page
 automatically, usually within a few seconds — no redeploy needed.
 
+If someone who isn't on the authorized list signs up (on purpose or by
+accident), they see a plain "your account isn't authorized" message
+instead of the form — they can't view, add, or change any project data.
+
 The 20 existing projects already in the code are untouched and keep
 showing up alongside anything the client adds.
 
-## If you ever need to change the client's password
+## If the client forgets their password
 
-Firebase console → Authentication → Users → find their email → the "⋮"
-menu has a **Reset password** option, which emails them a reset link.
+If they signed up with email/password: Firebase console → Authentication
+→ Users → find their email → the "⋮" menu → **Reset password**, which
+emails them a reset link. If they signed up with Google or phone, there's
+no separate password to reset — they just sign in with Google or request
+a new phone code.
+
+## Authorizing someone new, or removing access
+
+Edit the two places that list who's allowed to manage projects:
+1. The Firestore rule in step 5 (this is what actually controls access)
+2. `AUTHORIZED_EMAILS` / `AUTHORIZED_PHONE_NUMBERS` in `src/app-config.ts`
+   (this only controls the friendly message, so keep it in sync)
+
+Removing someone from both lists blocks their writes immediately, even if
+they stay logged in — Firestore checks the rule on every request.
