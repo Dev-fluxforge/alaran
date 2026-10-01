@@ -50,7 +50,8 @@ export const LOGIN_PATH = 'client-login-8f2k1x';
 // real enforcement happens in your Firestore security rules, which must
 // list the same emails/phone numbers — see SETUP_INSTRUCTIONS.md.
 export const AUTHORIZED_EMAILS: string[] = [
-  // 'client@example.com',
+  'director@a-gsl.com',
+  'alarangeoserviceslimited@gmail.com',
 ];
 export const AUTHORIZED_PHONE_NUMBERS: string[] = [
   // '+2348012345678',
