@@ -238,7 +238,7 @@ export class DataService {
   private staticProjects: Project[] = [
     {
       title: 'City Center Tower Construction',
-      imageUrls: ['https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1200', 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80&w=1200', 'https://images.unsplash.com/photo-1503387762-592dee58c460?auto=format&fit=crop&q=80&w=1200'],
+      imageUrls: ['https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1200', 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80&w=1200','/images/13.jpeg', '/images/12.jpeg', '/video/11.mp4'],
       description: 'High-precision setting out and as-built surveys for a 50-story skyscraper.',
       longDescription: 'Our team provided continuous on-site support for the construction of the landmark City Center Tower. We were responsible for establishing the primary site control, setting out gridlines and foundations, and conducting verticality checks as the structure rose. Our as-built surveys at each stage ensured that the construction perfectly matched the design specifications, minimizing rework and delays.',
       serviceCategory: 'Engineering Surveying',
