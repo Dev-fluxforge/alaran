@@ -23,3 +23,4 @@ dist-ssr
 *.sln
 *.sw?
 .angular/
+public/video/highway2.mp4
