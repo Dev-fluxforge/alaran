@@ -26,7 +26,7 @@ export class ContactComponent {
       this.formStatus.set('submitting');
       
       const formValue = this.contactForm.value;
-      const recipient = 'alarangeoserviceslimited@gmail.com';
+      const recipient = 'director@a-gsl.com';
       const subject = encodeURIComponent(formValue.subject || 'Contact from Website');
       const body = encodeURIComponent(
         `Full Name: ${formValue.fullName}\n` +
