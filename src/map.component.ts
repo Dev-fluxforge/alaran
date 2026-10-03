@@ -169,13 +169,16 @@ export class MapComponent implements AfterViewInit, OnDestroy {
   }
 
   private addMarkers(): void {
+    // Read the signal unconditionally, before any early return, so this
+    // effect always registers projects() as a dependency — otherwise the
+    // very first run (before the map exists) reads nothing, Angular never
+    // learns to track this signal, and the map stops updating for good.
+    const projectList = this.projects();
     if (!this.map) return;
 
     // Clear existing markers
     this.markers.forEach(m => m.remove());
     this.markers.clear();
-
-    const projectList = this.projects();
     const bounds = L.latLngBounds([]);
 
     projectList.forEach(project => {
