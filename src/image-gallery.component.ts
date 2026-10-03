@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, input, signal, computed, HostListener, viewChildren, ElementRef, effect } from '@angular/core';
+import { Component, ChangeDetectionStrategy, input, signal, viewChildren, ElementRef, effect } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 
 @Component({
@@ -8,10 +8,9 @@ import { CommonModule, NgOptimizedImage } from '@angular/common';
   template: `
     <div class="gallery-container">
       <!-- Main Image Display -->
-      <div class="relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl bg-deep-green/5 group cursor-zoom-in"
+      <div class="relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl bg-deep-green/5 group"
            (touchstart)="onTouchStart($event)"
-           (touchend)="onTouchEnd($event)"
-           (click)="openLightbox()">
+           (touchend)="onTouchEnd($event)">
         
         @for (imageUrl of imageUrls(); track $index) {
           @if (isVideo(imageUrl)) {
@@ -84,74 +83,6 @@ import { CommonModule, NgOptimizedImage } from '@angular/common';
           }
         </div>
       }
-
-      <!-- Lightbox Modal -->
-      @if (isLightboxOpen()) {
-        <div class="fixed inset-0 z-[2000] bg-black/95 backdrop-blur-xl animate-fade-in"
-             (click)="closeLightbox()">
-
-          <button (click)="closeLightbox()"
-                  class="absolute top-4 right-4 md:top-6 md:right-6 w-11 h-11 md:w-12 md:h-12 rounded-full bg-white/10 text-white hover:bg-primary hover:text-deep-green flex items-center justify-center transition-all z-[2010]"
-                  aria-label="Close lightbox">
-            <span class="material-symbols-outlined">close</span>
-          </button>
-
-          @if (imageUrls().length > 1) {
-            <button (click)="prev($event)"
-                    class="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 rounded-full bg-white/5 text-white hover:bg-primary hover:text-deep-green items-center justify-center transition-all z-[2010] hidden md:flex"
-                    aria-label="Previous image">
-              <span class="material-symbols-outlined text-4xl">chevron_left</span>
-            </button>
-            <button (click)="next($event)"
-                    class="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 rounded-full bg-white/5 text-white hover:bg-primary hover:text-deep-green items-center justify-center transition-all z-[2010] hidden md:flex"
-                    aria-label="Next image">
-              <span class="material-symbols-outlined text-4xl">chevron_right</span>
-            </button>
-          }
-
-          <!-- Clicking anywhere in this padded area that ISN'T the media itself
-               bubbles up and closes the lightbox (pointer-events-none here,
-               re-enabled only on the actual img/video below). -->
-          <div class="absolute inset-0 flex items-center justify-center p-4 pt-20 pb-16 md:p-16 pointer-events-none">
-            @for (imageUrl of imageUrls(); track $index) {
-              @if (isVideo(imageUrl)) {
-                <video #lightboxVideo
-                       [src]="imageUrl"
-                       (click)="$event.stopPropagation()"
-                       class="max-w-full max-h-full object-contain absolute transition-all duration-500 ease-out"
-                       [class.opacity-0]="currentIndex() !== $index"
-                       [class.scale-95]="currentIndex() !== $index"
-                       [class.pointer-events-none]="currentIndex() !== $index"
-                       [class.pointer-events-auto]="currentIndex() === $index"
-                       [class.translate-x-full]="currentIndex() < $index"
-                       [class.-translate-x-full]="currentIndex() > $index"
-                       [attr.data-index]="$index"
-                       muted
-                       controls
-                       playsinline
-                       preload="auto">
-                </video>
-              } @else {
-                <img [src]="imageUrl"
-                     [alt]="'Full size image ' + ($index + 1)"
-                     (click)="$event.stopPropagation()"
-                     class="max-w-full max-h-full object-contain absolute transition-all duration-500 ease-out"
-                     [class.opacity-0]="currentIndex() !== $index"
-                     [class.scale-95]="currentIndex() !== $index"
-                     [class.pointer-events-none]="currentIndex() !== $index"
-                     [class.pointer-events-auto]="currentIndex() === $index"
-                     [class.translate-x-full]="currentIndex() < $index"
-                     [class.-translate-x-full]="currentIndex() > $index" />
-              }
-            }
-          </div>
-
-          <!-- Lightbox Counter -->
-          <div class="absolute bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 bg-white/10 text-white px-6 py-2 rounded-full text-sm font-bold tracking-widest uppercase z-[2010] pointer-events-none">
-            {{ currentIndex() + 1 }} / {{ imageUrls().length }}
-          </div>
-        </div>
-      }
     </div>
   `,
   styles: [`
@@ -162,46 +93,26 @@ import { CommonModule, NgOptimizedImage } from '@angular/common';
       -ms-overflow-style: none;
       scrollbar-width: none;
     }
-    @keyframes fade-in {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    .animate-fade-in {
-      animation: fade-in 0.3s ease-out forwards;
-    }
   `],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ImageGalleryComponent {
   imageUrls = input<string[]>([]);
   currentIndex = signal(0);
-  isLightboxOpen = signal(false);
   private touchStartX = 0;
   private static readonly VIDEO_EXTENSIONS = ['.mp4', '.webm', '.mov', '.ogg'];
 
   private mainVideos = viewChildren<ElementRef<HTMLVideoElement>>('mainVideo');
-  private lightboxVideos = viewChildren<ElementRef<HTMLVideoElement>>('lightboxVideo');
 
   constructor() {
     effect(() => {
       const active = this.currentIndex();
-      const lightboxOpen = this.isLightboxOpen();
 
       for (const ref of this.mainVideos()) {
         const video = ref.nativeElement;
         const index = Number(video.dataset['index']);
-        if (index === active && !lightboxOpen) {
+        if (index === active) {
           video.play().catch(err => console.warn('Gallery video failed to play:', video.src, err));
-        } else {
-          video.pause();
-        }
-      }
-
-      for (const ref of this.lightboxVideos()) {
-        const video = ref.nativeElement;
-        const index = Number(video.dataset['index']);
-        if (index === active && lightboxOpen) {
-          video.play().catch(err => console.warn('Lightbox video failed to play:', video.src, err));
         } else {
           video.pause();
         }
@@ -212,17 +123,6 @@ export class ImageGalleryComponent {
   isVideo(url: string): boolean {
     const clean = url.split('?')[0].toLowerCase();
     return ImageGalleryComponent.VIDEO_EXTENSIONS.some(ext => clean.endsWith(ext));
-  }
-
-  @HostListener('window:keydown', ['$event'])
-  handleKeyDown(event: KeyboardEvent): void {
-    if (event.key === 'ArrowRight') {
-      this.next();
-    } else if (event.key === 'ArrowLeft') {
-      this.prev();
-    } else if (event.key === 'Escape') {
-      this.closeLightbox();
-    }
   }
 
   next(event?: Event): void {
@@ -243,16 +143,6 @@ export class ImageGalleryComponent {
 
   setIndex(index: number): void {
     this.currentIndex.set(index);
-  }
-
-  openLightbox(): void {
-    this.isLightboxOpen.set(true);
-    document.body.style.overflow = 'hidden';
-  }
-
-  closeLightbox(): void {
-    this.isLightboxOpen.set(false);
-    document.body.style.overflow = '';
   }
 
   onTouchStart(event: TouchEvent): void {
