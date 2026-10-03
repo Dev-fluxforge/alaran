@@ -115,7 +115,7 @@ import { CommonModule, NgOptimizedImage } from '@angular/common';
                 @if (isVideo(imageUrl)) {
                   <video #lightboxVideo
                          [src]="imageUrl"
-                         class="max-w-full max-h-full object-contain absolute transition-all duration-500 ease-out"
+                         class="max-w-full max-h-full object-contain absolute inset-0 m-auto transition-all duration-500 ease-out"
                          [class.opacity-0]="currentIndex() !== $index"
                          [class.scale-95]="currentIndex() !== $index"
                          [class.translate-x-full]="currentIndex() < $index"
@@ -129,7 +129,7 @@ import { CommonModule, NgOptimizedImage } from '@angular/common';
                 } @else {
                   <img [src]="imageUrl" 
                        [alt]="'Full size image ' + ($index + 1)" 
-                       class="max-w-full max-h-full object-contain absolute transition-all duration-500 ease-out"
+                       class="max-w-full max-h-full object-contain absolute inset-0 m-auto transition-all duration-500 ease-out"
                        [class.opacity-0]="currentIndex() !== $index"
                        [class.scale-95]="currentIndex() !== $index"
                        [class.translate-x-full]="currentIndex() < $index"
