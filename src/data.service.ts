@@ -248,7 +248,7 @@ export class DataService {
     },
     {
       title: 'Highway Interchange Realignment',
-      imageUrls: ['https://images.unsplash.com/photo-1590487988256-9ed24133863e?auto=format&fit=crop&q=80&w=1200', 'https://images.unsplash.com/photo-1515162816999-a0c47dc192f7?auto=format&fit=crop&q=80&w=1200'],
+      imageUrls: ['/images/78.jpeg','/images/74.jpeg','/video/75.mp4', '/video/77.mp4'],
       description: 'Volumetric calculations and machine control data for a major transportation infrastructure upgrade.',
       longDescription: 'For the N1 highway interchange upgrade, we performed detailed topographic surveys of the existing infrastructure and terrain. This data was used to calculate earthwork volumes (cut and fill) and to generate 3D models for GPS-guided construction machinery, significantly accelerating the construction timeline and improving accuracy.',
       serviceCategory: 'Engineering Surveying',
@@ -258,7 +258,7 @@ export class DataService {
     },
     {
       title: 'Industrial Plant Layout & As-Built',
-      imageUrls: ['https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1200'],
+      imageUrls: ['/images/74.jpeg', '/images/101.jpeg','/images/102.jpeg', '/video/101.mp4'],
       description: 'Precision alignment for heavy machinery in a new manufacturing plant.',
       longDescription: 'We ensured micrometer-level accuracy for the installation of sensitive manufacturing equipment. Our 3D laser scanning services provided a complete as-built model of the facility, which was crucial for clash detection and future maintenance planning.',
       serviceCategory: 'Engineering Surveying',
@@ -268,7 +268,7 @@ export class DataService {
     },
     {
       title: 'Bridge Deformation Monitoring',
-      imageUrls: ['https://images.unsplash.com/photo-1449156730764-d4a921596f11?auto=format&fit=crop&q=80&w=1200', 'https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&q=80&w=1200'],
+      imageUrls: ['/images/42.jpeg', '/video/41.mp4', '/video/43.mp4'],
       description: 'Periodic monitoring of a suspension bridge to ensure public safety.',
       longDescription: 'We have an ongoing contract to monitor the structural health of the Third Mainland Bridge. Using high-precision total stations and GNSS receivers, we measure for any displacement or deformation, providing engineers with the critical data needed to maintain the bridge\'s integrity.',
       serviceCategory: 'Engineering Surveying',
@@ -281,14 +281,14 @@ export class DataService {
       imageUrls: ['/images/dam1.jpg', '/images/dam2.jpg', '/video/dam1.mp4', '/video/dam2.mp4'],
       description: 'Establishing high-accuracy control for a large hydroelectric dam.',
       longDescription: 'Our surveyors established the primary and secondary control networks that governed all construction activities for the Zungeru Hydroelectric Dam. Precision was paramount to ensure the correct alignment and elevation of this massive concrete structure.',
-      serviceCategory: 'Engineering Surveying',
+      serviceCategory: 'Hydrographic Surveying',
       client: 'Federal Ministry of Power',
       location: 'Niger State, Nigeria',
       coordinates: { lat: 9.9309, lng: 6.5356 }
     },
     {
       title: 'Greenfield Residential Estate',
-      imageUrls: ['https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=1200', 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=1200', 'https://images.unsplash.com/photo-1448630360428-65456885c650?auto=format&fit=crop&q=80&w=1200'],
+      imageUrls: ['/images/green.jpeg','/images/56.jpeg', '/video/green.mp4', '/video/offshore2.mp4'],
       description: 'Boundary definition and land parcel subdivision for a 200-hectare development.',
       longDescription: 'We were contracted by City-Dev Properties to perform the complete cadastral survey for their new Oceanview Estate. This involved the precise demarcation of the outer boundary and the subdivision of the land into over 500 residential plots, roads, and recreational areas, all in accordance with local planning regulations.',
       serviceCategory: 'Cadastral Surveying',
@@ -318,7 +318,7 @@ export class DataService {
     },
     {
       title: 'Government Infrastructure Corridor',
-      imageUrls: ['https://images.unsplash.com/photo-1474487022159-7600a603c1d1?auto=format&fit=crop&q=80&w=1200'],
+      imageUrls: ['/images/21.jpeg','/images/22.jpeg','/images/23.jpeg','/video/27.mp4'],
       description: 'Cadastral surveys for land acquisition along a new railway line.',
       longDescription: 'We conducted the cadastral surveys necessary for the government to acquire land for the new Lagos-Kano Standard Gauge Railway. Our work ensured that all affected properties were accurately identified and surveyed, facilitating a fair compensation process.',
       serviceCategory: 'Cadastral Surveying',
@@ -355,7 +355,7 @@ export class DataService {
     },
     {
       title: 'Subsea Cable Route Survey',
-      imageUrls: ['https://images.unsplash.com/photo-1558494949-ef010cbdcc51?auto=format&fit=crop&q=80&w=1200'],
+      imageUrls: ['/images/32.jpeg', '/video/31.mp4', '/video/33.mp4', '/video/34.mp4'],
       description: 'Mapping the seabed for a new subsea fiber optic cable.',
       longDescription: 'We provided the bathymetric and geophysical data needed to plan the route of a new international fiber optic cable landing in Nigeria. Our survey identified potential hazards on the seafloor, ensuring a safe and secure route for this critical piece of telecommunications infrastructure.',
       serviceCategory: 'Hydrographic Surveying',
@@ -364,7 +364,7 @@ export class DataService {
     },
     {
       title: 'Coastal Erosion Monitoring',
-      imageUrls: ['https://images.unsplash.com/photo-1505118380757-91f5f45d8de4?auto=format&fit=crop&q=80&w=1200', 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=1200'],
+      imageUrls: ['https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=1200', '/images/56.jpeg', '/video/57.mp4'],
       description: 'Monitoring shoreline changes to inform coastal management.',
       longDescription: 'Along the Victoria Island coastline, we conduct regular surveys to monitor the rate of coastal erosion. By combining topographic LiDAR scans with near-shore bathymetry, we create a complete 3D model of the coastal zone that helps authorities plan effective mitigation strategies.',
       serviceCategory: 'Hydrographic Surveying',
