@@ -87,61 +87,68 @@ import { CommonModule, NgOptimizedImage } from '@angular/common';
 
       <!-- Lightbox Modal -->
       @if (isLightboxOpen()) {
-        <div class="fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl flex items-center justify-center p-4 md:p-12 animate-fade-in"
+        <div class="fixed inset-0 z-[2000] bg-black/95 backdrop-blur-xl animate-fade-in"
              (click)="closeLightbox()">
-          
-          <button (click)="closeLightbox()" 
-                  class="absolute top-6 right-6 w-12 h-12 rounded-full bg-white/10 text-white hover:bg-primary hover:text-deep-green flex items-center justify-center transition-all z-[110]"
+
+          <button (click)="closeLightbox()"
+                  class="absolute top-4 right-4 md:top-6 md:right-6 w-11 h-11 md:w-12 md:h-12 rounded-full bg-white/10 text-white hover:bg-primary hover:text-deep-green flex items-center justify-center transition-all z-[2010]"
                   aria-label="Close lightbox">
             <span class="material-symbols-outlined">close</span>
           </button>
 
-          <div class="relative w-full h-full flex items-center justify-center" (click)="$event.stopPropagation()">
-            @if (imageUrls().length > 1) {
-              <button (click)="prev($event)" 
-                      class="absolute left-0 w-16 h-16 rounded-full bg-white/5 text-white hover:bg-primary hover:text-deep-green flex items-center justify-center transition-all z-[110] hidden md:flex"
-                      aria-label="Previous image">
-                <span class="material-symbols-outlined text-4xl">chevron_left</span>
-              </button>
-              <button (click)="next($event)" 
-                      class="absolute right-0 w-16 h-16 rounded-full bg-white/5 text-white hover:bg-primary hover:text-deep-green flex items-center justify-center transition-all z-[110] hidden md:flex"
-                      aria-label="Next image">
-                <span class="material-symbols-outlined text-4xl">chevron_right</span>
-              </button>
-            }
+          @if (imageUrls().length > 1) {
+            <button (click)="prev($event)"
+                    class="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 rounded-full bg-white/5 text-white hover:bg-primary hover:text-deep-green items-center justify-center transition-all z-[2010] hidden md:flex"
+                    aria-label="Previous image">
+              <span class="material-symbols-outlined text-4xl">chevron_left</span>
+            </button>
+            <button (click)="next($event)"
+                    class="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 rounded-full bg-white/5 text-white hover:bg-primary hover:text-deep-green items-center justify-center transition-all z-[2010] hidden md:flex"
+                    aria-label="Next image">
+              <span class="material-symbols-outlined text-4xl">chevron_right</span>
+            </button>
+          }
 
-            <div class="relative w-full h-full max-w-6xl max-h-[80vh] flex items-center justify-center">
-              @for (imageUrl of imageUrls(); track $index) {
-                @if (isVideo(imageUrl)) {
-                  <video #lightboxVideo
-                         [src]="imageUrl"
-                         class="max-w-full max-h-full object-contain absolute inset-0 m-auto transition-all duration-500 ease-out"
-                         [class.opacity-0]="currentIndex() !== $index"
-                         [class.scale-95]="currentIndex() !== $index"
-                         [class.translate-x-full]="currentIndex() < $index"
-                         [class.-translate-x-full]="currentIndex() > $index"
-                         [attr.data-index]="$index"
-                         muted
-                         controls
-                         playsinline
-                         preload="auto">
-                  </video>
-                } @else {
-                  <img [src]="imageUrl" 
-                       [alt]="'Full size image ' + ($index + 1)" 
-                       class="max-w-full max-h-full object-contain absolute inset-0 m-auto transition-all duration-500 ease-out"
+          <!-- Clicking anywhere in this padded area that ISN'T the media itself
+               bubbles up and closes the lightbox (pointer-events-none here,
+               re-enabled only on the actual img/video below). -->
+          <div class="absolute inset-0 flex items-center justify-center p-4 pt-20 pb-16 md:p-16 pointer-events-none">
+            @for (imageUrl of imageUrls(); track $index) {
+              @if (isVideo(imageUrl)) {
+                <video #lightboxVideo
+                       [src]="imageUrl"
+                       (click)="$event.stopPropagation()"
+                       class="max-w-full max-h-full object-contain absolute transition-all duration-500 ease-out"
                        [class.opacity-0]="currentIndex() !== $index"
                        [class.scale-95]="currentIndex() !== $index"
+                       [class.pointer-events-none]="currentIndex() !== $index"
+                       [class.pointer-events-auto]="currentIndex() === $index"
                        [class.translate-x-full]="currentIndex() < $index"
-                       [class.-translate-x-full]="currentIndex() > $index" />
-                }
+                       [class.-translate-x-full]="currentIndex() > $index"
+                       [attr.data-index]="$index"
+                       muted
+                       controls
+                       playsinline
+                       preload="auto">
+                </video>
+              } @else {
+                <img [src]="imageUrl"
+                     [alt]="'Full size image ' + ($index + 1)"
+                     (click)="$event.stopPropagation()"
+                     class="max-w-full max-h-full object-contain absolute transition-all duration-500 ease-out"
+                     [class.opacity-0]="currentIndex() !== $index"
+                     [class.scale-95]="currentIndex() !== $index"
+                     [class.pointer-events-none]="currentIndex() !== $index"
+                     [class.pointer-events-auto]="currentIndex() === $index"
+                     [class.translate-x-full]="currentIndex() < $index"
+                     [class.-translate-x-full]="currentIndex() > $index" />
               }
-            </div>
+            }
+          </div>
 
-            <!-- Lightbox Counter -->
-            <div class="absolute bottom-0 left-1/2 -translate-x-1/2 bg-white/10 text-white px-6 py-2 rounded-full text-sm font-bold tracking-widest uppercase">
-              {{ currentIndex() + 1 }} / {{ imageUrls().length }}
-            </div>
+          <!-- Lightbox Counter -->
+          <div class="absolute bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 bg-white/10 text-white px-6 py-2 rounded-full text-sm font-bold tracking-widest uppercase z-[2010] pointer-events-none">
+            {{ currentIndex() + 1 }} / {{ imageUrls().length }}
           </div>
         </div>
       }
