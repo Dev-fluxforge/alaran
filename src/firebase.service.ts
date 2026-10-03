@@ -34,7 +34,9 @@ export class FirebaseService {
       return;
     }
     try {
-      this.db = getFirestore(app);
+      // This project's Cloud Firestore database is named "default" (not the
+      // special "(default)" database), so it must be targeted explicitly.
+      this.db = getFirestore(app, 'default');
       this.projectsCol = collection(this.db, 'projects');
       this.isConfigured = true;
     } catch (err) {
