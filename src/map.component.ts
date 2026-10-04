@@ -158,11 +158,13 @@ export class MapComponent implements AfterViewInit, OnDestroy {
       scrollWheelZoom: false // Better for page scrolling
     });
 
-    // Add Tile Layer (using a clean, modern style)
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-      subdomains: 'abcd',
-      maxZoom: 20
+    // Add Tile Layer. CARTO's basemap CDN now requires an API key (hence
+    // the "API KEY REQUIRED" watermark tiles this used to show) — plain
+    // OpenStreetMap tiles remain free and keyless, so use those instead.
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      subdomains: 'abc',
+      maxZoom: 19
     }).addTo(this.map);
 
     this.addMarkers();
