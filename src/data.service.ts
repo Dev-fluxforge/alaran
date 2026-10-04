@@ -248,12 +248,12 @@ export class DataService {
     },
     {
       title: 'Highway Interchange Realignment',
-      imageUrls: ['/images/78.jpeg','/images/74.jpeg','/video/75.mp4', '/video/77.mp4'],
+      imageUrls: ['/images/78.jpeg','/images/ikeja.jpeg','/images/74.jpeg','/video/75.mp4', '/video/77.mp4'],
       description: 'Volumetric calculations and machine control data for a major transportation infrastructure upgrade.',
       longDescription: 'For the N1 highway interchange upgrade, we performed detailed topographic surveys of the existing infrastructure and terrain. This data was used to calculate earthwork volumes (cut and fill) and to generate 3D models for GPS-guided construction machinery, significantly accelerating the construction timeline and improving accuracy.',
       serviceCategory: 'Engineering Surveying',
-      client: 'Federal Ministry of Works',
-      location: 'Abuja, Nigeria',
+      client: 'Lagos State Ministry of Works',
+      location: 'Computer Village, Ikeja, Nigeria',
       coordinates: { lat: 9.0765, lng: 7.3986 }
     },
     {
@@ -268,7 +268,7 @@ export class DataService {
     },
     {
       title: 'Bridge Deformation Monitoring',
-      imageUrls: ['/images/42.jpeg', '/video/41.mp4', '/video/43.mp4'],
+      imageUrls: ['/images/42.jpeg','/video/robot.mp4', '/video/41.mp4', '/video/43.mp4'],
       description: 'Periodic monitoring of a suspension bridge to ensure public safety.',
       longDescription: 'We have an ongoing contract to monitor the structural health of the Third Mainland Bridge. Using high-precision total stations and GNSS receivers, we measure for any displacement or deformation, providing engineers with the critical data needed to maintain the bridge\'s integrity.',
       serviceCategory: 'Engineering Surveying',

@@ -52,33 +52,40 @@ export class AboutComponent implements AfterViewInit {
 
   team = signal<TeamMember[]>([
   {
-    name: 'Surv Habeeb Alaran (B.Sc, M.Sc)',
+    name: 'Surv. Habeeb Alaran (B.Sc, M.Sc)',
     title: 'Founder & Chief Surveyor',
     description: 'Dedicated to pushing the boundaries of geospatial accuracy and leading our team of experts in delivering world-class surveying solutions.',
     imageUrl: '/images/ceo.jpg',
-    socials: { linkedin: 'https://www.linkedin.com/in/habeeb-alaran-6a7644187?utm_source=share_via&utm_content=profile&utm_medium=member_android', twitter: 'https://www.linkedin.com/in/habeeb-alaran-6a7644187?utm_source=share_via&utm_content=profile&utm_medium=member_android' }
+    socials: { linkedin: 'https://www.linkedin.com/in/habeeb-alaran-6a7644187?utm_source=share_via&utm_content=profile&utm_medium=member_android', twitter: 'https://x.com/HabeebAlaran' }
   },
   {
     name: 'Surv. Salako Tobi',
     title: 'Lead Hydrographic Specialist',
     description: 'A Registered Surveyor and marine mapping expert who brings dual-tier academic and practical excellence to our offshore operations. Holding a B.Sc. in Surveying and an M.Sc. in Professional Hydrography, he expertly directs complex geophysical surveys, dive support, pipe installation, and construction hydrography. His deep technical command bridges terrestrial precision with advanced underwater data acquisition, ensuring unmatched accuracy and safety across our major marine infrastructure and energy projects.',
-    imageUrl: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400&h=400',
-    socials: { linkedin: 'https://www.linkedin.com/in/chidinma-okoro-7a8b9c0d?utm_source=share_via&utm_content=profile&utm_medium=member_android', twitter: 'https://twitter.com/chidinma_okoro' }
+    imageUrl: '/images/Lead.jpeg',
+    socials: { linkedin: 'https://www.linkedin.com/in/oluwatobi-salako-4bab1012b?utm_source=share_via&utm_content=profile&utm_medium=member_android', twitter: 'https://x.com/SalakoTobi' }
   },
   {
-    name: 'Tijani Hamedat',
+    name: 'Tijani Hamedat M',
     title: 'ACA',
-    description: 'Dedicated and meticulous Chartered Accountant with a proven track record of safeguarding corporate financial integrity and optimizing accounting systems. Combines an outstanding academic foundation with sharp analytical skills to deliver flawless financial reporting, regulatory compliance, and strategic tax planning that drives corporate growth.',
+    description: 'A dedicated and meticulous Chartered Accountant with experience in maintaining financial integrity and optimizing accounting systems. Combines a strong academic foundation with sharp analytical skills to deliver accurate financial reporting, regulatory compliance, and strategic tax planning that supports sustainable business growth.',
     imageUrl: '/images/ACA.jpeg',
-    socials: { linkedin: 'https://www.linkedin.com/in/musa-bello-5b6c7d8e?utm_source=share_via&utm_content=profile&utm_medium=member_android', twitter: 'https://twitter.com/musa_bello' }
+    socials: { linkedin: 'https://www.linkedin.com/in/musa-bello-5b6c7d8e?utm_source=share_via&utm_content=profile&utm_medium=member_android', twitter: 'https://x.com/TijaniHamedat' }
   },
   {
-    name: 'Fatima Garba',
-    title: 'Principal Cadastral Expert',
-    description: 'Leveraging ArcGIS and QGIS for spatial analysis, data management, and creating insightful cartographic products. For hydrographic operations, we utilize EIVA and HYPACK for the acquisition and processing of seabed and water column data.',
-    imageUrl: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=400&h=400',
+    name: 'Adebayo Taiwo O.',
+    title: 'Land & Engineering Survey',
+    description: 'He specialised in high-precision land and engineering surveys. Backed by rigorous technical expertise, he expertly oversees boundary mapping, topographic detailing, and complex construction staking to ensure flawless foundation execution for our structural and infrastructural projects.',
+    imageUrl: '/images/bayo.jpeg',
     socials: { linkedin: 'https://www.linkedin.com/in/fatima-garba-3c4d5e6f?utm_source=share_via&utm_content=profile&utm_medium=member_android', twitter: 'https://twitter.com/fatima_garba' }
   },
+  {
+    name: 'Ayeni Alex Emmanuel',
+    title: 'Geospatial Analyst',
+    description: 'A Surveying graduate and skilled Geospatial Analyst who transforms complex spatial data into actionable geographic insights. Combining a solid foundational background in surveying with modern GIS and remote sensing capabilities, he specializes in data modeling, terrain analysis, and digital mapping to drive precision and informed decision-making across all our land and marine projects.',
+    imageUrl: '/images/gsi.jpeg',
+    socials: { linkedin: 'https://www.linkedin.com/in/fatima-garba-3c4d5e6f?utm_source=share_via&utm_content=profile&utm_medium=member_android', twitter: 'https://x.com/AyeniAlexEmmanuel' }
+  }
 ]);
 
   currentMemberIndex = signal(0);
