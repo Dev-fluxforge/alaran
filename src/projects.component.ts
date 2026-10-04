@@ -2,14 +2,14 @@
 import { Component, ChangeDetectionStrategy, inject, signal, computed } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { DataService } from './data.service';
-import { MapComponent } from './map.component';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { DataService, Project } from './data.service';
 import { UiStateService } from './ui-state.service';
 
 @Component({
   selector: 'app-projects',
   standalone: true,
-  imports: [NgOptimizedImage, RouterLink, MapComponent],
+  imports: [NgOptimizedImage, RouterLink],
   templateUrl: './projects.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
@@ -19,6 +19,7 @@ import { UiStateService } from './ui-state.service';
 export class ProjectsComponent {
   private dataService = inject(DataService);
   private uiStateService = inject(UiStateService);
+  private sanitizer = inject(DomSanitizer);
 
   private allProjects = this.dataService.projects;
   services = this.dataService.services;
@@ -53,6 +54,15 @@ export class ProjectsComponent {
     return projects.filter(p => p.serviceCategory === category);
   });
   
+  // Same reliable embed format used on the Contact page's office map —
+  // no API key, no extra library, just Google's public embed endpoint.
+  mapEmbedUrl(project: Project): SafeResourceUrl {
+    const coords = project.coordinates;
+    const query = coords ? `${coords.lat},${coords.lng}` : encodeURIComponent(project.location);
+    const url = `https://maps.google.com/maps?q=${query}&t=&z=13&ie=UTF8&iwloc=&output=embed`;
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
+
   setFilter(category: string): void {
     this.activeCategory.set(category);
   }
