@@ -72,7 +72,7 @@ export class DataService {
     {
       icon: 'architecture',
       title: 'Engineering Surveying',
-      description: 'Topographic and setting out services for complex construction projects and civil engineering.',
+      description: 'At the core of our engineering services is a dedicated team of survey specialists working in absolute synergy to translate your digital designs into exact reality on the ground. Serving Lagos and the whole of Nigeria, we provide mission-critical survey support for the construction of roads, bridges, and buildings. by uniting our collaborative team expertise with industry-leading technology—including high-precision Total Stations, advanced GNSS receivers, and precise Leveling Machines—we eliminate guesswork, de-risk construction phases, and ensure that every structural alignment matches its engineering blueprint flawlessly. From groundbreaking to final as-built delivery, we work seamlessly alongside your contractors to build Nigeria’s future with zero margin for error.',
       category: 'Construction Support',
       color: 'primary'
     },
@@ -248,12 +248,12 @@ export class DataService {
     },
     {
       title: 'Highway Interchange Realignment',
-      imageUrls: ['/images/78.jpeg','/images/74.jpeg','/video/75.mp4', '/video/77.mp4'],
+      imageUrls: ['/images/78.jpeg','/images/ikeja.jpeg','/images/74.jpeg','/video/75.mp4', '/video/77.mp4'],
       description: 'Volumetric calculations and machine control data for a major transportation infrastructure upgrade.',
       longDescription: 'For the N1 highway interchange upgrade, we performed detailed topographic surveys of the existing infrastructure and terrain. This data was used to calculate earthwork volumes (cut and fill) and to generate 3D models for GPS-guided construction machinery, significantly accelerating the construction timeline and improving accuracy.',
       serviceCategory: 'Engineering Surveying',
-      client: 'Federal Ministry of Works',
-      location: 'Abuja, Nigeria',
+      client: 'Lagos State Ministry of Works',
+      location: 'Computer Village, Ikeja, Nigeria',
       coordinates: { lat: 9.0765, lng: 7.3986 }
     },
     {
@@ -268,7 +268,7 @@ export class DataService {
     },
     {
       title: 'Bridge Deformation Monitoring',
-      imageUrls: ['/images/42.jpeg', '/video/41.mp4', '/video/43.mp4'],
+      imageUrls: ['/images/42.jpeg','/video/robot.mp4', '/video/41.mp4', '/video/43.mp4'],
       description: 'Periodic monitoring of a suspension bridge to ensure public safety.',
       longDescription: 'We have an ongoing contract to monitor the structural health of the Third Mainland Bridge. Using high-precision total stations and GNSS receivers, we measure for any displacement or deformation, providing engineers with the critical data needed to maintain the bridge\'s integrity.',
       serviceCategory: 'Engineering Surveying',
