@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, input, signal, viewChildren, ElementRef, effect } from '@angular/core';
+import { Component, ChangeDetectionStrategy, input, signal, viewChildren, ElementRef, effect, HostListener } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 
 @Component({
@@ -118,6 +118,27 @@ export class ImageGalleryComponent {
         }
       }
     });
+  }
+
+  // Arrow-key navigation. Ignored while the user is typing in a form field
+  // elsewhere on the page, so it never fights with normal text editing.
+  @HostListener('document:keydown', ['$event'])
+  onKeydown(event: KeyboardEvent): void {
+    if (this.imageUrls().length <= 1) return;
+
+    const target = event.target as HTMLElement | null;
+    const tag = target?.tagName;
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || target?.isContentEditable) {
+      return;
+    }
+
+    if (event.key === 'ArrowLeft') {
+      event.preventDefault();
+      this.prev();
+    } else if (event.key === 'ArrowRight') {
+      event.preventDefault();
+      this.next();
+    }
   }
 
   isVideo(url: string): boolean {
