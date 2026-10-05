@@ -72,7 +72,7 @@ export class DataService {
     {
       icon: 'architecture',
       title: 'Engineering Surveying',
-      description: 'Topographic and setting out services for complex construction projects and civil engineering.',
+      description: 'At the core of our engineering services is a dedicated team of survey specialists working in absolute synergy to translate your digital designs into exact reality on the ground. Serving Lagos and the whole of Nigeria, we provide mission-critical survey support for the construction of roads, bridges, and buildings. by uniting our collaborative team expertise with industry-leading technology—including high-precision Total Stations, advanced GNSS receivers, and precise Leveling Machines—we eliminate guesswork, de-risk construction phases, and ensure that every structural alignment matches its engineering blueprint flawlessly. From groundbreaking to final as-built delivery, we work seamlessly alongside your contractors to build Nigeria’s future with zero margin for error.',
       category: 'Construction Support',
       color: 'primary'
     },

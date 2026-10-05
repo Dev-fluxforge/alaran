@@ -66,8 +66,8 @@ export class AboutComponent implements AfterViewInit {
     socials: { linkedin: 'https://www.linkedin.com/in/oluwatobi-salako-4bab1012b?utm_source=share_via&utm_content=profile&utm_medium=member_android', twitter: 'https://x.com/SalakoTobi' }
   },
   {
-    name: 'Tijani Hamedat M',
-    title: 'ACA',
+    name: 'Tijani Hamedat, ACA',
+    title: 'Chartered Accountant',
     description: 'A dedicated and meticulous Chartered Accountant with experience in maintaining financial integrity and optimizing accounting systems. Combines a strong academic foundation with sharp analytical skills to deliver accurate financial reporting, regulatory compliance, and strategic tax planning that supports sustainable business growth.',
     imageUrl: '/images/ACA.jpeg',
     socials: { linkedin: 'https://www.linkedin.com/in/musa-bello-5b6c7d8e?utm_source=share_via&utm_content=profile&utm_medium=member_android', twitter: 'https://x.com/TijaniHamedat' }

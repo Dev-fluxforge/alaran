@@ -335,7 +335,7 @@
 
                     <!-- Mobile Circular Dial -->
                     <div class="md:hidden relative w-16 h-16 flex items-center justify-center">
-                        <div class="absolute inset-0 border-2 border-white/5 rounded-full bg-white/[0.02] shadow-inner"></div>
+                        <div class="absolute inset-0 border-2 border-white/5 rounded-full bg-white/2 shadow-inner"></div>
                         
                         @for(item of surveyingQuotes(); track item.author; let i = $index) {
                             <button 
@@ -358,12 +358,12 @@
                 <!-- Navigation Arrows -->
                 <div class="flex items-center gap-3 md:gap-6 order-2">
                     <button (click)="prevQuote()" 
-                        class="w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center transition-all bg-white/[0.03] border border-white/10 text-white hover:bg-primary hover:text-deep-green hover:border-primary active:scale-95 focus-visible:outline-primary" 
+                        class="w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center transition-all bg-white/3 border border-white/10 text-white hover:bg-primary hover:text-deep-green hover:border-primary active:scale-95 focus-visible:outline-primary" 
                         aria-label="Previous quote">
                         <span class="material-symbols-outlined text-xl md:text-2xl">west</span>
                     </button>
                     <button (click)="nextQuote()" 
-                        class="w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center transition-all bg-white/[0.03] border border-white/10 text-white hover:bg-primary hover:text-deep-green hover:border-primary active:scale-95 focus-visible:outline-primary" 
+                        class="w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center transition-all bg-white/3 border border-white/10 text-white hover:bg-primary hover:text-deep-green hover:border-primary active:scale-95 focus-visible:outline-primary" 
                         aria-label="Next quote">
                         <span class="material-symbols-outlined text-xl md:text-2xl">east</span>
                     </button>
