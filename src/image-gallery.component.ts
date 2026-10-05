@@ -8,7 +8,7 @@ import { CommonModule, NgOptimizedImage } from '@angular/common';
   template: `
     <div class="gallery-container">
       <!-- Main Image Display -->
-      <div class="relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl bg-deep-green/5 group"
+      <div class="relative w-full h-[1000px] rounded-2xl overflow-hidden shadow-2xl bg-deep-green/5 group"
            (touchstart)="onTouchStart($event)"
            (touchend)="onTouchEnd($event)">
         
@@ -16,7 +16,7 @@ import { CommonModule, NgOptimizedImage } from '@angular/common';
           @if (isVideo(imageUrl)) {
             <video #mainVideo
                    [src]="imageUrl"
-                   class="w-full h-full object-cover absolute top-0 left-0 transition-all duration-700 ease-in-out"
+                   class="w-full h-full object-contain absolute top-0 left-0 transition-all duration-700 ease-in-out"
                    [class.opacity-0]="currentIndex() !== $index"
                    [class.scale-110]="currentIndex() !== $index"
                    [attr.data-index]="$index"
@@ -29,7 +29,7 @@ import { CommonModule, NgOptimizedImage } from '@angular/common';
             <img [ngSrc]="imageUrl" 
                  [alt]="'Gallery image ' + ($index + 1)" 
                  fill 
-                 class="w-full h-full object-cover absolute top-0 left-0 transition-all duration-700 ease-in-out"
+                 class="w-full h-full object-contain absolute top-0 left-0 transition-all duration-700 ease-in-out"
                  [class.opacity-0]="currentIndex() !== $index"
                  [class.scale-110]="currentIndex() !== $index"
                  [priority]="$index === 0" />
