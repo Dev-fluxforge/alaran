@@ -72,28 +72,28 @@ export class DataService {
     {
       icon: 'architecture',
       title: 'Engineering Surveying',
-      description: 'At the core of our engineering services is a dedicated team of survey specialists working in absolute synergy to translate your digital designs into exact reality on the ground. Serving Lagos and the whole of Nigeria, we provide mission-critical survey support for the construction of roads, bridges, and buildings. by uniting our collaborative team expertise with industry-leading technology—including high-precision Total Stations, advanced GNSS receivers, and precise Leveling Machines—we eliminate guesswork, de-risk construction phases, and ensure that every structural alignment matches its engineering blueprint flawlessly. From groundbreaking to final as-built delivery, we work seamlessly alongside your contractors to build Nigeria’s future with zero margin for error.',
+      description: 'At the core of our engineering services is a dedicated team of survey specialists working in absolute synergy to translate your digital designs into exact reality on the ground. Serving Lagos and the whole of Nigeria, we provide mission-critical survey support for the construction of roads, bridges, and buildings. By uniting our collaborative team expertise with industry-leading technology—including high-precision Total Stations, advanced GNSS receivers, and precise Leveling Machines—we eliminate guesswork, de-risk construction phases, and ensure that every structural alignment matches its engineering blueprint flawlessly. From groundbreaking to final as-built delivery, we work seamlessly alongside your contractors to build Nigeria’s future with zero margin for error.',
       category: 'Construction Support',
       color: 'primary'
     },
     {
       icon: 'map',
       title: 'Cadastral Surveying',
-      description: 'Title surveys and boundary mapping for property registration and land administration.',
+      description: ' Securing your land investments across Lagos and the entirety of Nigeria requires legal and spatial certainty. Our survey team provides comprehensive cadastral services, specializing in boundary dispute resolutions, perimeter mapping, and land titling documentation. Armed with high-precision Total Stations and RTK GNSS receivers, we establish undeniable, permanent legal boundaries on the ground, effectively defeating the threat of encroachment and Omo-Onile disruptions before they ever affect your property wealth ',
       category: 'Land Administration',
       color: 'sand'
     },
     {
       icon: 'waves',
       title: 'Hydrographic Surveying',
-      description: 'Bathymetric mapping and underwater surveying for ports, harbors, and offshore energy.',
+      description: 'Our specialized marine survey team delivers precise underwater intelligence for Nigeria’s coastal and offshore sectors. Operating across Lagos ports and waterways to the Niger Delta, we provide seamless survey support for geophysical mapping, dive operations, pipeline installations, and marine construction. Utilizing specialized echo sounders, side-scan sonars, and advanced marine GNSS tracking, our team maps the seabed with absolute accuracy, bringing hidden underwater topography to light to ensure safe and flawless offshore project execution.',
       category: 'Marine Solutions',
       color: 'water'
     },
     {
       icon: 'flight',
-      title: 'Aerial Mapping',
-      description: 'High-resolution drone LiDAR and photogrammetry for rapid wide-area mapping.',
+      title: 'Aerial Mapping & Remote Sensing',
+      description: 'When projects demand a macro view, our team deploys state-of-the-art drones and aerial remote sensing technology to map expansive terrains in record time. Serving large-scale agricultural, real estate, and infrastructural developments across Nigeria, we generate high-resolution orthomosaics, 3D topographic models, and precise contour maps. This rapid, non-invasive data acquisition seamlessly feeds into your engineering software, allowing you to monitor site progress and survey vast landscapes safely, quickly, and with exceptional accuracy.',
       category: 'UAV Technology',
       color: 'light-blue'
     }
@@ -298,7 +298,7 @@ export class DataService {
     },
     {
       title: 'Urban Property Dispute Resolution',
-      imageUrls: ['https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=80&w=1200'],
+      imageUrls: ['/images/globe.jpeg', '/images/globe2.jpeg', '/video/globe.mp4', '/video/globe2.mp4', '/video/globe3.mp4', '/video/globe4.mp4', '/video/globe5.mp4'],
       description: 'Expert witness and precise boundary re-establishment.',
       longDescription: 'Our senior cadastral surveyors acted as expert witnesses in a high-profile land dispute case. By meticulously researching historical survey records and performing a detailed field survey, we successfully re-established the true boundary, leading to a fair resolution.',
       serviceCategory: 'Cadastral Surveying',
@@ -308,7 +308,7 @@ export class DataService {
     },
     {
       title: 'Rural Land Titling Program',
-      imageUrls: ['https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=1200', 'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&q=80&w=1200'],
+      imageUrls: ['https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=1200','/images/hero22.jpeg', '/video/hero.mp4', '/video/hero2.mp4'],
       description: 'Systematic land adjudication and demarcation for a government initiative.',
       longDescription: 'In partnership with the state government, we helped implement a large-scale land titling program. Our teams worked with local communities to adjudicate and survey thousands of farm plots, providing landowners with official titles and enhancing land tenure security.',
       serviceCategory: 'Cadastral Surveying',
@@ -322,12 +322,12 @@ export class DataService {
       description: 'Cadastral surveys for land acquisition along a new railway line.',
       longDescription: 'We conducted the cadastral surveys necessary for the government to acquire land for the new Lagos-Kano Standard Gauge Railway. Our work ensured that all affected properties were accurately identified and surveyed, facilitating a fair compensation process.',
       serviceCategory: 'Cadastral Surveying',
-      client: 'Nigerian Railway Corporation',
+      client: 'Housing Estate, along Elghusi ',
       location: 'Nationwide'
     },
     {
       title: 'Historical Boundary Retracement',
-      imageUrls: ['https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&q=80&w=1200'],
+      imageUrls: ['/images/histro3.jpeg', '/video/histro.mp4', '/video/histro2.mp4', '/video/histro3.mp4'],
       description: 'Re-establishing colonial-era property boundaries.',
       longDescription: 'A client required the retracement of boundaries defined in a 1920s deed. Our team of experts combined archival research with modern GNSS technology to accurately locate the original monuments and re-establish the property lines for legal purposes.',
       serviceCategory: 'Cadastral Surveying',
