@@ -322,7 +322,7 @@ export class DataService {
       description: 'Cadastral surveys for land acquisition along a new railway line.',
       longDescription: 'We conducted the cadastral surveys necessary for the government to acquire land for the new Lagos-Kano Standard Gauge Railway. Our work ensured that all affected properties were accurately identified and surveyed, facilitating a fair compensation process.',
       serviceCategory: 'Cadastral Surveying',
-      client: 'Housing Estate, along Elghusi ',
+      client: 'Housing Estate, along Elghusi, Chisco B/Stop, Aja, Lagos State',
       location: 'Nationwide'
     },
     {
