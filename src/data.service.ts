@@ -277,14 +277,14 @@ export class DataService {
       coordinates: { lat: 6.5080, lng: 3.3910 }
     },
     {
-      title: 'Dam Construction Control Survey',
-      imageUrls: ['/images/dam1.jpg', '/images/dam2.jpg', '/video/dam1.mp4', '/video/dam2.mp4'],
+      title: 'Offshore Construction Support',
+      imageUrls: [ '/images/dam2.jpg',  '/images/offshore2.jpg','/images/offshore','/images/off1.jpeg', '/images/off2.jpeg', '/images/off3.jpeg', '/images/off4.jpeg', '/images/off5.jpeg', '/images/off6.jpeg', '/images/off7.jpeg', '/images/off8.jpeg', '/images/off9.jpeg',  '/images/offshore3.jpeg','/images/offshore4.jpeg','/images/offshore5.jpeg', '/video/dam1.mp4', '/video/dam2.mp4','/video/off.mp4', '/video/off2.mp4'],
       description: 'Establishing high-accuracy control for a large hydroelectric dam.',
       longDescription: 'Our surveyors established the primary and secondary control networks that governed all construction activities for the Zungeru Hydroelectric Dam. Precision was paramount to ensure the correct alignment and elevation of this massive concrete structure.',
       serviceCategory: 'Hydrographic Surveying',
-      client: 'Federal Ministry of Power',
-      location: 'Niger State, Nigeria',
-      coordinates: { lat: 9.9309, lng: 6.5356 }
+      client: 'Oil & Gas Firms',
+      location: 'Gulf Guinea',
+      coordinates: { lat: 3.250, lng: 3.05 }
     },
     {
       title: 'Greenfield Residential Estate',
@@ -327,7 +327,7 @@ export class DataService {
     },
     {
       title: 'Historical Boundary Retracement',
-      imageUrls: ['/images/histro3.jpeg', '/video/histro.mp4', '/video/histro2.mp4', '/video/histro3.mp4'],
+      imageUrls: ['/images/histro3.jpeg', '/video/histro.mp4', '/video/histro2.mp4', '/video/histro3.mp4', '/video/57.mp4'],
       description: 'Re-establishing colonial-era property boundaries.',
       longDescription: 'A client required the retracement of boundaries defined in a 1920s deed. Our team of experts combined archival research with modern GNSS technology to accurately locate the original monuments and re-establish the property lines for legal purposes.',
       serviceCategory: 'Cadastral Surveying',
@@ -335,8 +335,8 @@ export class DataService {
       location: 'Calabar, Nigeria'
     },
     {
-      title: 'Port Dredging & Expansion',
-      imageUrls: ['https://images.unsplash.com/photo-1524522173746-f628baad3644?auto=format&fit=crop&q=80&w=1200', 'https://images.unsplash.com/photo-1494412574743-0194852482ab?auto=format&fit=crop&q=80&w=1200'],
+      title: 'Geophysical and Geotechnical Survey',
+      imageUrls: ['/images/66.jpeg', '/images/68.jpeg', '/images/611.jpeg', '/images/81.jpeg', '/images/dam1.jpg','/images/68.jpeg', '/images/65.jpeg','/images/62.jpeg', '/images/63.jpeg','/video/geo.mp4'],
       description: 'Pre- and post-dredge surveys for safe navigational depths.',
       longDescription: 'For the Apapa Port expansion, we performed comprehensive multibeam echosounder surveys before and after dredging operations. This allowed us to precisely calculate the volume of material removed and to certify the new navigational depths for safe passage of larger container ships.',
       serviceCategory: 'Hydrographic Surveying',
@@ -345,42 +345,42 @@ export class DataService {
       coordinates: { lat: 6.4468, lng: 3.3675 }
     },
     {
-      title: 'Offshore Wind Farm Seabed Mapping',
-      imageUrls: [ '/images/offshore1.jpg','/images/offshore2.jpg', '/video/offshore.mp4', '/video/offshore2.mp4'],
+      title: 'Coastal & Jetty Survey',
+      imageUrls: ['/images/32.jpeg', '/images/81.jpeg','/video/jety1.mp4', '/video/jety2.mp4','/video/costal.mp4','/video/costal2.mp4',],
       description: 'Detailed seabed characterization for turbine foundation planning.',
       longDescription: 'In the preliminary stages of a major offshore wind farm project, we mapped a 100-square-kilometer area of the seabed. Our hydrographic data revealed the underwater topography and sediment types, which was essential information for the engineers designing the turbine foundations.',
       serviceCategory: 'Hydrographic Surveying',
       client: 'Green Energy Consortium',
-      location: 'Offshore, Ondo State'
+      location: 'Quene Benin Republic'
     },
-    {
-      title: 'Subsea Cable Route Survey',
-      imageUrls: ['/images/32.jpeg', '/video/31.mp4', '/video/33.mp4', '/video/34.mp4'],
-      description: 'Mapping the seabed for a new subsea fiber optic cable.',
-      longDescription: 'We provided the bathymetric and geophysical data needed to plan the route of a new international fiber optic cable landing in Nigeria. Our survey identified potential hazards on the seafloor, ensuring a safe and secure route for this critical piece of telecommunications infrastructure.',
-      serviceCategory: 'Hydrographic Surveying',
-      client: 'MainOne Cable Company',
-      location: 'Atlantic Ocean'
-    },
-    {
-      title: 'Coastal Erosion Monitoring',
-      imageUrls: ['https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=1200', '/images/56.jpeg', '/video/57.mp4'],
-      description: 'Monitoring shoreline changes to inform coastal management.',
-      longDescription: 'Along the Victoria Island coastline, we conduct regular surveys to monitor the rate of coastal erosion. By combining topographic LiDAR scans with near-shore bathymetry, we create a complete 3D model of the coastal zone that helps authorities plan effective mitigation strategies.',
-      serviceCategory: 'Hydrographic Surveying',
-      client: 'Lagos State Min. of Environment',
-      location: 'Lagos, Nigeria',
-      coordinates: { lat: 6.4253, lng: 3.4219 }
-    },
-    {
-      title: 'Reservoir Sedimentation Study',
-      imageUrls: ['https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&q=80&w=1200'],
-      description: 'Calculating sediment volume and remaining water capacity.',
-      longDescription: 'We performed a full bathymetric survey of the Kainji Dam reservoir. By comparing our results to historical data, we were able to calculate the volume of sediment that has accumulated over the years, providing vital information for the long-term management of the dam and its power generation capacity.',
-      serviceCategory: 'Hydrographic Surveying',
-      client: 'Mainstream Energy Solutions',
-      location: 'Niger State, Nigeria'
-    },
+    // {
+    //   title: 'Subsea Cable Route Survey',
+    //   imageUrls: ['/images/32.jpeg', '/video/31.mp4', '/video/33.mp4', '/video/34.mp4'],
+    //   description: 'Mapping the seabed for a new subsea fiber optic cable.',
+    //   longDescription: 'We provided the bathymetric and geophysical data needed to plan the route of a new international fiber optic cable landing in Nigeria. Our survey identified potential hazards on the seafloor, ensuring a safe and secure route for this critical piece of telecommunications infrastructure.',
+    //   serviceCategory: 'Hydrographic Surveying',
+    //   client: 'MainOne Cable Company',
+    //   location: 'Atlantic Ocean'
+    // },
+      // {
+      //   title: 'Coastal Erosion Monitoring',
+      //   imageUrls: ['https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=1200', '/images/56.jpeg', '/video/57.mp4'],
+      //   description: 'Monitoring shoreline changes to inform coastal management.',
+      //   longDescription: 'Along the Victoria Island coastline, we conduct regular surveys to monitor the rate of coastal erosion. By combining topographic LiDAR scans with near-shore bathymetry, we create a complete 3D model of the coastal zone that helps authorities plan effective mitigation strategies.',
+      //   serviceCategory: 'Hydrographic Surveying',
+      //   client: 'Lagos State Min. of Environment',
+      //   location: 'Lagos, Nigeria',
+      //   coordinates: { lat: 6.4253, lng: 3.4219 }
+      // },
+    // {
+    //   title: 'Reservoir Sedimentation Study',
+    //   imageUrls: ['https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&q=80&w=1200'],
+    //   description: 'Calculating sediment volume and remaining water capacity.',
+    //   longDescription: 'We performed a full bathymetric survey of the Kainji Dam reservoir. By comparing our results to historical data, we were able to calculate the volume of sediment that has accumulated over the years, providing vital information for the long-term management of the dam and its power generation capacity.',
+    //   serviceCategory: 'Hydrographic Surveying',
+    //   client: 'Mainstream Energy Solutions',
+    //   location: 'Niger State, Nigeria'
+    // },
     {
       title: 'Agricultural Land Assessment',
       imageUrls: ['https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&q=80&w=1200'],
