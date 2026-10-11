@@ -66,18 +66,11 @@ export class AboutComponent implements AfterViewInit {
     socials: { linkedin: 'https://www.linkedin.com/in/oluwatobi-salako-4bab1012b?utm_source=share_via&utm_content=profile&utm_medium=member_android', twitter: 'https://x.com/SalakoTobi' }
   },
   {
-    name: 'Tijani Hamedat, ACA',
-    title: 'Chartered Accountant',
-    description: 'A dedicated and meticulous Chartered Accountant with experience in maintaining financial integrity and optimizing accounting systems. Combines a strong academic foundation with sharp analytical skills to deliver accurate financial reporting, regulatory compliance, and strategic tax planning that supports sustainable business growth.',
-    imageUrl: '/images/tijani.jpeg',
-    socials: { linkedin: 'https://www.linkedin.com/in/musa-bello-5b6c7d8e?utm_source=share_via&utm_content=profile&utm_medium=member_android', twitter: 'https://x.com/TijaniHamedat' }
-  },
-  {
     name: 'Adebayo Taiwo O.',
     title: 'Land & Engineering Survey',
     description: 'He specialised in high-precision land and engineering surveys. Backed by rigorous technical expertise, he expertly oversees boundary mapping, topographic detailing, and complex construction staking to ensure flawless foundation execution for our structural and infrastructural projects.',
     imageUrl: '/images/bayo.jpeg',
-    socials: { linkedin: 'https://www.linkedin.com/in/fatima-garba-3c4d5e6f?utm_source=share_via&utm_content=profile&utm_medium=member_android', twitter: 'https://twitter.com/fatima_garba' }
+    socials: { linkedin: 'https://www.linkedin.com/in/taiwo-adebayo-olamilekan?utm_source=share_via&utm_content=profile&utm_medium=member_ios', twitter: 'https://twitter.com/taiwoadebayoolamilekan' }
   },
   {
     name: 'Ayeni Alex Emmanuel',
@@ -85,7 +78,22 @@ export class AboutComponent implements AfterViewInit {
     description: 'A Surveying graduate and skilled Geospatial Analyst who transforms complex spatial data into actionable geographic insights. Combining a solid foundational background in surveying with modern GIS and remote sensing capabilities, he specializes in data modeling, terrain analysis, and digital mapping to drive precision and informed decision-making across all our land and marine projects.',
     imageUrl: '/images/gsi.jpeg',
     socials: { linkedin: 'https://www.linkedin.com/in/fatima-garba-3c4d5e6f?utm_source=share_via&utm_content=profile&utm_medium=member_android', twitter: 'https://x.com/AyeniAlexEmmanuel' }
-  }
+  },
+  {
+    name: 'Tijani Hamedat, ACA',
+    title: 'Secetary',
+    description: 'A highly analytical Chartered Accountant who dual-hats as our Company Secretary, driving both financial compliance and administrative excellence across the organization. Holding an outstanding academic record and professional induction with the Institute of Chartered Accountants of Nigeria (ICAN), she seamlessly manages our corporate governance, board administration, and regulatory reporting. Her meticulous oversight ensures that our internal operations run with absolute legal and financial integrity, matching the rigorous precision we deliver on the field.',
+    imageUrl: '/images/aca1.jpeg',
+    socials: { linkedin: 'https://www.linkedin.com/in/musa-bello-5b6c7d8e?utm_source=share_via&utm_content=profile&utm_medium=member_android', twitter: 'https://x.com/TijaniHamedat' }
+  },
+  {
+    name: 'Elizabeth Olu-Bolaji, ACA',
+    title: 'Accountant',
+    description: 'A dedicated and meticulous Chartered Accountant with experience in maintaining financial integrity and optimizing accounting systems. Combines a strong academic foundation with sharp analytical skills to deliver accurate financial reporting, regulatory compliance, and strategic tax planning that supports sustainable business growth.',
+    imageUrl: '/images/ACA.jpg',
+    socials: { linkedin: 'https://www.linkedin.com/in/musa-bello-5b6c7d8e?utm_source=share_via&utm_content=profile&utm_medium=member_android', twitter: 'https://x.com/TijaniHamedat' }
+  },
+  
 ]);
 
   currentMemberIndex = signal(0);

@@ -242,9 +242,9 @@ export class DataService {
       description: 'High-precision setting out and as-built surveys for a 50-story skyscraper.',
       longDescription: 'Our team provided continuous on-site support for the construction of the landmark City Center Tower. We were responsible for establishing the primary site control, setting out gridlines and foundations, and conducting verticality checks as the structure rose. Our as-built surveys at each stage ensured that the construction perfectly matched the design specifications, minimizing rework and delays.',
       serviceCategory: 'Engineering Surveying',
-      client: 'Metro-Corp Construction',
+      client: 'Megamound Homes (Carlton Gate) / Khalbis Surveys',
       location: 'Lagos, Nigeria',
-      coordinates: { lat: 6.4654, lng: 3.4064 }
+      coordinates: { lat: 6.4385, lng: 3.5350 }
     },
     {
       title: 'Highway Interchange Realignment',
@@ -254,7 +254,7 @@ export class DataService {
       serviceCategory: 'Engineering Surveying',
       client: 'Lagos State Ministry of Works',
       location: 'Computer Village, Ikeja, Nigeria',
-      coordinates: { lat: 9.0765, lng: 7.3986 }
+      coordinates: { lat: 6.5959, lng: 3.3371 }
     },
     {
       title: 'Industrial Plant Layout & As-Built',
@@ -262,9 +262,9 @@ export class DataService {
       description: 'Precision alignment for heavy machinery in a new manufacturing plant.',
       longDescription: 'We ensured micrometer-level accuracy for the installation of sensitive manufacturing equipment. Our 3D laser scanning services provided a complete as-built model of the facility, which was crucial for clash detection and future maintenance planning.',
       serviceCategory: 'Engineering Surveying',
-      client: 'Dangote Industries',
-      location: 'Kano, Nigeria',
-      coordinates: { lat: 12.0022, lng: 8.5920 }
+      client: 'Chevron',
+      location: 'Cabinda, Angola',
+      coordinates: { lat: -5.3971, lng: 12.1958 }
     },
     {
       title: 'Bridge Deformation Monitoring',
@@ -272,9 +272,9 @@ export class DataService {
       description: 'Periodic monitoring of a suspension bridge to ensure public safety.',
       longDescription: 'We have an ongoing contract to monitor the structural health of the Third Mainland Bridge. Using high-precision total stations and GNSS receivers, we measure for any displacement or deformation, providing engineers with the critical data needed to maintain the bridge\'s integrity.',
       serviceCategory: 'Engineering Surveying',
-      client: 'Lagos State Government',
-      location: 'Lagos, Nigeria',
-      coordinates: { lat: 6.5080, lng: 3.3910 }
+      client: 'Academic Reshearch',
+      location: 'University of Lagos, Nigeria',
+      coordinates: { lat: 6.5165, lng: 3.3995 }
     },
     {
       title: 'Offshore Construction Support',
@@ -283,7 +283,7 @@ export class DataService {
       longDescription: 'Our surveyors established the primary and secondary control networks that governed all construction activities for the Zungeru Hydroelectric Dam. Precision was paramount to ensure the correct alignment and elevation of this massive concrete structure.',
       serviceCategory: 'Hydrographic Surveying',
       client: 'Oil & Gas Firms',
-      location: 'Gulf Guinea',
+      location: 'Gulf of Guinea (Forcados, Escravos, Bonny, Brass, Opobo, Calabar, Erha Field, JVO Field, North Nemba)',
       coordinates: { lat: 3.250, lng: 3.05 }
     },
     {
@@ -292,9 +292,9 @@ export class DataService {
       description: 'Boundary definition and land parcel subdivision for a 200-hectare development.',
       longDescription: 'We were contracted by City-Dev Properties to perform the complete cadastral survey for their new Oceanview Estate. This involved the precise demarcation of the outer boundary and the subdivision of the land into over 500 residential plots, roads, and recreational areas, all in accordance with local planning regulations.',
       serviceCategory: 'Cadastral Surveying',
-      client: 'City-Dev Properties',
-      location: 'Lekki, Nigeria',
-      coordinates: { lat: 6.4411, lng: 3.5732 }
+      client: 'Batake/Idi-Iya, Ido LGA,Ibadan, Oyo State',
+      location: 'Ibadan, Nigeria',
+      coordinates: { lat: 7.5732, lng: 3.6538 }
     },
     {
       title: 'Urban Property Dispute Resolution',
@@ -302,9 +302,9 @@ export class DataService {
       description: 'Expert witness and precise boundary re-establishment.',
       longDescription: 'Our senior cadastral surveyors acted as expert witnesses in a high-profile land dispute case. By meticulously researching historical survey records and performing a detailed field survey, we successfully re-established the true boundary, leading to a fair resolution.',
       serviceCategory: 'Cadastral Surveying',
-      client: 'Private Landowner',
-      location: 'Ikeja, Nigeria',
-      coordinates: { lat: 6.5967, lng: 3.3421 }
+      client: 'Megamound Homes (Lekki County Homes) / Khalbis Surveys',
+      location: 'Ikota, Ajah, Nigeria',
+      coordinates: { lat: 6.4468, lng: 3.5515}
     },
     {
       title: 'Rural Land Titling Program',
@@ -312,7 +312,7 @@ export class DataService {
       description: 'Systematic land adjudication and demarcation for a government initiative.',
       longDescription: 'In partnership with the state government, we helped implement a large-scale land titling program. Our teams worked with local communities to adjudicate and survey thousands of farm plots, providing landowners with official titles and enhancing land tenure security.',
       serviceCategory: 'Cadastral Surveying',
-      client: 'State Ministry of Lands',
+      client: 'Private',
       location: 'Oyo State, Nigeria',
       coordinates: { lat: 7.3775, lng: 3.9470 }
     },
@@ -340,9 +340,9 @@ export class DataService {
       description: 'Pre- and post-dredge surveys for safe navigational depths.',
       longDescription: 'For the Apapa Port expansion, we performed comprehensive multibeam echosounder surveys before and after dredging operations. This allowed us to precisely calculate the volume of material removed and to certify the new navigational depths for safe passage of larger container ships.',
       serviceCategory: 'Hydrographic Surveying',
-      client: 'Nigerian Ports Authority',
-      location: 'Lagos, Nigeria',
-      coordinates: { lat: 6.4468, lng: 3.3675 }
+      client: 'IndividualParties',
+      location: 'Lagos Lagoon, Nigeria',
+      coordinates: { lat: 6.4333, lng: 3.3167 }
     },
     {
       title: 'Coastal & Jetty Survey',
@@ -350,8 +350,9 @@ export class DataService {
       description: 'Detailed seabed characterization for turbine foundation planning.',
       longDescription: 'In the preliminary stages of a major offshore wind farm project, we mapped a 100-square-kilometer area of the seabed. Our hydrographic data revealed the underwater topography and sediment types, which was essential information for the engineers designing the turbine foundations.',
       serviceCategory: 'Hydrographic Surveying',
-      client: 'Green Energy Consortium',
-      location: 'Quene Benin Republic'
+      client: 'Engineering Firm',
+      location: 'Ouémé River, Cove Benin Republic',
+      coordinates: { lat: 7.2215, lng: 2.2965 }
     },
     // {
     //   title: 'Subsea Cable Route Survey',
