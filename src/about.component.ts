@@ -81,7 +81,7 @@ export class AboutComponent implements AfterViewInit {
   },
   {
     name: 'Tijani Hamedat, ACA',
-    title: 'Secetary',
+    title: 'Secretary',
     description: 'A highly analytical Chartered Accountant who dual-hats as our Company Secretary, driving both financial compliance and administrative excellence across the organization. Holding an outstanding academic record and professional induction with the Institute of Chartered Accountants of Nigeria (ICAN), she seamlessly manages our corporate governance, board administration, and regulatory reporting. Her meticulous oversight ensures that our internal operations run with absolute legal and financial integrity, matching the rigorous precision we deliver on the field.',
     imageUrl: '/images/aca1.jpeg',
     socials: { linkedin: 'https://www.linkedin.com/in/musa-bello-5b6c7d8e?utm_source=share_via&utm_content=profile&utm_medium=member_android', twitter: 'https://x.com/TijaniHamedat' }
