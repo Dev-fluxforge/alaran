@@ -118,7 +118,7 @@ Vercel/Netlify will redeploy automatically. Once it's live, the client
 goes to:
 
 ```
-https://a-gsl.com/#/client-login-8f2k1x
+https://a-gsl.com/client-login-8f2k1x
 ```
 
 and signs up themselves the first time — using the email address or phone
@@ -126,9 +126,6 @@ number you put on the authorized list in step 5/6 — then is taken to the
 upload page automatically. Their session is remembered by the browser, so
 they won't have to sign in every visit — only after they explicitly log
 out or clear their browser data.
-
-(Note the `#` — this site uses hash-based routing, so the `#` before the
-path is required.)
 
 ## What the client will see
 
@@ -144,7 +141,7 @@ If someone who isn't on the authorized list signs up (on purpose or by
 accident), they see a plain "your account isn't authorized" message
 instead of the form — they can't view, add, or change any project data.
 
-The 20 existing projects already in the code are untouched and keep
+The projects already in the code are untouched and keep
 showing up alongside anything the client adds.
 
 ## If the client forgets their password

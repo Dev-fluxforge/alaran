@@ -227,7 +227,7 @@ export class MapComponent implements AfterViewInit, OnDestroy {
                 <span class="material-symbols-outlined text-xs">location_on</span>
                 ${project.location}
               </p>
-              <a href="#/project/${project.slug}" class="inline-flex items-center gap-1 text-[10px] font-bold text-primary hover:underline">
+              <a href="/project/${project.slug}" class="inline-flex items-center gap-1 text-[10px] font-bold text-primary hover:underline">
                 View Project Details
                 <span class="material-symbols-outlined text-[10px]">arrow_forward</span>
               </a>

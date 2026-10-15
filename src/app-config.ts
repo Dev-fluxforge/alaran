@@ -24,8 +24,8 @@ export const CLOUDINARY_CONFIG = {
   uploadPreset: 'alaran_project_uploads',
 };
 
-// The URL path (after the # in the address bar, because this site uses
-// hash-based routing) where the client goes to add/edit/delete projects.
+// The URL path (e.g. https://a-gsl.com/<this value>) where the client goes
+// to add/edit/delete projects.
 // Change this to something only you and the client know, e.g.
 // 'manage-projects-8f2k1x'. Nobody else can guess it, and it is never
 // linked to from anywhere on the public site. This page now also requires
