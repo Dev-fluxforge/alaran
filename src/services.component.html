@@ -20,20 +20,22 @@
     <div class="max-w-7xl mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             @for (service of services(); track service.title) {
-            <a 
-                [routerLink]="['/services', service.slug]"
-                (click)="selectService(service)" 
-                [attr.aria-label]="'View details for ' + service.title"
-                class="service-card p-8 rounded-xl bg-white dark:bg-deep-green/50 border border-deep-green/5 dark:border-white/10 flex flex-col h-full cursor-pointer text-left focus-visible:outline-primary">
+            <div class="service-card relative p-8 rounded-xl bg-white dark:bg-deep-green/50 border border-deep-green/5 dark:border-white/10 flex flex-col h-full text-left">
+                <!-- Whole-card link. A sibling (not a parent) of the Read more button, so the two never nest. -->
+                <a
+                    [routerLink]="['/services', service.slug]"
+                    (click)="selectService(service)"
+                    [attr.aria-label]="'View details for ' + service.title"
+                    class="absolute inset-0 rounded-xl cursor-pointer focus-visible:outline-primary"></a>
                 <div [class]="'w-14 h-14 rounded-lg flex items-center justify-center mb-6 bg-' + service.color + '/20 text-' + service.color" aria-hidden="true">
                     <span class="material-symbols-outlined text-3xl">{{ service.icon }}</span>
                 </div>
                 <h3 class="text-xl font-bold mb-3">{{ service.title }}</h3>
-                <p class="text-deep-green/60 dark:text-white/60 text-sm leading-relaxed mb-6 grow">{{ service.description }}</p>
+                <app-read-more [text]="service.description" textClass="text-deep-green/60 dark:text-white/60 text-sm leading-relaxed" />
                 <div class="mt-auto">
                     <span class="text-xs font-bold text-deep-green/40 dark:text-white/30 uppercase tracking-widest">{{ service.category }}</span>
                 </div>
-            </a>
+            </div>
             }
         </div>
     </div>

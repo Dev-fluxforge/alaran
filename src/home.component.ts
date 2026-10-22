@@ -6,12 +6,13 @@ import { UiStateService } from './ui-state.service';
 import { MapComponent } from './map.component';
 import { StatsChartComponent } from './stats-chart.component';
 import { StatsPieChartComponent } from './stats-pie-chart.component';
+import { ReadMoreComponent } from './read-more.component';
 import { animate, stagger } from 'motion';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterLink, MapComponent, StatsChartComponent, StatsPieChartComponent],
+  imports: [RouterLink, MapComponent, StatsChartComponent, StatsPieChartComponent, ReadMoreComponent],
   templateUrl: './home.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })

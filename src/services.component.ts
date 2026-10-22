@@ -3,11 +3,12 @@ import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { DataService, Service } from './data.service';
 import { UiStateService } from './ui-state.service';
+import { ReadMoreComponent } from './read-more.component';
 
 @Component({
   selector: 'app-services',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, ReadMoreComponent],
   templateUrl: './services.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
