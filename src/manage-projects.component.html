@@ -15,7 +15,7 @@
         }
       </div>
       <button type="button" (click)="logout()"
-              class="flex-shrink-0 text-sm font-semibold text-deep-green/70 dark:text-white/70 hover:text-primary border border-deep-green/20 dark:border-white/20 px-4 py-2 rounded-lg">
+              class="shrink-0 text-sm font-semibold text-deep-green/70 dark:text-white/70 hover:text-primary border border-deep-green/20 dark:border-white/20 px-4 py-2 rounded-lg">
         Log Out
       </button>
     </div>
@@ -206,7 +206,7 @@
       <div class="space-y-3">
         @for (project of clientProjects(); track project.id) {
           <div class="flex items-center gap-4 p-4 rounded-lg border border-deep-green/10 dark:border-white/10 bg-white dark:bg-white/5">
-            <div class="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 bg-deep-green/5">
+            <div class="w-16 h-16 rounded-lg overflow-hidden shrink-0 bg-deep-green/5">
               @if (project.imageUrls[0] && !isVideo(project.imageUrls[0])) {
                 <img [src]="project.imageUrls[0]" class="w-full h-full object-cover" alt="" />
               } @else {
@@ -220,11 +220,11 @@
               <p class="text-xs text-deep-green/60 dark:text-white/60 truncate">{{ project.serviceCategory }} · {{ project.location }}</p>
             </div>
             <button type="button" (click)="startEdit(project)"
-                    class="text-sm font-semibold text-primary hover:underline flex-shrink-0">
+                    class="text-sm font-semibold text-primary hover:underline shrink-0">
               Edit
             </button>
             <button type="button" (click)="deleteProject(project)" [disabled]="deletingId() === project.id"
-                    class="text-sm font-semibold text-red-600 hover:underline flex-shrink-0 disabled:opacity-50">
+                    class="text-sm font-semibold text-red-600 hover:underline shrink-0 disabled:opacity-50">
               {{ deletingId() === project.id ? 'Deleting…' : 'Delete' }}
             </button>
           </div>

@@ -10,11 +10,11 @@ import { UiStateService } from './ui-state.service';
   standalone: true,
   imports: [CommonModule],
   template: `
-    <div class="relative w-full h-[500px] rounded-2xl overflow-hidden shadow-2xl border border-deep-green/10 dark:border-white/10">
+    <div class="relative w-full h-125 rounded-2xl overflow-hidden shadow-2xl border border-deep-green/10 dark:border-white/10">
       <div #mapContainer class="w-full h-full z-0"></div>
       
       <!-- Enhanced Map Legend -->
-      <div class="absolute top-4 right-4 z-[1000] bg-white/95 dark:bg-deep-green/95 backdrop-blur-md p-4 rounded-xl shadow-xl border border-deep-green/10 dark:border-white/10 w-56">
+      <div class="absolute top-4 right-4 z-1000 bg-white/95 dark:bg-deep-green/95 backdrop-blur-md p-4 rounded-xl shadow-xl border border-deep-green/10 dark:border-white/10 w-56">
         <h4 class="text-[10px] font-bold uppercase tracking-[0.2em] text-deep-green/40 dark:text-white/40 mb-3">Service Areas</h4>
         <div class="space-y-2.5">
           @for (item of legendItems; track item.label) {
@@ -217,7 +217,7 @@ export class MapComponent implements AfterViewInit, OnDestroy {
             opacity: 1
           })
           .bindPopup(`
-            <div class="p-3 min-w-[200px]">
+            <div class="p-3 min-w-50">
               <div class="flex items-center gap-2 mb-2">
                 <span class="w-2 h-2 rounded-full ${colorClass}"></span>
                 <span class="text-[10px] font-bold uppercase tracking-wider ${textColorClass}">${project.serviceCategory}</span>
